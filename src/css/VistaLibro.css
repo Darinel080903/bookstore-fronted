@@ -1,0 +1,50 @@
+.contenedor_cuadro{
+    width: 1200px;
+    height: 450px;
+    margin: 100px 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    box-shadow: 0 3px 13px 1px rgb(0 0 0 / 20%);
+}
+
+.imagen{
+    height: 75%;
+    width: auto;
+    align-items:center;
+    margin: 20px 20px 0px;
+}
+
+.contenedor_texto{
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+    padding: 40px;
+    font-family: Latos, sans-serif;
+    font-weight: 400;
+    line-height: 1.5rem;
+}
+
+.nombre-tema{
+    font-size: 1.3rem;
+}
+
+.sub-tema{
+    font-size: 1.3rem;
+    margin-top: 15px;
+    padding-bottom: 30px;
+}
+
+.texto-contenedor{
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+a{
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: Latos, sans-serif;
+    font-weight: 400;
+    color: aqua;
+}
