@@ -1,5 +1,5 @@
 import React from 'react'
-import "../css/Login.css"
+import "../css/FormLogin.css"
 
 import {useState} from "react"
 import axios from "axios"
@@ -7,7 +7,7 @@ import axios from "axios"
 const baseURL = "localhost:8080/order/login";
 
 
-function Login() {
+function FormLogin() {
 
 
   const [email, setEmail] = useState("");
@@ -28,7 +28,7 @@ function Login() {
       <div className="loginForm">
 
 
-        <h2 className='title'>Login</h2>
+        <h2 className='title-login'>Login</h2>
 
         <form action="" id='form' >
 
@@ -64,4 +64,4 @@ function Login() {
   )
 }
 
-export default Login
+export default FormLogin
