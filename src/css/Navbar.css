@@ -55,7 +55,8 @@
 }
 
 .navbar-logo-book{
-    height: 100px;
+    border-radius: 10px;
+    height: 70px;
     width: auto;
     align-items:center;
     margin: 10px 10px 0px;
