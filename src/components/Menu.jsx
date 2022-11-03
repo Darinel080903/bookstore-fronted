@@ -1,4 +1,6 @@
 import '../css/Menu.css'
+import { Outlet, Link} from 'react-router-dom'
+
 
 function Menu() {
     return(
@@ -7,11 +9,11 @@ function Menu() {
         <label id="trigger" for="menu-toggle"></label>
         <label id="burger" for="menu-toggle"></label>
         <ul id="menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Best sellers</a></li>
-            <li><a href="#">Genders</a></li>
-            <li><a href="#">Account</a></li>
-            <li><a href="#"></a></li>
+            <li> <Link to="/home">Home</Link> </li>
+            <li> <Link to="/Best">Best Sellers</Link> </li>
+            <li> <Link to="/Genders">Genders</Link> </li>
+            <li> <Link to="/Acount">Account </Link> </li>
+            <li></li>
         </ul>
         </>
         )
