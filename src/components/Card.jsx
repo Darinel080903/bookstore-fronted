@@ -8,8 +8,8 @@ function Card({image, titulo, texto}) {
 
             <div className='card'>
                 <img className="imagen" src={image} />
-                <h4 className="titulo">{titulo}{''}</h4>
-                <p className="texto">{texto}{''}</p>
+                <h4 className="titulo">{titulo}</h4>
+                <p className="texto">{texto}</p>
                 <a href="" target="_blank">Comprar</a>
             </div>
          </Link> 
