@@ -2,6 +2,7 @@ import React from 'react'
 import "../css/Register.css"
 
 import {useState} from "react"
+import { Link } from 'react-router-dom';
 
 const baseURL = "localhost:8080/order/register";
 
@@ -53,6 +54,7 @@ function Register() {
 
 
     return (
+        <Link to="/Register">
         <div className="registerContainer">
             <div className="registerForm">
                 <h2>Register</h2>
@@ -143,6 +145,7 @@ function Register() {
                 </form>
             </div>
         </div>
+        </Link>
     );
 }
 

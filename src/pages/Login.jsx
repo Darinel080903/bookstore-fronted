@@ -11,7 +11,6 @@ function Login() {
         <Navbar/>
         <FormLogin/>
         <Footer/>
-        
     </div>
   )
 }
