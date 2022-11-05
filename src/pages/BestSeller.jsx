@@ -1,16 +1,17 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-import FormRegister from '../components/FormRegister'
 import Footer from '../components/Footer'
+import FormBestSeller from '../components/FormBestSeller'
 
-function Register() {
+
+function BestSeller() {
   return (
-    <div className='register'>
+    <div className='login'>
         <Navbar/>
-        <FormRegister/>
+        <FormBestSeller/>
         <Footer/>
     </div>
   )
 }
 
-export default Register;
+export default BestSeller;

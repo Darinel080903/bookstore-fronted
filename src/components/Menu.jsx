@@ -10,10 +10,10 @@ function Menu() {
         <label id="burger" for="menu-toggle"></label>
         <ul id="menu">
             <li> <Link to="/home">Home</Link> </li>
-            <li> <Link to="/Best">Best Sellers</Link> </li>
-            <li> <Link to="/Genders">Genders</Link> </li>
+            <li> <Link to="/bestseller">Best Sellers</Link> </li>
+            <li> <Link to="/register">Register</Link> </li>
             <li> <Link to="/Acount">Account </Link> </li>
-            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/">Login</Link></li>
         </ul>
         </>
         )
