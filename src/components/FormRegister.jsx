@@ -1,5 +1,5 @@
 import React from 'react'
-import "../css/Register.css"
+import styles from "../css/Register.module.css"
 
 import {useState} from "react"
 import { Link } from 'react-router-dom';
@@ -55,11 +55,11 @@ function Register() {
 
     return (
         <Link to="/Register">
-        <div className="registerContainer">
-            <div className="registerForm">
+        <div className={styles.registerContainer}>
+            <div className={styles.registerForm}>
                 <h2>Register</h2>
                 <form method="" id="form">
-                    <label className='label'>
+                    <label className={styles.label}>
                         <span>Name</span>
                         <input
                             onChange={handleChangeName}
@@ -69,7 +69,7 @@ function Register() {
 
                         />
                     </label>
-                    <label className='label'>
+                    <label className={styles.label}>
                         <span>Last Name</span>
                         <input
                             onChange={handleChangeLastname}
@@ -79,7 +79,7 @@ function Register() {
 
                         />
                     </label>
-                    <label className='label'>
+                    <label className={styles.label}>
                         <span>E-mail</span>
                         <input
                             onChange={handleChangeEmail}
@@ -89,7 +89,7 @@ function Register() {
 
                         />
                     </label>
-                    <label className='label'>
+                    <label className={styles.label}>
                         <span>Username</span>
                         <input
                             onChange={handleChangeUsername}
@@ -99,7 +99,7 @@ function Register() {
 
                         />
                     </label>
-                    <label className='label'>
+                    <label className={styles.label}>
                         <span>Password</span>
                         <input
                             onChange={handleChangePassword}
@@ -109,7 +109,7 @@ function Register() {
 
                         />
                     </label>
-                    <label className='label'>
+                    <label className={styles.label}>
                         <span>Phone number</span>
                         <input
                             onChange={handleChangePhone}
@@ -119,7 +119,7 @@ function Register() {
 
                         />
                     </label>
-                    <label className='label'>
+                    <label className={styles.label}>
                         <span>Adress</span>
                         <input
                             onChange={handleChangeAdress}
@@ -129,7 +129,7 @@ function Register() {
 
                         />
                     </label>
-                    <label className='label'>
+                    <label className={styles.label}>
                         <span>B-day</span>
                         <input
                             onChange={handleChangeBday}
@@ -139,7 +139,7 @@ function Register() {
 
                         />
                     </label>
-                    <label className='label'>
+                    <label className={styles.label}>
                         <input type="submit" value="Log in" id='btn-login' />
                     </label>
                 </form>

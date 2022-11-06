@@ -13,7 +13,6 @@ function Menu() {
             <li> <Link to="/Best">Best Sellers</Link> </li>
             <li> <Link to="/Genders">Genders</Link> </li>
             <li> <Link to="/Acount">Account </Link> </li>
-            <li><Link to="/login">Login</Link></li>
         </ul>
         </>
         )
