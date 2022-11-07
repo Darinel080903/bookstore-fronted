@@ -1,7 +1,6 @@
 import styles from '../css/Card.module.css'
 import {Link } from 'react-router-dom'
 
-
 function Card({ image, titulo, texto, precio }) {
     return (
         
@@ -14,6 +13,7 @@ function Card({ image, titulo, texto, precio }) {
                 <a className={styles.comprar} href="" target="_blank">Comprar</a>
             </div>  
         </div>
+
     )
 }
 
