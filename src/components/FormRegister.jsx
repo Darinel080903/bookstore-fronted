@@ -54,7 +54,6 @@ function Register() {
 
 
     return (
-        <Link to="/Register">
         <div className={styles.registerContainer}>
             <div className={styles.registerForm}>
                 <h2>Register</h2>
@@ -145,7 +144,6 @@ function Register() {
                 </form>
             </div>
         </div>
-        </Link>
     );
 }
 
