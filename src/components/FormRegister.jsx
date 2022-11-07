@@ -140,7 +140,7 @@ function Register() {
                         />
                     </label>
                     <label className={styles.label}>
-                        <input type="submit" value="Log in" id='btn-login' />
+                        <input type="submit" value="Register" id='btn-login' />
                     </label>
                 </form>
             </div>

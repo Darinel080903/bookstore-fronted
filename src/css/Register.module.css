@@ -7,7 +7,7 @@
     align-items: center;
     background-image: url("https://images.unsplash.com/photo-1485322551133-3a4c27a9d925?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
     background-repeat: no-repeat;
-    background-size: 120%;
+    background-size: 2000px;
 }
 
 
@@ -15,26 +15,21 @@
 .registerForm{
     padding: 15px;
     background: #191919;
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 600px;
     border-radius: 10px;
     box-shadow: rgba(188, 188, 188, 0.2) 0px 2px 8px 0px;
 }
 
-.title{
-    text-align: center;
-    color: white;
-    font-size: 40px;
-}
 
-.registerForm form{
-    height: 90%;
-    width: 100%;
-    margin-left: 50px;
+form{
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
     padding-top: 10px;
+    height: 70%;
 }
 
 
@@ -43,7 +38,7 @@
 }
 
 .label{
-    margin-top: 40px;
+    margin-top: 20px;
     color: white;
 }
 
