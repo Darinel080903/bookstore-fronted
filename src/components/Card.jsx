@@ -13,7 +13,6 @@ function Card({ image, titulo, texto, precio }) {
                 <a className={styles.comprar} href="" target="_blank">Comprar</a>
             </div>  
         </div>
-
     )
 }
 
