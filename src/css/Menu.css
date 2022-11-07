@@ -1,6 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 
-
+.menu{
+    background-color: #191716;
+}
 
 li, a {
     margin: 75px 0 -55px 0;
