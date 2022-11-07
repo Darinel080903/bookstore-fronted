@@ -1,7 +1,9 @@
 .contenedor_cuadro{
     width: 1200px;
     height: 450px;
-    margin: 100px 20px 20px;
+    margin: 0 auto ;
+    margin-top: 80px;
+    margin-bottom: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,5 +48,4 @@ a{
     font-size: 1.3rem;
     font-family: Latos, sans-serif;
     font-weight: 400;
-    color: aqua;
 }
