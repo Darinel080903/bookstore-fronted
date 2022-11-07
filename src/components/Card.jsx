@@ -3,7 +3,6 @@ import {Link } from 'react-router-dom'
 
 function Card({ image, titulo, texto, precio }) {
     return (
-        
         <div className={styles.card}>
             <img className={styles.imagen} src={image} />
             <div className={styles.info}>
@@ -12,7 +11,7 @@ function Card({ image, titulo, texto, precio }) {
                 <p className={styles.precio}> ${precio} </p>
                 <a className={styles.comprar} href="" target="_blank">Comprar</a>
             </div>  
-        </div>
+        </div>      
     )
 }
 
