@@ -1,19 +1,21 @@
 import '../css/Menu.css'
+import { Outlet, Link} from 'react-router-dom'
+
 
 function Menu() {
     return(
-        <>
+        <div className='menu'>
         <input type="checkbox" id="menu-toggle"/>
         <label id="trigger" for="menu-toggle"></label>
         <label id="burger" for="menu-toggle"></label>
         <ul id="menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Best sellers</a></li>
-            <li><a href="#">Genders</a></li>
-            <li><a href="#">Account</a></li>
-            <li><a href="#"></a></li>
+            <li> <Link to="/">Home</Link> </li>
+            <li> <Link to="/bestseller">Best Sellers</Link> </li>
+            <li> <Link to="/register">Register</Link> </li>
+            <li> <Link to="/Acount">Account </Link> </li>
+
         </ul>
-        </>
+        </div>
         )
 }
 

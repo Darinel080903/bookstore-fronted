@@ -1,0 +1,81 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
+
+* {
+  font-family: Open Sans;
+  box-sizing: border-box;
+}
+
+
+.navbarDistributed{
+  background: #191716;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  font: bold 16px sans-serif;
+  padding: 10px 45px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 5%;
+}
+
+.menu{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+
+.search{
+  width: 70%;
+  height: 30px;
+}
+
+
+.logoContainer{
+  width: 200px;
+}
+
+.navbarLogoBook{
+    border-radius: 10px;
+    height: 60px;
+    width: 100%;
+    align-items:center;
+    margin: 0px auto;
+    
+  }
+
+.buttonLogin{
+  width: 200px;
+  display: flex;
+  justify-content: center;
+}  
+
+.buttonLogin button{
+  padding: 5px 10px;
+  background-color: rgb(219, 218, 218);
+  border: none;
+  border-radius: 10px;
+}
+
+.buttonLogin *{
+  margin: 0;
+  color: black;
+}
+
+
+@media (max-width: 880px) {
+
+  .navbarDistributed{
+    font: bold 14px sans-serif;
+  }
+
+  .navbarDistributed .navbarLeft,
+  .navbarDistributed .navbarRight{
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+}
