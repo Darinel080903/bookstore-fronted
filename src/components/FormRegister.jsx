@@ -99,7 +99,7 @@ function Register() {
                 <form method="" id="form" onSubmit={handleSubmit} ref={form}>
                     <label className={styles.label}>
                         <span>Name</span>
-                        <input
+                        <input className={styles.input}
                             onChange={handleChangeName}
                             type="text"
                             id='name'
@@ -110,7 +110,7 @@ function Register() {
                     </label>
                     <label className={styles.label}>
                         <span>Last Name</span>
-                        <input
+                        <input className={styles.input}
                             onChange={handleChangeLastname}
                             type="text"
                             name='lastname'
@@ -121,7 +121,7 @@ function Register() {
                     </label>
                     <label className={styles.label}>
                         <span>E-mail</span>
-                        <input
+                        <input className={styles.input}
                             onChange={handleChangeEmail}
                             type="email"
                             name='email'
@@ -132,7 +132,7 @@ function Register() {
                     </label>
                     <label className={styles.label}>
                         <span>Username</span>
-                        <input
+                        <input className={styles.input}
                             onChange={handleChangeUsername}
                             type="text"
                             name='username'
@@ -143,7 +143,7 @@ function Register() {
                     </label>
                     <label className={styles.label}>
                         <span>Password</span>
-                        <input
+                        <input className={styles.input}
                             onChange={handleChangePassword}
                             type="password"
                             name='password'
@@ -154,7 +154,7 @@ function Register() {
                     </label>
                     <label className={styles.label}>
                         <span>Phone number</span>
-                        <input
+                        <input className={styles.input}
                             onChange={handleChangePhone}
                             type="text"
                             name='phone'
@@ -165,7 +165,7 @@ function Register() {
                     </label>
                     <label className={styles.label}>
                         <span>Adress</span>
-                        <input
+                        <input className={styles.input}
                             onChange={handleChangeAdress}
                             type="text"
                             name='address'
@@ -176,7 +176,7 @@ function Register() {
                     </label>
                     <label className={styles.label}>
                         <span>B-day</span>
-                        <input
+                        <input className={styles.input}
                             onChange={handleChangeBday}
                             type="date"
                             name='birthday'

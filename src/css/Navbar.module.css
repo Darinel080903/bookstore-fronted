@@ -26,11 +26,29 @@
 }
 
 
-.search{
-  width: 70%;
-  height: 30px;
+.searcher{
+  width: 60%;
+  margin: 0 5%;
+  height: 35px;
+  background-color: aliceblue;
+  color: black  ;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 3px;
+
 }
 
+.searchIcon{
+  font-size: 30px;
+}
+
+.inputSearcher{
+  font-size: 20px;
+  color: black;
+  border: none;
+  background: transparent;
+}
 
 .logoContainer{
   width: 200px;
@@ -63,6 +81,11 @@
   color: black;
 }
 
+.userName{
+  line-height: 60px;
+  color: white;
+  margin: 0 5px;
+}
 
 @media (max-width: 880px) {
 
