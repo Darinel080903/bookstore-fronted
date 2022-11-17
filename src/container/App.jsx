@@ -8,6 +8,7 @@ import Login from '../pages/Login';
 import Home from '../pages/Home';
 import Book from '../pages/Book';
 import Register from '../pages/Register';
+import BestSeller from '../pages/BestSeller'
 
 
 function App() {
@@ -23,11 +24,11 @@ function App() {
         <UserContext.Provider value={{ user, setUser }} >
 
           <Routes>
-
             <Route path='/' element={  <Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/book' element={<Book />} />
             <Route path='/register' element={<Register />} />
+            <Route path='bestseller' element={<BestSeller/>}/>
           </Routes>
           
         </UserContext.Provider>

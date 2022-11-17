@@ -4,7 +4,7 @@ import { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../context/UserContext'
 
 import Menu from '../components/Menu';
-import Imagen1 from '../assets/images/BookLogo.png'
+import Imagen1 from '../assets/images/bookStoreLogo.png'
 
 
 

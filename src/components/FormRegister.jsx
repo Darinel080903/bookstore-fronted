@@ -104,7 +104,6 @@ function Register() {
                             type="text"
                             id='name'
                             name='name'
-                            placeholder='Write your name'
 
                         />
                     </label>
@@ -115,7 +114,6 @@ function Register() {
                             type="text"
                             name='lastname'
                             id='lastname'
-                            placeholder='Write your last name'
 
                         />
                     </label>
@@ -126,7 +124,6 @@ function Register() {
                             type="email"
                             name='email'
                             id='email'
-                            placeholder='Write your E-mail'
 
                         />
                     </label>
@@ -137,7 +134,6 @@ function Register() {
                             type="text"
                             name='username'
                             id='username'
-                            placeholder='Write a username'
 
                         />
                     </label>
@@ -148,7 +144,6 @@ function Register() {
                             type="password"
                             name='password'
                             id='password'
-                            placeholder='Write your password'
 
                         />
                     </label>
@@ -159,8 +154,6 @@ function Register() {
                             type="text"
                             name='phone'
                             id='phone'
-                            placeholder='Write your phone number'
-
                         />
                     </label>
                     <label className={styles.label}>
@@ -170,19 +163,16 @@ function Register() {
                             type="text"
                             name='address'
                             id='address'
-                            placeholder='Write your address'
 
                         />
                     </label>
                     <label className={styles.label}>
-                        <span>B-day</span>
+                        <span>Birth day</span>
                         <input
                             onChange={handleChangeBday}
                             type="date"
                             name='birthday'
                             id='birthday'
-                            placeholder='Enter your b-day'
-
                         />
                     </label>
                     <label>
