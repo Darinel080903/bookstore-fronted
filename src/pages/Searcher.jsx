@@ -5,9 +5,9 @@ import Search from '../components/Search'
 
 function Searcher() {
     return (
-        <div className={styles.searcherContainer}>
+        <div className="searcherContainer">
             <Navbar />
-            <Search />
+            <Search/>
             <Footer />
         </div>
     )

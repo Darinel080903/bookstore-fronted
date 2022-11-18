@@ -16,6 +16,7 @@ function Navbar(params) {
     const [bookSearched, setBookSearched] = useState()
 
     function handleSearch(e) {
+        
         e.preventDefault();
 
         setBookSearched(e.target[0].value);
@@ -29,7 +30,7 @@ function Navbar(params) {
         <nav className={styles.navbarDistributed}>
             {
                 bookSearched &&
-                <Navigate to="/search" replace={true} />
+                <Navigate to="/search" state={{ bookSearched : bookSearched  }} replace={true} />
             }
 
             <div className={styles.menu}>

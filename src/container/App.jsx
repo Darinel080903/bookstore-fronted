@@ -1,5 +1,5 @@
 import '../css/App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { UserContext } from '../context/UserContext';
 import React, { useState } from 'react'
 
@@ -25,7 +25,8 @@ function App() {
         <UserContext.Provider value={{ user, setUser }} >
 
           <Routes>
-            <Route path='/' element={  <Home />} />
+            <Route path='/' element={ <Navigate to="/home" replace={true} /> } />
+            <Route path='/home' element={<Home/>} />
             <Route path='/login' element={<Login />} />
             <Route path='/book' element={<Book />} />
             <Route path='/register' element={<Register />} />
