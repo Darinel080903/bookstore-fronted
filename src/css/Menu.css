@@ -1,6 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 
-
+.menu{
+    background-color: #191716;
+    transition: all 1s ease;
+}
 
 li, a {
     margin: 75px 0 -55px 0;
@@ -48,12 +51,8 @@ h4 {
     font-weight: lighter;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    background-color: #fff;
-    font-family: 'Roboto', sans-serif;
-}
+
+
 
 #trigger, #burger, #burger:before, #burger:after {
     position: absolute;

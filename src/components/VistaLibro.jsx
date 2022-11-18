@@ -1,15 +1,34 @@
-import '../css/VistaLibro.css'
+import styles from '../css/VistaLibro.module.css'
+import { useContext, useState, useEffect, } from 'react'
+import {Link, useLocation } from 'react-router-dom'
 
-function VistaLibro(props) {
+
+
+function VistaLibro() {
+
+    const [books, setBooks] = useState([]);
+
+    const location = useLocation();
+
+    const { nBook } = location.state;
+
+
+    useEffect(() => {
+        fetch('http://localhost:8080/book/'+nBook)
+            .then(response => response.json())
+            .then(data => setBooks(data.data));
+
+    }, [])
+
     return(
-        <div className="contenedor_cuadro">
-            <img className="imagen" 
-            src= "https://media.s-bol.com/m7krYROP5VR0/r01XkD6/550x782.jpg" />
+        <div className={styles.contenedor_cuadro}>
+            <img className={styles.imagen} 
+            src= {books.cover}/>
 
-            <div className="contenedor_texto">
-                <p className="nombre-tema"><strong>{props.tema}</strong></p>
-                <p className="sub-tema">{props.subTema}</p>
-                <p className="texto-contenedor">{props.textoContenedor}</p>
+            <div className={styles.contenedorTexto}>
+                <p className={styles.nombreTema}><strong>{books.name}</strong></p>
+                <p className={styles.subTema}>{'$'+books.price}</p>
+                <p className={styles.textoContenedor}>{books.description}</p>
             </div>
 
         </div>
