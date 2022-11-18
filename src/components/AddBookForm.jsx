@@ -145,6 +145,9 @@ function AddBookForm() {
                             id='year'
                         />
                     </label>
+                    <label>
+                        <button type='submit' className={styles.btnAddBook}>Submit</button>
+                    </label>
                 </form>
             </div>
         </div>
