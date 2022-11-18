@@ -1,12 +1,12 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import NavbarForm from '../components/NavbarForm'
 import FormRegister from '../components/FormRegister'
 import Footer from '../components/Footer'
 
 function Register() {
   return (
     <div className='register'>
-        <Navbar/>
+        <NavbarForm/>
         <FormRegister/>
         <Footer/>
     </div>

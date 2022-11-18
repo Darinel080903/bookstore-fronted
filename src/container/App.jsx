@@ -9,6 +9,7 @@ import Home from '../pages/Home';
 import Book from '../pages/Book';
 import Register from '../pages/Register';
 import BestSeller from '../pages/BestSeller'
+import Searcher from '../pages/Searcher';
 
 
 function App() {
@@ -28,7 +29,8 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/book' element={<Book />} />
             <Route path='/register' element={<Register />} />
-            <Route path='bestseller' element={<BestSeller/>}/>
+            <Route path='/bestseller' element={<BestSeller/>} />
+            <Route path='/search' element={<Searcher/>} />
           </Routes>
           
         </UserContext.Provider>

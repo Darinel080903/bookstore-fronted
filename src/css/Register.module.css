@@ -1,5 +1,4 @@
 .registerContainer{
-    margin-top: -75px;
     width: 100%;
     padding: 15px;
     display: flex;
@@ -52,7 +51,7 @@ h2{
     padding: 0 10px;
 }
 
-input{
+.input{
     
     background: transparent;
     border: none!important;
@@ -74,9 +73,7 @@ input{
     
 }
 
-p{
-    display: flex;
-}
+
 
 label span, label input{
     font-size: 16px;

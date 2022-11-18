@@ -1,4 +1,4 @@
-.contenedor_cuadro{
+.contenedorCuadro{
     width: 1200px;
     height: 450px;
     margin: 0 auto ;
@@ -18,7 +18,7 @@
     margin: 20px 20px 0px;
 }
 
-.contenedor_texto{
+.contenedorTexto{
     width: 100%;
     font-size: 18px;
     text-align: center;
@@ -28,17 +28,17 @@
     line-height: 1.5rem;
 }
 
-.nombre-tema{
+.nombreTema{
     font-size: 1.3rem;
 }
 
-.sub-tema{
+.subTema{
     font-size: 1.3rem;
     margin-top: 15px;
     padding-bottom: 30px;
 }
 
-.texto-contenedor{
+.textoContenedor{
     font-size: 1.1rem;
     text-align: justify;
 }

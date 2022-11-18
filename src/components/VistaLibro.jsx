@@ -1,4 +1,4 @@
-import '../css/VistaLibro.css'
+import styles from '../css/VistaLibro.module.css'
 import { useContext, useState, useEffect, } from 'react'
 import {Link, useLocation } from 'react-router-dom'
 
@@ -21,14 +21,14 @@ function VistaLibro() {
     }, [])
 
     return(
-        <div className="contenedor_cuadro">
-            <img className="imagen" 
+        <div className={styles.contenedor_cuadro}>
+            <img className={styles.imagen} 
             src= {books.cover}/>
 
-            <div className="contenedor_texto">
-                <p className="nombre-tema"><strong>{books.name}</strong></p>
-                <p className="sub-tema">{'$'+books.price}</p>
-                <p className="texto-contenedor">{books.description}</p>
+            <div className={styles.contenedorTexto}>
+                <p className={styles.nombreTema}><strong>{books.name}</strong></p>
+                <p className={styles.subTema}>{'$'+books.price}</p>
+                <p className={styles.textoContenedor}>{books.description}</p>
             </div>
 
         </div>
