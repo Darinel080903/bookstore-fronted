@@ -3,7 +3,7 @@ import { Outlet, Link } from 'react-router-dom'
 
 
 import Menu from './Menu';
-import Imagen1 from '../assets/images/BookLogo.png'
+import Imagen1 from '../assets/images/bookStoreLogo.png'
 
 
 

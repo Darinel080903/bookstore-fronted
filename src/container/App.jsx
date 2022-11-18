@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { UserContext } from '../context/UserContext';
 import React, { useState } from 'react'
 
-
+import Cart from '../pages/Cart';
 import Login from '../pages/Login';
 import Home from '../pages/Home';
 import Book from '../pages/Book';
@@ -28,6 +28,7 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/book' element={<Book />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/cart' element={<Cart/>}/>
           </Routes>
           
         </UserContext.Provider>

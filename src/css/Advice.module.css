@@ -1,0 +1,11 @@
+.AdviceForm{
+    background: #562155;
+    width: 100%;
+    font: bold 16px sans-serif;
+    padding: 10px 45px;
+    min-height: 30px;
+    display: flex;
+    padding-left: 5%;
+    color: whitesmoke;
+    text-align: center;
+  }
