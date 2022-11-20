@@ -1,17 +1,16 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-import Body from '../components/Body'
 import Footer from '../components/Footer'
-import Search from '../components/Search'
+import FormAdmi from '../components/FormAdmi'
 
-function Home() {
+function Admi() {
   return (
-    <div className='home'>
+    <div className='admi'>
         <Navbar/>
-        <Body/>
+        <FormAdmi/>
         <Footer/>
     </div>
   )
 }
 
-export default Home
+export default Admi;

@@ -16,20 +16,21 @@ function Navbar(params) {
     const [bookSearched, setBookSearched] = useState()
 
     function handleSearch(e) {
+
         e.preventDefault();
 
         setBookSearched(e.target[0].value);
 
-        
+
 
     }
 
-   
+
     return (
         <nav className={styles.navbarDistributed}>
             {
                 bookSearched &&
-                <Navigate to="/search" replace={true} />
+                <Navigate to="/search" state={{ bookSearched: bookSearched }} replace={true} />
             }
 
             <div className={styles.menu}>
@@ -40,7 +41,7 @@ function Navbar(params) {
                 <div className={styles.searcher} id='searcher'>
                     <AiOutlineSearch className={styles.searchIcon} />
                     <form onSubmit={handleSearch}>
-                        <input className={styles.inputSearcher} type="text"  />
+                        <input className={styles.inputSearcher} type="text" />
                     </form>
                 </div>
             </div>
@@ -57,14 +58,26 @@ function Navbar(params) {
 
                     </div>
                     :
-
-                    <div className={styles.buttonLogin}>
+                    user.email == null ?
+                        <div className={styles.buttonLogin}>
+                            <Link to="/login"><span>Log In</span></Link>
+                        </div>
+                        :
+                    <>
+                        <div className={styles.buttonLogin}>
                         <div className={styles.userName}>{user.userName}</div>
-                        <button>
-                            <Link to="/compras">Compras</Link>
-                        </button>
-
-                    </div>
+                            <button>
+                                <Link to="/admin">Admin</Link>
+                            </button>
+                        </div>
+                    
+                        <div className={styles.buttonLogin}>
+                            <div className={styles.userName}>{user.userName}</div>
+                            <button>
+                                <Link to="/compras">Compras</Link>
+                            </button>
+                        </div>
+                    </>
                 }
             </div>
 

@@ -1,5 +1,5 @@
 import styles from '../css/VistaLibro.module.css'
-import { useContext, useState, useEffect, } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import {Link, useLocation } from 'react-router-dom'
 
 

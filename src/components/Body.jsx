@@ -1,6 +1,6 @@
 import styles from "../css/Body.module.css"
 import Card from "../components/Card"
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 import { useContext, useState, useEffect } from 'react'
