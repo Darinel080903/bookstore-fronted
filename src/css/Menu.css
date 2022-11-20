@@ -2,6 +2,7 @@
 
 .menu{
     background-color: #191716;
+    transition: all 1s ease;
 }
 
 li, a {
@@ -32,30 +33,11 @@ aside {
     right: 10%;
     text-align: right;
 }
-h1 {
-    line-height: 0;
-    font-size: 4vw;
-    font-weight: 700;
-}
-h3 {
-    float: right;
-    line-height: .3;
-    font-size: 2.5vw;
-    font-weight: lighter;
-}
-h4 {
-    float: left;
-    margin-left: -2%;
-    font-size: 1.5vw;
-    font-weight: lighter;
-}
 
-html, body {
-    margin: 0;
-    padding: 0;
-    background-color: #fff;
-    font-family: 'Roboto', sans-serif;
-}
+    
+
+
+
 
 #trigger, #burger, #burger:before, #burger:after {
     position: absolute;

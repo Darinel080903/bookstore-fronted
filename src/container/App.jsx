@@ -1,5 +1,5 @@
 import '../css/App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { UserContext } from '../context/UserContext';
 import React, { useState } from 'react'
 
@@ -10,6 +10,7 @@ import Book from '../pages/Book';
 import Register from '../pages/Register';
 import BestSeller from '../pages/BestSeller'
 import AddBook from '../pages/AddBook';
+import Searcher from '../pages/Searcher';
 
 
 function App() {
@@ -25,12 +26,14 @@ function App() {
         <UserContext.Provider value={{ user, setUser }} >
 
           <Routes>
-            <Route path='/' element={  <Home />} />
+            <Route path='/' element={ <Navigate to="/home" replace={true} /> } />
+            <Route path='/home' element={<Home/>} />
             <Route path='/login' element={<Login />} />
             <Route path='/book' element={<Book />} />
             <Route path='/register' element={<Register />} />
-            <Route path='/bestseller' element={<BestSeller/>}/>
             <Route path='/addbook' element={<AddBook/>}/>
+            <Route path='/bestseller' element={<BestSeller/>} />
+            <Route path='/search' element={<Searcher/>} />
           </Routes>
           
         </UserContext.Provider>

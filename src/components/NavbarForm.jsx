@@ -9,7 +9,7 @@ import Imagen1 from '../assets/images/bookStoreLogo.png'
 
 function Navbar(params) {
     return (
-        <nav className={styles.navbarDistributed}>
+        <nav className={styles.navbarDistributedForm}>
             <div className={styles.menu}>
                 <Menu />
             </div>

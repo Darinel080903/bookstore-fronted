@@ -1,17 +1,14 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-import Body from '../components/Body'
 import Footer from '../components/Footer'
-import Search from '../components/Search'
 
-function Home() {
+function ShoppingCart() {
   return (
-    <div className='home'>
+    <div className=''>
         <Navbar/>
-        <Body/>
         <Footer/>
     </div>
   )
 }
 
-export default Home
+export default ShoppingCart;
