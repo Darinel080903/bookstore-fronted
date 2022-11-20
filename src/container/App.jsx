@@ -9,8 +9,10 @@ import Home from '../pages/Home';
 import Book from '../pages/Book';
 import Register from '../pages/Register';
 import BestSeller from '../pages/BestSeller'
+import AddBook from '../pages/AddBook';
 import Searcher from '../pages/Searcher';
-
+import Admi from '../pages/Admi';
+import PrivateRoute from '../context/PrivateRute';
 
 function App() {
 
@@ -30,8 +32,14 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/book' element={<Book />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/addbook' element={<AddBook/>}/>
             <Route path='/bestseller' element={<BestSeller/>} />
             <Route path='/search' element={<Searcher/>} />
+            
+            <Route element={<PrivateRoute/>}>
+              <Route path='/admi' element={<Admi/>} />
+            </Route>
+
           </Routes>
           
         </UserContext.Provider>

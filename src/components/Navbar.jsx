@@ -61,14 +61,26 @@ function Navbar(params) {
 
                     </div>
                     :
-
-                    <div className={styles.buttonLogin}>
+                    user.email == null ?
+                        <div className={styles.buttonLogin}>
+                            <Link to="/login"><span>Log In</span></Link>
+                        </div>
+                        :
+                    <>
+                        <div className={styles.buttonLogin}>
                         <div className={styles.userName}>{user.userName}</div>
-                        <button>
-                            <Link to="/compras">Compras</Link>
-                        </button>
-
-                    </div>
+                            <button>
+                                <Link to="/admin">Admin</Link>
+                            </button>
+                        </div>
+                    
+                        <div className={styles.buttonLogin}>
+                            <div className={styles.userName}>{user.userName}</div>
+                            <button>
+                                <Link to="/compras">Compras</Link>
+                            </button>
+                        </div>
+                    </>
                 }
             </div>
 
