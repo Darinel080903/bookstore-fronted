@@ -16,21 +16,21 @@ function Navbar(params) {
     const [bookSearched, setBookSearched] = useState()
 
     function handleSearch(e) {
-        
+
         e.preventDefault();
 
         setBookSearched(e.target[0].value);
 
-        
+
 
     }
 
-   
+
     return (
         <nav className={styles.navbarDistributed}>
             {
                 bookSearched &&
-                <Navigate to="/search" state={{ bookSearched : bookSearched  }} replace={true} />
+                <Navigate to="/search" state={{ bookSearched: bookSearched }} replace={true} />
             }
 
             <div className={styles.menu}>
@@ -41,14 +41,17 @@ function Navbar(params) {
                 <div className={styles.searcher} id='searcher'>
                     <AiOutlineSearch className={styles.searchIcon} />
                     <form onSubmit={handleSearch}>
-                        <input className={styles.inputSearcher} type="text"  />
+                        <input className={styles.inputSearcher} type="text" />
                     </form>
                 </div>
             </div>
 
             <div className={styles.logoContainer}>
-                <img className={styles.navbarLogoBook} src={Imagen1} />
+                <Link to={'/'}>
+                    <img className={styles.navbarLogoBook} src={Imagen1} />
+                </Link>
             </div>
+
 
             <div className={styles.optionsContainer}>
                 {user == null ?

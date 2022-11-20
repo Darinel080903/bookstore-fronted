@@ -1,6 +1,7 @@
 import styles from '../css/VistaLibro.module.css'
 import { useContext, useState, useEffect } from 'react'
-import {Link, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import { AiOutlineShoppingCart } from "react-icons/ai"
 
 
 
@@ -14,21 +15,35 @@ function VistaLibro() {
 
 
     useEffect(() => {
-        fetch('http://localhost:8080/book/'+nBook)
+        fetch('http://localhost:8080/book/' + nBook)
             .then(response => response.json())
             .then(data => setBooks(data.data));
 
     }, [])
 
-    return(
-        <div className={styles.contenedor_cuadro}>
-            <img className={styles.imagen} 
-            src= {books.cover}/>
+    return (
+        <div className={styles.contenedorCuadro}>
 
-            <div className={styles.contenedorTexto}>
-                <p className={styles.nombreTema}><strong>{books.name}</strong></p>
-                <p className={styles.subTema}>{'$'+books.price}</p>
-                <p className={styles.textoContenedor}>{books.description}</p>
+            <div className={styles.cuadro}>
+
+                <img className={styles.imagen}
+                    src={books.cover} />
+
+                <div className={styles.contenedorTexto}>
+                    <div className={styles.fullName}>
+                        <p className={styles.name}>{books.name}</p>
+                        <p className={styles.author}>{books.authorName}</p>
+                    </div>
+                    <p className={styles.textoContenedor}>{books.description}</p>
+                    <p className={styles.price}>$ {books.price}</p>
+                    <div className={styles.actions}>
+                        <button className={styles.buy}>Comprar</button>
+                        <button className={styles.addCart}><AiOutlineShoppingCart/></button>
+
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
