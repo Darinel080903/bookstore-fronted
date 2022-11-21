@@ -14,6 +14,8 @@ function Navbar(params) {
     const { user, setUser } = useContext(UserContext)
 
     const [bookSearched, setBookSearched] = useState()
+    console.log(user)
+
 
     function handleSearch(e) {
 
@@ -28,6 +30,7 @@ function Navbar(params) {
 
     return (
         <nav className={styles.navbarDistributed}>
+            
             {
                 bookSearched &&
                 <Navigate to="/search" state={{ bookSearched: bookSearched }} replace={true} />

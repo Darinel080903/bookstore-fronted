@@ -29,7 +29,7 @@
     padding: 5px;
 }
 
-form{
+.loginForm{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

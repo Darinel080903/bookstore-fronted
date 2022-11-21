@@ -24,8 +24,8 @@
     box-shadow: rgba(188, 188, 188, 0.2) 0px 2px 8px 0px;
 }
 
-
-form{
+/* No pongas estilos a etiqueta directas, creales una clase! */
+.form{
     margin-top: 40px;
     display: flex;
     flex-direction: column;

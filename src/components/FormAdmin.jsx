@@ -21,6 +21,8 @@ function FormAdmin() {
                     <p className={styles.title}>Libros en stock</p>
                     <div className={styles.books}>
                         {
+                            /*books ? 
+                            (
                             books.map(book => {
                                 return (
                                     <Link className={styles.book} to='/book' state={{ nBook: book.id }} >
@@ -33,6 +35,11 @@ function FormAdmin() {
                                     </Link>
                                 )
                             })
+                            )
+                            : 
+                            (
+                            <div></div>
+                            )*/
                         }
                     </div>
                 </div>
