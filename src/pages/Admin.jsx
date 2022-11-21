@@ -1,11 +1,11 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import FormAdmi from '../components/FormAdmi'
+import FormAdmi from '../components/FormAdmin'
 
-function Admi() {
+function Admin() {
   return (
-    <div className='admi'>
+    <div className='admin'>
         <Navbar/>
         <FormAdmi/>
         <Footer/>
@@ -13,4 +13,4 @@ function Admi() {
   )
 }
 
-export default Admi;
+export default Admin;

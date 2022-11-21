@@ -1,0 +1,28 @@
+.adviceContainer{
+    width: 100%;
+    background-color: rgb(129, 0, 198);
+    padding: 5px 0;
+}
+
+.adviceContainer > p{
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    animation: move 12s infinite linear;
+    
+} 
+
+.adviceContainer > p > *{
+    margin: 0 5px;
+    font-size: 130%;
+}
+
+@keyframes move{
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(100vw);
+
+    }
+}

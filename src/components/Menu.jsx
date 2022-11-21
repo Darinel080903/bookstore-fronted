@@ -8,7 +8,7 @@ function Menu() {
         <input type="checkbox" id="menu-toggle"/>
         <label id="trigger" for="menu-toggle"></label>
         <label id="burger" for="menu-toggle"></label>
-        <ul  id="menu">
+        <ul  id="menu" className='menu'>
             <li> <Link to="/">Home</Link> </li>
             <li> <Link to="/bestseller">Best Sellers</Link> </li>
             <li> <Link to="/register">Register</Link> </li>

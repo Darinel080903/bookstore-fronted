@@ -20,12 +20,7 @@ li, a {
 li {
     width: 230px;
     text-indent: 56px;}
-a:focus {
-    display: block;
-    color: #333;
-    background-color: #eee;
-    transition: all .5s;
-}
+
 aside {
     position: absolute;
     color: white;
