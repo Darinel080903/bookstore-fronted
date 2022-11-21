@@ -43,7 +43,7 @@ function FormLogin() {
     <div className={styles.loginContainer}>
 
       {
-        user && 
+        user != null  && 
         <Navigate to="/" replace={true} />
       }
 
@@ -81,7 +81,7 @@ function FormLogin() {
           </label>
           
           <Link to="/register" className={styles.register}>
-            <p>I don't have a account: <span> register</span> </p>
+            I don't have a account:<span>register</span> 
           </Link>
 
         </form>
