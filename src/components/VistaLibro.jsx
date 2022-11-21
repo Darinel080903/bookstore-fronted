@@ -23,29 +23,39 @@ function VistaLibro() {
 
     return (
         <div className={styles.contenedorCuadro}>
+            {
+                books ?
 
-            <div className={styles.cuadro}>
+                    <div className={styles.cuadro}>
 
-                <img className={styles.imagen}
-                    src={books.cover} />
+                        <img className={styles.imagen}
+                            src={books.cover} />
 
-                <div className={styles.contenedorTexto}>
-                    <div className={styles.fullName}>
-                        <p className={styles.name}>{books.name}</p>
-                        <p className={styles.author}>{books.authorName}</p>
+                        <div className={styles.contenedorTexto}>
+                            <div className={styles.fullName}>
+                                <p className={styles.name}>{books.name}</p>
+                                <p className={styles.author}>{books.authorName}</p>
+                            </div>
+                            <p className={styles.textoContenedor}>{books.description}</p>
+                            <p className={styles.price}>$ {books.price}</p>
+                            <div className={styles.actions}>
+                                <button className={styles.buy}>Comprar</button>
+                                <button className={styles.addCart}><AiOutlineShoppingCart /></button>
+
+                            </div>
+
+                        </div>
+
                     </div>
-                    <p className={styles.textoContenedor}>{books.description}</p>
-                    <p className={styles.price}>$ {books.price}</p>
-                    <div className={styles.actions}>
-                        <button className={styles.buy}>Comprar</button>
-                        <button className={styles.addCart}><AiOutlineShoppingCart/></button>
 
+
+                    :
+
+
+                    <div className={styles.cuadro}>
                     </div>
 
-                </div>
-
-            </div>
-
+            }
         </div>
     );
 }

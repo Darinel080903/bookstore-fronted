@@ -5,7 +5,7 @@ function PrivateRoute({children}) {
     const {user} = useContext(useContext)
 
     return(
-        user ? <Outlet/> : <Navigate/>
+        user ? Outlet : Navigate
     )
 }
 

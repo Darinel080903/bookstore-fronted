@@ -1,9 +1,9 @@
 import{Link} from 'react-router-dom'
 import { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../context/UserContext'
+import styles from '../css/FormAdmin.module.css'
 
-
-function FormAdmi() {
+function FormAdmin() {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
@@ -42,4 +42,4 @@ function FormAdmi() {
     )
 }
 
-export default FormAdmi;
+export default FormAdmin;
