@@ -68,7 +68,7 @@ function FormLogin() {
           <label className={styles.label}>
             <span>Password</span>
             <input className={styles.input}
-              name='password'
+                name='password'
               type="password"
               id='password'
               placeholder='Write a password'
