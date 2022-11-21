@@ -1,14 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 
-.menu{
+.menuContainer{
     background-color: #191716;
-    transition: all 1s ease;
+    
 }
 
-li, a {
+.li, a {
     margin: 75px 0 -55px 0;
-    color: white;
     font: 14pt "Roboto", sans-serif;
+    color: white;
     font-weight: 700;
     line-height: 1.8;
     text-decoration: none;
@@ -17,24 +17,24 @@ li, a {
     outline: 0;
     display: none;
 }
-li {
+.li {
     width: 230px;
-    text-indent: 56px;}
-
-aside {
-    position: absolute;
-    color: white;
-    top: 35%;
-    right: 10%;
-    text-align: right;
+    text-indent: 56px;
+    background-color: #191716;
 }
+
+a{
+    margin: 0;
+}
+
+
 
     
 
 
 
 
-#trigger, #burger, #burger:before, #burger:after {
+.trigger, .burger, .burger:before, .burger:after {
     position: absolute;
     top: 25px;
     left: 25px;
@@ -43,36 +43,35 @@ aside {
     height: 5px;
     transition: .2s ease;
     cursor: pointer;
-    z-index: 1;
 }
-#trigger {
+.trigger {
     height: 25px;
     background: none;
 }
-#burger:before {
+.burger:before {
     content: " ";
     top: 10px;
     left: 0;
 }
-#burger:after {
+.burger:after {
     content: " ";
     top: 20px;
     left: 0;
 }
-#menu-toggle:checked + #trigger + #burger {
+.menuToggle:checked + .trigger + .burger {
     top: 35px;
     transform: rotate(180deg);
     transition: transform .2s ease;
 }
 
-#menu-toggle:checked + #trigger + #burger:before {
+.menuToggle:checked + .trigger + .burger:before {
     width: 20px;
     top: -2px;
     left: 18px;
     transform: rotate(45deg) translateX(-5px);
     transition: transform .2s ease;
 }
-#menu-toggle:checked + #trigger + #burger:after {
+.menuToggle:checked + .trigger + .burger:after {
     width: 20px;
     top: 2px;
     left: 18px;
@@ -81,10 +80,10 @@ aside {
 }
 
 
-#menu-toggle:checked + #trigger + #burger + #menu {
+.menuToggle:checked + .trigger + .burger + .menu {
     animation: checked-anim 1s ease both;
 }
-#menu-toggle:checked + #trigger ~ #menu > li, a {
+.menuToggle:checked + .trigger ~ .menu > li, a {
     display: block;
 }
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {

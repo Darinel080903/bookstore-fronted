@@ -8,8 +8,8 @@ import styles from "../css/FormLogin.module.css"
 function FormLogin() {
 
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  //const [email, setEmail] = useState("");
+  //const [password, setPassword] = useState("");
 
   const {user, setUser} = useContext(UserContext);
 
@@ -35,15 +35,7 @@ function FormLogin() {
     .catch(err => console.error(err))
   }
 
-  function handleChangeEmail(e) {
-    const value = e.target.value;
-    setEmail(value);
-  }
-
-  function handleChangePassword(e) {
-    const value = e.target.value;
-    setPassword(value);
-  }
+ 
 
  
 
@@ -55,17 +47,16 @@ function FormLogin() {
         <Navigate to="/" replace={true} />
       }
 
-      <div className={styles.loginForm}>
+      <div className={styles.login}>
 
 
         <h2 className={styles.titleLogin}>Login</h2>
 
-        <form action="" id='form' onSubmit={handleSubmit} ref={form} >
+        <form className={styles.loginForm} action="" id='form' onSubmit={handleSubmit} ref={form} >
 
           <label className={styles.label}>
             <span>E-mail</span>
             <input className={styles.input}
-              onChange={handleChangeEmail}
               name='email'
               type="email"
               id='email'
@@ -77,7 +68,6 @@ function FormLogin() {
           <label className={styles.label}>
             <span>Password</span>
             <input className={styles.input}
-              onChange={handleChangePassword}
               name='password'
               type="password"
               id='password'

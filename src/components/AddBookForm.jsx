@@ -76,7 +76,7 @@ function AddBookForm() {
     return (
         <div className={styles.addBookContainer}>
             <div className={styles.addBookForm}>
-                <form method='' id='' onSubmit={handleSubmit} ref={form} >
+                <form className={styles.form} method='' id='' onSubmit={handleSubmit} ref={form} >
                     <label className={styles.label}>
                         <span>Book name</span>
                         <input

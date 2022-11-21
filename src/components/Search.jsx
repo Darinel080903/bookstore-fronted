@@ -39,7 +39,7 @@ function Search() {
             {
               results.map(result => {
                 return (
-                  <Link className={styles.result} to='/book' state={{ nBook: result.id }} >
+                  <Link className={styles.result} to='/book' state={{ nBook: result.id }}  key={result.id}>
 
                     <img className={styles.cover} src={result.cover} alt="" />
                     <div className={styles.info}>
