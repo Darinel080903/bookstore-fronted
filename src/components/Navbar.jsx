@@ -3,9 +3,12 @@ import { Outlet, Link, Navigate, useLocation } from 'react-router-dom'
 import { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../context/UserContext'
 import { AiOutlineSearch } from "react-icons/ai"
+import { AiOutlinePoweroff } from "react-icons/ai"
+
 
 import Menu from '../components/Menu';
 import Imagen1 from '../assets/images/bookStoreLogo.png'
+
 
 
 
@@ -27,10 +30,18 @@ function Navbar(params) {
 
     }
 
+    function ActionButton({ redirectTo, text }) {
+        return (
+            <Link className={styles.actionButton} to={redirectTo}>
+                <span>{text}</span>
+            </Link>
+        )
+    }
+
 
     return (
         <nav className={styles.navbarDistributed}>
-            
+
             {
                 bookSearched &&
                 <Navigate to="/search" state={{ bookSearched: bookSearched }} replace={true} />
@@ -57,33 +68,30 @@ function Navbar(params) {
 
 
             <div className={styles.optionsContainer}>
-                {user == null ?
-                    <div className={styles.buttonLogin}>
-                        <Link to="/login"><span>Log In</span></Link>
 
+                {
 
-                    </div>
-                    :
-                    user.email == null ?
-                        <div className={styles.buttonLogin}>
-                            <Link to="/login"><span>Log In</span></Link>
-                        </div>
+                    user
+                        ?
+                        user.admin
+                            ?
+                            <>
+                                <ActionButton redirectTo={"/admin"} text="Admin" />
+                                <Link to={"/logout"} className={`${styles.actionButton} ${styles.actionButtonLogout}`} >
+                                    <AiOutlinePoweroff />
+                                </Link>
+                            </>
+                            :
+                            <>
+                                <ActionButton redirectTo={"/compras"} text="Compras" />
+                                <Link to={"/logout"} className={`${styles.actionButton} ${styles.actionButtonLogout}`}  >
+                                    <AiOutlinePoweroff />
+                                </Link>
+                            </>
                         :
-                    <>
-                        <div className={styles.buttonLogin}>
-                        <div className={styles.userName}>{user.userName}</div>
-                            <button>
-                                <Link to="/admin">Admin</Link>
-                            </button>
-                        </div>
-                    
-                        <div className={styles.buttonLogin}>
-                            <div className={styles.userName}>{user.userName}</div>
-                            <button>
-                                <Link to="/compras">Compras</Link>
-                            </button>
-                        </div>
-                    </>
+                        <ActionButton redirectTo={"/login"} text="Login" />
+
+
                 }
             </div>
 
