@@ -31,13 +31,13 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/book' element={<Book />} />
+            <Route path='/addbook' element={<AddBook />} />
             <Route path='/register' element={<Register />} />
             <Route path='/bestseller' element={<BestSeller />} />
             <Route path='/search' element={<Searcher />} />
 
             <Route path='/admin' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
               <Route path='/admin' element={<Admin />} />
-              <Route path='/addbook' element={<AddBook />} />
             </Route>
 
           </Routes>
