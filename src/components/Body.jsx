@@ -61,6 +61,7 @@ function Body(params) {
                                 return (
                                     <Link className={styles.book} to='/book'>
                                         <Card
+                                            key={book.id}
                                             image={book.cover}
                                             titulo={book.name}
                                             texto={book.description}
