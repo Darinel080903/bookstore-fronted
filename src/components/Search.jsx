@@ -2,6 +2,8 @@ import React from 'react'
 import { useLocation } from 'react-router'
 import { useEffect, useState } from 'react'
 import styles from '../css/Search.module.css'
+import { Link } from 'react-router-dom'
+
 
 
 
@@ -34,24 +36,31 @@ function Search() {
         results ?
 
           <div className={styles.resultsContainer}>
-            <div className={styles.result}>
-              <img className={styles.cover} src={results[0].cover} alt="" />
-              <div className={styles.info}>
+            {
+              results.map(result => {
+                return (
+                  <Link className={styles.result} to='/book' state={{ nBook: result.id }}  key={result.id}>
 
-                <div className={styles.left}>
-                  <div>
-                    <h1 className={styles.name}>{results[0].name}</h1>
-                    <p className={styles.author}>{results[0].authorName}</p>
-                  </div>  
-                  <p className={styles.description}>{results[0].description}</p>
-                </div>
+                    <img className={styles.cover} src={result.cover} alt="" />
+                    <div className={styles.info}>
 
-                <div className={styles.right}>
-                  <p className={styles.price}>$ {results[0].price} </p>
-                </div>
+                      <div className={styles.left}>
+                        <div>
+                          <h1 className={styles.name}>{result.name}</h1>
+                          <p className={styles.author}>{result.authorName}</p>
+                        </div>
+                        <p className={styles.description}>{result.description}</p>
+                      </div>
 
-              </div>
-            </div>
+                      <div className={styles.right}>
+                        <p className={styles.price}>$ {result.price} </p>
+                      </div>
+
+                    </div>
+                  </Link>
+                )
+              })
+            }
           </div>
 
 

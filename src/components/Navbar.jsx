@@ -14,23 +14,26 @@ function Navbar(params) {
     const { user, setUser } = useContext(UserContext)
 
     const [bookSearched, setBookSearched] = useState()
+    console.log(user)
+
 
     function handleSearch(e) {
-        
+
         e.preventDefault();
 
         setBookSearched(e.target[0].value);
 
-        
+
 
     }
 
-   
+
     return (
         <nav className={styles.navbarDistributed}>
+            
             {
                 bookSearched &&
-                <Navigate to="/search" state={{ bookSearched : bookSearched  }} replace={true} />
+                <Navigate to="/search" state={{ bookSearched: bookSearched }} replace={true} />
             }
 
             <div className={styles.menu}>
@@ -41,14 +44,17 @@ function Navbar(params) {
                 <div className={styles.searcher} id='searcher'>
                     <AiOutlineSearch className={styles.searchIcon} />
                     <form onSubmit={handleSearch}>
-                        <input className={styles.inputSearcher} type="text"  />
+                        <input className={styles.inputSearcher} type="text" />
                     </form>
                 </div>
             </div>
 
             <div className={styles.logoContainer}>
-                <img className={styles.navbarLogoBook} src={Imagen1} />
+                <Link to={'/'}>
+                    <img className={styles.navbarLogoBook} src={Imagen1} />
+                </Link>
             </div>
+
 
             <div className={styles.optionsContainer}>
                 {user == null ?
@@ -58,14 +64,26 @@ function Navbar(params) {
 
                     </div>
                     :
-
-                    <div className={styles.buttonLogin}>
+                    user.email == null ?
+                        <div className={styles.buttonLogin}>
+                            <Link to="/login"><span>Log In</span></Link>
+                        </div>
+                        :
+                    <>
+                        <div className={styles.buttonLogin}>
                         <div className={styles.userName}>{user.userName}</div>
-                        <button>
-                            <Link to="/compras">Compras</Link>
-                        </button>
-
-                    </div>
+                            <button>
+                                <Link to="/admin">Admin</Link>
+                            </button>
+                        </div>
+                    
+                        <div className={styles.buttonLogin}>
+                            <div className={styles.userName}>{user.userName}</div>
+                            <button>
+                                <Link to="/compras">Compras</Link>
+                            </button>
+                        </div>
+                    </>
                 }
             </div>
 

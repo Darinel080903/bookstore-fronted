@@ -68,7 +68,7 @@
 
 .inputSearcher{
   padding: 0 5px;
-
+  outline: none;
   font-size: 20px;
   color: black;
   border: none;
@@ -83,6 +83,14 @@
   display: flex;
   align-items: center;
   width: 12%;
+}
+
+.buttonLogin a{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbarLogoBook{
@@ -129,18 +137,3 @@
   margin: 0 5px;
 }
 
-@media (max-width: 880px) {
-
-  .navbarDistributed{
-    font: bold 14px sans-serif;
-  }
-
-  .navbarDistributed .navbarLeft,
-  .navbarDistributed .navbarRight{
-    display: block;
-    width: 100%;
-    margin-bottom: 40px;
-    text-align: center;
-  }
-
-}
