@@ -145,6 +145,15 @@ function AddBookForm() {
                             id='year'
                         />
                     </label>
+                    <label className={styles.label}>
+                        <span>Image link</span>
+                        <input
+                            onChange={handleChangeYear}
+                            type="text"
+                            name='link'
+                            id='link'
+                        />
+                    </label>
                     <label>
                         <button type='submit' className={styles.btnAddBook}>Submit</button>
                     </label>
