@@ -31,7 +31,7 @@ function FormLogin() {
       })
     })
     .then(res => res.json())
-    .then(data => setUser(data.data))
+    .then(data => setUser(data))
     .catch(err => console.error(err))
   }
 
@@ -43,8 +43,8 @@ function FormLogin() {
     <div className={styles.loginContainer}>
 
       {
-        user != null  && 
-        <Navigate to="/" replace={true} />
+        user &&
+          user.success ?<>{ setUser(user.data) } <Navigate to="/" replace={true}></Navigate></> : <></>
       }
 
       <div className={styles.login}>
