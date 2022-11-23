@@ -1,4 +1,5 @@
 import styles from '../css/OrderUser.module.css'
+import Card from "../components/Card"
 
 import { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../context/UserContext'
@@ -37,7 +38,8 @@ function FormOrderUser() {
                                         cantidad={order.quantity}
                                         fecha={order.orderDate}
                                         entrega={order.deliveryDate}
-                                        estatus={order.status} />
+                                        estatus={order.status} 
+                                    />
                                 </Link>
                             )
                         })
