@@ -11,55 +11,69 @@ import styles from "../css/FormLogin.module.css"
 
 function FormLogin() {
 
-  
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const { user, setUser } = useContext(UserContext);
+  const [success, setSuccess] = useState();
 
-  async function login(e) {
+  const login = (e) => {
+    e.preventDefault();
 
-    e.preventDefault()
-
-    let item = { email, password }
-    let result = await fetch("http://localhost:8080/user/login", {
+    fetch('http://localhost:8080/user/login', {
       method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(item)
-    });
-    result = await result.json();
-    
-    if (result.success) {
-      setUser(result.data)
-      console.log(result)
-      localStorage.setItem("user-info", JSON.stringify(result.data.email))
-    }
-    else {
-      Swal.fire({
-        position: 'bottom',
-        title: 'La contraseña o usuario es incorrecta',
-        color: '#fff',
-        width: '800px',
-        background: '#D0342C',
-        showConfirmButton: false,
-        timer: 1500
+      body: JSON.stringify({ email, password })
+    })
+      .then(res => res.json())
+      .then(data => {
+        setUser(data)
+        setSuccess(data.success)
       })
-      console.log(result)
-    }
-
+      .catch(err => console.error(err))
 
   }
 
+  const UserCorrect = () => {
+    localStorage.setItem("user-info", JSON.stringify(user))
+    return(
+        <Navigate to="/" replace={true} />
+    )
+  }
 
+  const UserIncorrect = () => {
+    console.log(user)
+    Swal.fire({
+      position: 'bottom',
+      title: 'Usuario incorrecto',
+      color: '#fff',
+      width: '800px',
+      background: '#D0342C',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    setSuccess()
+  }
 
   return (
     <div className={styles.loginContainer}>
 
-  
+      {
+        success == true && (
+          UserCorrect()
+        )
+      }
+
+      {
+        success == false && (
+          UserIncorrect()
+        )
+
+      }
+
+
 
       <div className={styles.login}>
 
