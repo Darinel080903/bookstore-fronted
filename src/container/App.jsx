@@ -13,6 +13,7 @@ import AddBook from '../pages/AddBook';
 import Searcher from '../pages/Searcher';
 import Admin from '../pages/Admin';
 import ProtectedRoute from '../components/ProtectedRoute'
+import OrderUser from '../pages/OrderUser';
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
             <Route path='/addbook' element={<AddBook />} />
             <Route path='/bestseller' element={<BestSeller />} />
             <Route path='/search' element={<Searcher />} />
+            <Route path='/orderuser' element={<OrderUser/>}/>
 
             <Route path='/admin' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
               <Route path='/admin' element={<Admin />} />
