@@ -1,5 +1,5 @@
 import styles from '../css/Navbar.module.css'
-import { Outlet, Link, Navigate, useLocation } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../context/UserContext'
 import { AiOutlineSearch } from "react-icons/ai"
@@ -82,6 +82,7 @@ function Navbar(params) {
                                 <Link to={"/logout"} className={`${styles.actionButton} ${styles.actionButtonLogout}`} >
                                     <AiOutlinePoweroff />
                                 </Link>
+
                             </>
                             :
                             <>
@@ -89,6 +90,8 @@ function Navbar(params) {
                                 <Link to={"/logout"} className={`${styles.actionButton} ${styles.actionButtonLogout}`}  >
                                     <AiOutlinePoweroff />
                                 </Link>
+
+                                <ActionButton redirectTo={"/orderuser"} text="Ordenes" />
                             </>
                         :
                         <ActionButton redirectTo={"/login"} text="Login" />

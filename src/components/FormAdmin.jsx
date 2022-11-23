@@ -1,7 +1,7 @@
-import{Link} from 'react-router-dom'
 import { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../context/UserContext'
 import styles from '../css/FormAdmin.module.css'
+import { Outlet, Link, Navigate, useLocation } from 'react-router-dom'
 
 function FormAdmin() {
     const [books, setBooks] = useState([]);
@@ -19,29 +19,9 @@ function FormAdmin() {
             <div className={styles.content}>
                 <div className={styles.bodyDistributed}>
                     <p className={styles.title}>Libros en stock</p>
-                    <div className={styles.books}>
-                        {
-                            /*books ? 
-                            (
-                            books.map(book => {
-                                return (
-                                    <Link className={styles.book} to='/book' state={{ nBook: book.id }} >
-                                        <Card
-                                            key={book.id}
-                                            image={book.cover}
-                                            titulo={book.name}
-                                            texto={book.description}
-                                            precio={book.price} />
-                                    </Link>
-                                )
-                            })
-                            )
-                            : 
-                            (
-                            <div></div>
-                            )*/
-                        }
-                    </div>
+                    <Link to={"/orderuser"}   >
+                        <button>ordenes</button>
+                    </Link>
                 </div>
             </div>
         </div>
