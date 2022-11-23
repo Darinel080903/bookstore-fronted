@@ -1,92 +1,94 @@
-import React from 'react'
-import { Outlet, Link, Navigate} from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Outlet, Link, Navigate } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
-import { useState, useRef, useContext  } from "react"
+import { useState, useRef, useContext } from "react"
+
+import Swal from 'sweetalert2'
 
 import styles from "../css/FormLogin.module.css"
 
+
+
 function FormLogin() {
 
+  
 
-  //const [email, setEmail] = useState("");
-  //const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const {user, setUser} = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
-  const form = useRef(null);
+  async function login(e) {
 
-  function handleSubmit(e){
-    e.preventDefault();
+    e.preventDefault()
 
-    const formData = new FormData(form.current);
-
-    fetch('http://localhost:8080/user/login',{
-      method:  'POST',
+    let item = { email, password }
+    let result = await fetch("http://localhost:8080/user/login", {
+      method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
+        "Accept": "application/json"
       },
-      body: JSON.stringify({
-        email: formData.get('email'),
-        password: formData.get('password')
+      body: JSON.stringify(item)
+    });
+    result = await result.json();
+    
+    if (result.success) {
+      setUser(result.data)
+      console.log(result)
+      localStorage.setItem("user-info", JSON.stringify(result.data.email))
+    }
+    else {
+      Swal.fire({
+        position: 'bottom',
+        title: 'La contraseña o usuario es incorrecta',
+        color: '#fff',
+        width: '800px',
+        background: '#D0342C',
+        showConfirmButton: false,
+        timer: 1500
       })
-    })
-    .then(res => res.json())
-    .then(data => setUser(data))
-    .catch(err => console.error(err))
+      console.log(result)
+    }
+
+
   }
 
- 
 
- 
 
   return (
     <div className={styles.loginContainer}>
 
-      {
-        user &&
-          user.success ?<>{ setUser(user.data) } <Navigate to="/" replace={true}></Navigate></> : <></>
-      }
+  
 
       <div className={styles.login}>
 
-
         <h2 className={styles.titleLogin}>Login</h2>
 
-        <form className={styles.loginForm} action="" id='form' onSubmit={handleSubmit} ref={form} >
+        <form className={styles.loginForm} onSubmit={login} >
 
           <label className={styles.label}>
-            <span>E-mail</span>
-            <input className={styles.input}
-              name='email'
-              type="email"
-              id='email'
-              placeholder='Write a e-mail adreess'
-              required
-            />
+            <span >E-mail</span>
+            <input className={styles.input} type="email" onChange={(e) => setEmail(e.target.value)} required />
           </label>
 
           <label className={styles.label}>
             <span>Password</span>
-            <input className={styles.input}
-                name='password'
-              type="password"
-              id='password'
-              placeholder='Write a password'
-              required
-            />
+            <input className={styles.input} type="password" onChange={(e) => setPassword(e.target.value)} required />
           </label>
 
           <label className={styles.label}>
-            <input type="submit" value="Log in" id='btn-login' />
+            <input type="submit" value="Log in" />
           </label>
-          
+
           <Link to="/register" className={styles.register}>
-            I don't have a account:<span>register</span> 
+            I don't have a account:<span>register</span>
           </Link>
 
         </form>
 
       </div>
+
     </div>
   )
 }

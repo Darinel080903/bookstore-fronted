@@ -38,9 +38,7 @@
 }
 
 
-#submit{
-    font-size: 24px!important;
-}
+
 
 .label{
     margin-top: 40px;
@@ -57,17 +55,6 @@
     border: none!important;
     border-bottom: 2px solid!important;
     outline: none;
-    color: white;
-    
-}
-
-input[type=submit], input[type=button]{
-    padding: 5px 20px;
-    font-size: 24px;
-    background: transparent;
-    border: none!important;
-    border-radius: 5px;
-    background: rgb(197, 30, 27);
     color: white;
     
 }

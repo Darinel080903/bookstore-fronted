@@ -59,7 +59,7 @@ function Body(params) {
                         {
                             books.map(book => {
                                 return (
-                                    <Link className={styles.book} to='/book'>
+                                    <Link className={styles.book} to='/book' state={{ nBook: book.id }} >
                                         <Card
                                             key={book.id}
                                             image={book.cover}
