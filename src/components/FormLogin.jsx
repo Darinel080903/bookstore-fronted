@@ -64,7 +64,7 @@ function FormLogin() {
 
           <label className={styles.label}>
             <span>E-mail</span>
-            <input
+            <input className={styles.input}
               onChange={handleChangeEmail}
               name='email'
               type="email"
@@ -76,7 +76,7 @@ function FormLogin() {
 
           <label className={styles.label}>
             <span>Password</span>
-            <input
+            <input className={styles.input}
               onChange={handleChangePassword}
               name='password'
               type="password"
