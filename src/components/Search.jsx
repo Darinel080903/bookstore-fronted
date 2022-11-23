@@ -25,7 +25,28 @@ function Search() {
   }, [])
 
 
+  function Result({cover, name, authorName, description, price}) {
+    return (
+      <>
+        <img className={styles.cover} src={cover} alt="" />
+        <div className={styles.info}>
 
+          <div className={styles.left}>
+            <div>
+              <h1 className={styles.name}>{name}</h1>
+              <p className={styles.author}>{authorName}</p>
+            </div>
+            <p className={styles.description}>{description}</p>
+          </div>
+
+          <div className={styles.right}>
+            <p className={styles.price}>$ {price} </p>
+          </div>
+
+        </div>
+      </>
+    )
+  }
 
   return (
     <div className={styles.searchContainer}>
@@ -39,24 +60,16 @@ function Search() {
             {
               results.map(result => {
                 return (
-                  <Link className={styles.result} to='/book' state={{ nBook: result.id }}  key={result.id}>
+                  <Link className={styles.result} to='/book' state={{ nBook: result.id }} >
+                    <Result 
+                      key={result.id}
+                      cover={result.cover}
+                      name={result.name}
+                      authorName={result.authorName}
+                      description={result.description}
+                      price={result.price}
+                      />
 
-                    <img className={styles.cover} src={result.cover} alt="" />
-                    <div className={styles.info}>
-
-                      <div className={styles.left}>
-                        <div>
-                          <h1 className={styles.name}>{result.name}</h1>
-                          <p className={styles.author}>{result.authorName}</p>
-                        </div>
-                        <p className={styles.description}>{result.description}</p>
-                      </div>
-
-                      <div className={styles.right}>
-                        <p className={styles.price}>$ {result.price} </p>
-                      </div>
-
-                    </div>
                   </Link>
                 )
               })

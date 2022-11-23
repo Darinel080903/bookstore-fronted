@@ -12,12 +12,13 @@ import BestSeller from '../pages/BestSeller'
 import AddBook from '../pages/AddBook';
 import Searcher from '../pages/Searcher';
 import Admin from '../pages/Admin';
+import Logout from '../pages/Logout';
 import ProtectedRoute from '../components/ProtectedRoute'
 import OrderUser from '../pages/OrderUser';
 
 function App() {
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
 
   return (
 
@@ -32,11 +33,15 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/book' element={<Book />} />
-            <Route path='/register' element={<Register />} />
             <Route path='/addbook' element={<AddBook />} />
+            <Route path='/register' element={<Register />} />
             <Route path='/bestseller' element={<BestSeller />} />
             <Route path='/search' element={<Searcher />} />
             <Route path='/orderuser' element={<OrderUser/>}/>
+
+            <Route path='/logout' element={<ProtectedRoute isAllowed={!!user} />}>
+              <Route path='/logout' element={<Logout />} />
+            </Route>
 
             <Route path='/admin' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
               <Route path='/admin' element={<Admin />} />

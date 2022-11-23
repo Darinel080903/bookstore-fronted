@@ -78,7 +78,15 @@
     
 }
 
+.btnRegister:hover{
+    transition: 3000ms;
+    background-color: white;
+    color: rgb(197, 30, 27);
+}
 
+p{
+    display: flex;
+}
 
 label span, label input{
     font-size: 16px;

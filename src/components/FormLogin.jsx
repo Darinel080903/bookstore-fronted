@@ -31,7 +31,7 @@ function FormLogin() {
       })
     })
     .then(res => res.json())
-    .then(data => setUser(data.data))
+    .then(data => setUser(data))
     .catch(err => console.error(err))
   }
 
@@ -43,8 +43,8 @@ function FormLogin() {
     <div className={styles.loginContainer}>
 
       {
-        user && 
-        <Navigate to="/" replace={true} />
+        user &&
+          user.success ?<>{ setUser(user.data) } <Navigate to="/" replace={true}></Navigate></> : <></>
       }
 
       <div className={styles.login}>
@@ -81,7 +81,7 @@ function FormLogin() {
           </label>
           
           <Link to="/register" className={styles.register}>
-            <p>I don't have a account: <span> register</span> </p>
+            I don't have a account:<span>register</span> 
           </Link>
 
         </form>
