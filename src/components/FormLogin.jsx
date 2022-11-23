@@ -40,6 +40,7 @@ function FormLogin() {
   }
 
   const UserCorrect = () => {
+    setUser(user.data)
     localStorage.setItem("user-info", JSON.stringify(user))
     return (
       < Navigate to="/" replace={true} />
