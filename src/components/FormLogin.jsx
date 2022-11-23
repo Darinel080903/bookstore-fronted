@@ -25,11 +25,14 @@ function FormLogin() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ email, password })
+      body: JSON.stringify({
+        'email': email,
+        'password': password
+      })
     })
       .then(res => res.json())
       .then(data => {
-        setUser(data)
+        setUser(data.data)
         setSuccess(data.success)
       })
       .catch(err => console.error(err))
@@ -39,8 +42,8 @@ function FormLogin() {
   const UserCorrect = () => {
     setUser(user.data)
     localStorage.setItem("user-info", JSON.stringify(user))
-    return(
-        <Navigate to="/" replace={true} />
+    return (
+      < Navigate to="/" replace={true} />
     )
   }
 

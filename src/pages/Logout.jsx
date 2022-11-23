@@ -6,13 +6,14 @@ import { Outlet, Link, Navigate, useLocation } from 'react-router-dom'
 
 function Logout() {
 
-    const { user, setUser } = useContext(UserContext)
+    const clear = () => {
+        {localStorage.clear()}
+    }
 
     return (
         <div>
-            {setUser(null)}
+            {clear()}
             <Navigate to="/home" replace={true} />
-            
         </div>
     )
 }

@@ -8,6 +8,8 @@ import Imagen1 from '../assets/images/bookStoreLogo.png'
 
 
 function Navbar(params) {
+
+    
     return (
         <nav className={styles.navbarDistributedForm}>
             <div className={styles.menu}>
