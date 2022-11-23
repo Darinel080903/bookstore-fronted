@@ -15,7 +15,7 @@ function VistaLibro() {
 
 
     useEffect(() => {
-        fetch('http://localhost:8080/book/' + nBook)
+        fetch('http://localhost:8080/order' + nBook)
             .then(response => response.json())
             .then(data => setBooks(data.data));
 
