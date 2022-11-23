@@ -179,10 +179,9 @@
 .ContainerPriceSent {
 
   width: 40%;
-  text-align: end;
+  display: flex;
+  flex-direction: row-reverse;
   margin: auto 40px;
-
-
 }
 
 .ContainerSubtotal {
@@ -199,7 +198,9 @@
   border: rgb(237, 237, 237) 2px solid;
   text-align: center;
   font: bold 16px sans-serif;
-
+  background-color: #562155;
+  color: white;
+ 
 
 }
 
