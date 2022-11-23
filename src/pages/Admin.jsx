@@ -1,13 +1,13 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import FormAdmi from '../components/FormAdmin'
+import FormAdmin from '../components/FormAdmin'
 
 function Admin() {
   return (
     <div className='admin'>
         <Navbar/>
-        <FormAdmi/>
+        <FormAdmin/>
         <Footer/>
     </div>
   )
