@@ -9,12 +9,15 @@ import Home from '../pages/Home';
 import Book from '../pages/Book';
 import Register from '../pages/Register';
 import BestSeller from '../pages/BestSeller'
+import AddBook from '../pages/AddBook';
 import Searcher from '../pages/Searcher';
-
+import Admin from '../pages/Admin';
+import Logout from '../pages/Logout';
+import ProtectedRoute from '../components/ProtectedRoute'
 
 function App() {
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
 
   return (
 
@@ -25,16 +28,26 @@ function App() {
         <UserContext.Provider value={{ user, setUser }} >
 
           <Routes>
-            <Route path='/' element={ <Navigate to="/home" replace={true} /> } />
-            <Route path='/home' element={<Home/>} />
+            <Route path='/' element={<Navigate to="/home" replace={true} />} />
+            <Route path='/home' element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/book' element={<Book />} />
+            <Route path='/addbook' element={<AddBook />} />
             <Route path='/register' element={<Register />} />
             <Route path='/cart' element={<Cart/>}/>
-            <Route path='/bestseller' element={<BestSeller/>} />
-            <Route path='/search' element={<Searcher/>} />
+            <Route path='/bestseller' element={<BestSeller />} />
+            <Route path='/search' element={<Searcher />} />
+
+            <Route path='/logout' element={<ProtectedRoute isAllowed={!!user} />}>
+              <Route path='/logout' element={<Logout />} />
+            </Route>
+
+            <Route path='/admin' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
+              <Route path='/admin' element={<Admin />} />
+            </Route>
+
           </Routes>
-          
+
         </UserContext.Provider>
       </BrowserRouter>
     </div>

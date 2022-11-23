@@ -18,10 +18,12 @@ function Navbar(params) {
             </div>
 
             <div className={styles.logoContainer}>
-                <img className={styles.navbarLogoBook} src={Imagen1} />
+                <Link to={'/'}>
+                    <img className={styles.navbarLogoBook} src={Imagen1} />
+                </Link>
             </div>
 
-         
+
 
         </nav>
     )

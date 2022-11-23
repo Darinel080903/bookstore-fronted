@@ -68,7 +68,7 @@
 
 .inputSearcher{
   padding: 0 5px;
-
+  outline: none;
   font-size: 20px;
   color: black;
   border: none;
@@ -84,6 +84,8 @@
   align-items: center;
   width: 12%;
 }
+
+
 
 .navbarLogoBook{
     border-radius: 10px;
@@ -101,27 +103,35 @@
   width: 23%;
 }
 
-.buttonLogin{
-  width: 100px;
+
+.actionButton{
+  background-color: #191716;
+  padding: 0 10px;
+  max-width: 100px;
   height: 60px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  
+  align-items: center; 
 }  
 
-.buttonLogin:hover{
-  background-color: rgba(255, 255, 255, 0.017);
+
+.actionButtonLogout{
+  background-color: rgb(206, 0, 0);
 }
 
-.buttonLogin span{
-  color: aliceblue;
+.actionButtonLogout > *{
+  font-size: 20px;
+  
 }
 
-.buttonLogin *{
-  margin: 0;
-  color: black;
+
+
+.actionButton:hover{
+  filter:brightness(1.3);
 }
+
+
+
 
 .userName{
   line-height: 60px;
@@ -129,18 +139,3 @@
   margin: 0 5px;
 }
 
-@media (max-width: 880px) {
-
-  .navbarDistributed{
-    font: bold 14px sans-serif;
-  }
-
-  .navbarDistributed .navbarLeft,
-  .navbarDistributed .navbarRight{
-    display: block;
-    width: 100%;
-    margin-bottom: 40px;
-    text-align: center;
-  }
-
-}

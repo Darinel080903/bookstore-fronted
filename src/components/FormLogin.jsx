@@ -8,8 +8,8 @@ import styles from "../css/FormLogin.module.css"
 function FormLogin() {
 
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  //const [email, setEmail] = useState("");
+  //const [password, setPassword] = useState("");
 
   const {user, setUser} = useContext(UserContext);
 
@@ -31,19 +31,11 @@ function FormLogin() {
       })
     })
     .then(res => res.json())
-    .then(data => setUser(data.data))
+    .then(data => setUser(data))
     .catch(err => console.error(err))
   }
 
-  function handleChangeEmail(e) {
-    const value = e.target.value;
-    setEmail(value);
-  }
-
-  function handleChangePassword(e) {
-    const value = e.target.value;
-    setPassword(value);
-  }
+ 
 
  
 
@@ -51,21 +43,20 @@ function FormLogin() {
     <div className={styles.loginContainer}>
 
       {
-        user && 
-        <Navigate to="/" replace={true} />
+        user &&
+          user.success ?<>{ setUser(user.data) } <Navigate to="/" replace={true}></Navigate></> : <></>
       }
 
-      <div className={styles.loginForm}>
+      <div className={styles.login}>
 
 
         <h2 className={styles.titleLogin}>Login</h2>
 
-        <form action="" id='form' onSubmit={handleSubmit} ref={form} >
+        <form className={styles.loginForm} action="" id='form' onSubmit={handleSubmit} ref={form} >
 
           <label className={styles.label}>
             <span>E-mail</span>
             <input className={styles.input}
-              onChange={handleChangeEmail}
               name='email'
               type="email"
               id='email'
@@ -77,8 +68,7 @@ function FormLogin() {
           <label className={styles.label}>
             <span>Password</span>
             <input className={styles.input}
-              onChange={handleChangePassword}
-              name='password'
+                name='password'
               type="password"
               id='password'
               placeholder='Write a password'
@@ -91,7 +81,7 @@ function FormLogin() {
           </label>
           
           <Link to="/register" className={styles.register}>
-            <p>I don't have a account: <span> register</span> </p>
+            I don't have a account:<span>register</span> 
           </Link>
 
         </form>
