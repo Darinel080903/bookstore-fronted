@@ -14,6 +14,7 @@ import Searcher from '../pages/Searcher';
 import Admin from '../pages/Admin';
 import Logout from '../pages/Logout';
 import ProtectedRoute from '../components/ProtectedRoute'
+import OrderUser from '../pages/OrderUser';
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route path='/bestseller' element={<BestSeller />} />
             <Route path='/search' element={<Searcher />} />
+            <Route path='/orderuser' element={<OrderUser/>}/>
 
             <Route path='/logout' element={<ProtectedRoute isAllowed={!!user} />}>
               <Route path='/logout' element={<Logout />} />
