@@ -14,10 +14,8 @@ function VistaLibro() {
     const { nBook } = location.state;
 
 
-    const [ user, setUser ] = useState(localStorage.getItem("user-info"))
+    const [ user, setUser ] = useState(JSON.parse(localStorage.getItem("user-info")));
 
-    const [date, setDate] = useState(today.getDate()
-    );
 
     useEffect(() => {
         fetch('http://localhost:8080/book/' + nBook)
@@ -28,7 +26,7 @@ function VistaLibro() {
 
 
 
-    const login = (e) => {
+    const Car = (e) => {
         e.preventDefault();
 
         fetch('http://localhost:8080/order', {
@@ -37,14 +35,15 @@ function VistaLibro() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                'email': email,
-                'password': password
+                'bookId': nBook,
+                'userId': user.id,
+                'quantity':3,
+                'status':'SHOPPING'
             })
         })
             .then(res => res.json())
             .then(data => {
-                setUser(data.data)
-                setSuccess(data.success)
+            console.log(data)
             })
             .catch(err => console.error(err))
 
@@ -70,7 +69,8 @@ function VistaLibro() {
                             <p className={styles.price}>$ {books.price}</p>
                             <div className={styles.actions}>
                                 <button className={styles.buy}>Comprar</button>
-                                <button onClick={Alert} className={styles.addCart}><AiOutlineShoppingCart /></button>
+                                <button onClick={Car} className={styles.addCart}><AiOutlineShoppingCart /></button>
+        
 
                             </div>
 
