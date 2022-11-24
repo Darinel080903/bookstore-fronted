@@ -11,7 +11,7 @@ function FormOrderUser() {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/order/user/',{
+        fetch('http://localhost:8080/order/user/'+user.id,{
             method:  'GET',
             headers: {
                 'Content-Type': 'application/json'
