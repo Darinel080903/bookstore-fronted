@@ -10,7 +10,7 @@ function Orders() {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/order/user/'+ user.id + '/AllOrders')
+        fetch('http://localhost:8080/order/user/'+ user.id+ '/AllOrders')
             .then(response => response.json())
             .then(data => setOrders(data.data));
 
