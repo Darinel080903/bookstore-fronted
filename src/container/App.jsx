@@ -1,6 +1,5 @@
 import '../css/App.css'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { UserContext } from '../context/UserContext';
 import React, { useState } from 'react'
 
 
@@ -18,7 +17,7 @@ import OrderUser from '../pages/OrderUser';
 
 function App() {
 
-  const [user, setUser] = useState();
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")));
 
   return (
 
@@ -26,30 +25,29 @@ function App() {
 
     <div className="App">
       <BrowserRouter >
-        <UserContext.Provider value={{ user, setUser }} >
 
-          <Routes>
-            <Route path='/' element={<Navigate to="/home" replace={true} />} />
-            <Route path='/home' element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/book' element={<Book />} />
-            <Route path='/addbook' element={<AddBook />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/bestseller' element={<BestSeller />} />
-            <Route path='/search' element={<Searcher />} />
-            <Route path='/orderuser' element={<OrderUser/>}/>
+        <Routes>
 
-            <Route path='/logout' element={<ProtectedRoute isAllowed={!!user} />}>
-              <Route path='/logout' element={<Logout />} />
-            </Route>
+          <Route path='/' element={<Navigate to="/home" replace={true} />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/book' element={<Book />} />
+          <Route path='/addbook' element={<AddBook />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/bestseller' element={<BestSeller />} />
+          <Route path='/search' element={<Searcher />} />
+          <Route path='/orderuser' element={<OrderUser />} />
 
-            <Route path='/admin' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
-              <Route path='/admin' element={<Admin />} />
-            </Route>
+          <Route path='/logout' element={<ProtectedRoute isAllowed={!!user} />}>
+            <Route path='/logout' element={<Logout />} />
+          </Route>
 
-          </Routes>
+          <Route path='/admin' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
+            <Route path='/admin' element={<Admin />} />
+          </Route>
 
-        </UserContext.Provider>
+        </Routes>
+
       </BrowserRouter>
     </div>
   )

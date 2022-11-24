@@ -3,13 +3,12 @@ import Card from "../components/Card"
 import { Link } from 'react-router-dom'
 
 
-import { useContext, useState, useEffect } from 'react'
-import { UserContext } from '../context/UserContext'
+import { useState, useEffect } from 'react'
 
 
 function Body(params) {
 
-    const { user, setUser } = useContext(UserContext)
+    const [user, setUser ] = useState(localStorage.getItem("user-info"))
 
 
     const [books, setBooks] = useState([]);
