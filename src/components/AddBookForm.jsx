@@ -1,12 +1,11 @@
 import React from 'react'
 import styles from "../css/AddBook.module.css"
-import { UserContext } from '../context/UserContext'
-import { useState, useRef, useContext } from "react"
+import { useState, useRef } from "react"
 import { Outlet, Link, Navigate } from 'react-router-dom'
 
 function AddBookForm() {
 
-    const { user, setUser } = useContext(UserContext);
+    const [ user, setUser ] = useState(localStorage.getItem("user-info"));
 
     const form = useRef(null);
 
