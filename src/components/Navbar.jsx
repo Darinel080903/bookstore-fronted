@@ -13,7 +13,7 @@ import Imagen1 from '../assets/images/bookStoreLogo.png'
 
 function Navbar(params) {
 
-    const [ user, setUser ] = useState(localStorage.getItem("user-info"))
+    const [ user, setUser ] = useState(JSON.parse(localStorage.getItem("user-info")))
 
     const [bookSearched, setBookSearched] = useState()
     console.log(user)
@@ -86,7 +86,7 @@ function Navbar(params) {
                                     <AiOutlinePoweroff />
                                 </Link>
 
-                                <ActionButton redirectTo={"/orderuser"} text="Ordenes" />
+                                
                             </>
                         :
                         <ActionButton redirectTo={"/login"} text="Login" />

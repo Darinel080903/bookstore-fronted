@@ -17,7 +17,7 @@ import OrderUser from '../pages/OrderUser';
 
 function App() {
 
-  const [user, setUser] = useState(localStorage.getItem("user-info"));
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")));
 
   return (
 
@@ -26,27 +26,27 @@ function App() {
     <div className="App">
       <BrowserRouter >
 
+        <Routes>
 
-          <Routes>
-            <Route path='/' element={<Navigate to="/home" replace={true} />} />
-            <Route path='/home' element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/book' element={<Book />} />
-            <Route path='/addbook' element={<AddBook />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/bestseller' element={<BestSeller />} />
-            <Route path='/search' element={<Searcher />} />
-            <Route path='/orderuser' element={<OrderUser/>}/>
+          <Route path='/' element={<Navigate to="/home" replace={true} />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/book' element={<Book />} />
+          <Route path='/addbook' element={<AddBook />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/bestseller' element={<BestSeller />} />
+          <Route path='/search' element={<Searcher />} />
+          <Route path='/orderuser' element={<OrderUser />} />
 
-            <Route path='/logout' element={<ProtectedRoute isAllowed={!!user} />}>
-              <Route path='/logout' element={<Logout />} />
-            </Route>
+          <Route path='/logout' element={<ProtectedRoute isAllowed={!!user} />}>
+            <Route path='/logout' element={<Logout />} />
+          </Route>
 
-            <Route path='/admin' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
-              <Route path='/admin' element={<Admin />} />
-            </Route>
+          <Route path='/admin' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
+            <Route path='/admin' element={<Admin />} />
+          </Route>
 
-          </Routes>
+        </Routes>
 
       </BrowserRouter>
     </div>
