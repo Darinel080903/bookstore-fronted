@@ -1,5 +1,5 @@
 import styles from '../css/Navbar.module.css'
-import { Outlet, Link, Navigate, useLocation } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../context/UserContext'
 import { AiOutlineSearch } from "react-icons/ai"
@@ -14,7 +14,7 @@ import Imagen1 from '../assets/images/bookStoreLogo.png'
 
 function Navbar(params) {
 
-    const { user, setUser } = useContext(UserContext)
+    const [ user, setUser ] = useState(localStorage.getItem("user-info"))
 
     const [bookSearched, setBookSearched] = useState()
     console.log(user)
@@ -25,8 +25,6 @@ function Navbar(params) {
         e.preventDefault();
 
         setBookSearched(e.target[0].value);
-
-
 
     }
 
@@ -80,13 +78,16 @@ function Navbar(params) {
                                 <Link to={"/logout"} className={`${styles.actionButton} ${styles.actionButtonLogout}`} >
                                     <AiOutlinePoweroff />
                                 </Link>
+
                             </>
                             :
                             <>
                                 <ActionButton redirectTo={"/compras"} text="Compras" />
-                                <Link to={"/logout"} className={`${styles.actionButton} ${styles.actionButtonLogout}`}  >
+                                <Link to={"/logout"} className={`${styles.actionButton} ${styles.actionButtonLogout}`} >
                                     <AiOutlinePoweroff />
                                 </Link>
+
+                                <ActionButton redirectTo={"/orderuser"} text="Ordenes" />
                             </>
                         :
                         <ActionButton redirectTo={"/login"} text="Login" />

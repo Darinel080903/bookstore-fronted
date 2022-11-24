@@ -9,6 +9,8 @@ import { Outlet, Link, Navigate } from 'react-router-dom'
 
 function Register() {
 
+    
+
     const { user, setUser } = useContext(UserContext);
 
     const form = useRef(null);
