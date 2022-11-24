@@ -1,7 +1,6 @@
 import styles from '../css/Navbar.module.css'
 import { Link, Navigate } from 'react-router-dom'
-import { useContext, useState, useEffect } from 'react'
-import { UserContext } from '../context/UserContext'
+import { useState, useEffect } from 'react'
 import { AiOutlineSearch } from "react-icons/ai"
 import { AiOutlinePoweroff } from "react-icons/ai"
 

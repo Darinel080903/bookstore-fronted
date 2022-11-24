@@ -1,6 +1,5 @@
 import '../css/App.css'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { UserContext } from '../context/UserContext';
 import React, { useState } from 'react'
 
 
@@ -18,7 +17,6 @@ import OrderUser from '../pages/OrderUser';
 
 function App() {
 
-  const [user, setUser] = useState();
 
   return (
 
@@ -26,7 +24,7 @@ function App() {
 
     <div className="App">
       <BrowserRouter >
-        <UserContext.Provider value={{ user, setUser }} >
+
 
           <Routes>
             <Route path='/' element={<Navigate to="/home" replace={true} />} />
@@ -39,17 +37,10 @@ function App() {
             <Route path='/search' element={<Searcher />} />
             <Route path='/orderuser' element={<OrderUser/>}/>
 
-            <Route path='/logout' element={<ProtectedRoute isAllowed={!!user} />}>
-              <Route path='/logout' element={<Logout />} />
-            </Route>
-
-            <Route path='/admin' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
-              <Route path='/admin' element={<Admin />} />
-            </Route>
+        
 
           </Routes>
 
-        </UserContext.Provider>
       </BrowserRouter>
     </div>
   )
