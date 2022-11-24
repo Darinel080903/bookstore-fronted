@@ -1,6 +1,10 @@
 import styles from '../css/Card.module.css'
 import {Link } from 'react-router-dom'
 
+
+
+
+
 function Card({ image, titulo, texto, precio }) {
     return (
         <div className={styles.card}>
