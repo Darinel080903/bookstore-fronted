@@ -3,6 +3,7 @@ import Card from "../components/Card"
 
 import { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../context/UserContext'
+import { Outlet, Link, Navigate, useLocation } from 'react-router-dom'
 
 function FormOrderUser() {
     const { user, setUser } = useContext(UserContext)
@@ -11,7 +12,7 @@ function FormOrderUser() {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/order/user/'+user.id,{
+        fetch('http://localhost:8080/order/user/'+ user.id,{
             method:  'GET',
             headers: {
                 'Content-Type': 'application/json'
