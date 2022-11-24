@@ -17,6 +17,7 @@ import OrderUser from '../pages/OrderUser';
 
 function App() {
 
+  const [user, setUser] = useState(localStorage.getItem("user-info"));
 
   return (
 
@@ -37,7 +38,13 @@ function App() {
             <Route path='/search' element={<Searcher />} />
             <Route path='/orderuser' element={<OrderUser/>}/>
 
-        
+            <Route path='/logout' element={<ProtectedRoute isAllowed={!!user} />}>
+              <Route path='/logout' element={<Logout />} />
+            </Route>
+
+            <Route path='/admin' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
+              <Route path='/admin' element={<Admin />} />
+            </Route>
 
           </Routes>
 
