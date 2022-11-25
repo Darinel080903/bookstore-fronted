@@ -1,12 +1,12 @@
 import styles from '../css/OrderUser.module.css'
 import Card from "../components/Card"
 
-import { useContext, useState, useEffect } from 'react'
-import { UserContext } from '../context/UserContext'
+import { useState, useEffect } from 'react'
 import { Outlet, Link, Navigate, useLocation } from 'react-router-dom'
 
 function FormOrderUser() {
-    const [user, setUser ] = useState(localStorage.getItem("user-info"))
+
+    const [ user, setUser ] = useState(JSON.parse(localStorage.getItem("user-info")));
 
 
     const [orders, setOrders] = useState([]);

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { Outlet, Link, Navigate } from 'react-router-dom'
-import { UserContext } from '../context/UserContext'
 import { useState, useRef, useContext } from "react"
 
 import Swal from 'sweetalert2'
@@ -14,7 +13,7 @@ function FormLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { user, setUser } = useContext(UserContext);
+  const [ user, setUser ] = useState();
   const [success, setSuccess] = useState();
 
   const login = (e) => {
@@ -40,7 +39,6 @@ function FormLogin() {
   }
 
   const UserCorrect = () => {
-    setUser(user.data)
     localStorage.setItem("user-info", JSON.stringify(user))
     return (
       < Navigate to="/" replace={true} />
