@@ -5,11 +5,11 @@ import AddBookForm from "../components/AddBookForm";
 
 function AddBook() {
     return ( 
-        <>
+        <div className="addbook">
         <Navbar/>
         <AddBookForm/>
         <Footer/>
-        </>
+        </div>
      );
 }
 

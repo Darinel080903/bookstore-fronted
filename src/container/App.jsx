@@ -10,6 +10,7 @@ import Register from '../pages/Register';
 import BestSeller from '../pages/BestSeller'
 import AddBook from '../pages/AddBook';
 import Searcher from '../pages/Searcher';
+import Order from '../pages/Order';
 import Admin from '../pages/Admin';
 import Logout from '../pages/Logout';
 import ProtectedRoute from '../components/ProtectedRoute'
@@ -30,6 +31,7 @@ function App() {
 
           <Route path='/' element={<Navigate to="/home" replace={true} />} />
           <Route path='/home' element={<Home />} />
+            <Route path='/order' element={<Order/>} />
           <Route path='/login' element={<Login />} />
           <Route path='/book' element={<Book />} />
           <Route path='/addbook' element={<AddBook />} />
