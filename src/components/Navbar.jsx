@@ -84,6 +84,7 @@ function Navbar(params) {
                             :
                             <>
                                 <ActionButton redirectTo={"/compras"} text="Compras" />
+                                <ActionButton redirectTo={"/cart"} text="Carrito" />
                                 <Link to={"/logout"} className={`${styles.actionButton} ${styles.actionButtonLogout}`} >
                                     <AiOutlinePoweroff />
                                 </Link>
