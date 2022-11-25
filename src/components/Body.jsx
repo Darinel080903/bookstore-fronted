@@ -3,21 +3,37 @@ import Card from "../components/Card"
 import { Link } from 'react-router-dom'
 
 
-import { useContext, useState, useEffect } from 'react'
-import { UserContext } from '../context/UserContext'
+//carrousel
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
+
+import { useState, useEffect } from 'react'
 
 
 function Body(params) {
 
-    const { user, setUser } = useContext(UserContext)
+    const [user, setUser] = useState(localStorage.getItem("user-info"))
 
 
-    const [books, setBooks] = useState([]);
+    const [recentBooks, setRecentBooks] = useState([]);
+    const [fantasyBooks, setFantasyBooks] = useState([]);
+    const [horrorBooks, setHorrorBooks] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/book')
+
+        fetch('http://localhost:8080/book') //recien agregados (todos los libros)
             .then(response => response.json())
-            .then(data => setBooks(data.data));
+            .then(data => setRecentBooks(data.data));
+
+        fetch('http://localhost:8080/books_genders/books/gender/2') //libros de fantasía
+            .then(response => response.json())
+            .then(data => setFantasyBooks(data));
+
+
+        fetch('http://localhost:8080/books_genders/books/gender/1') //libros de horror
+            .then(response => response.json())
+            .then(data => setHorrorBooks(data));
+
 
     }, [])
 
@@ -25,26 +41,39 @@ function Body(params) {
     return (
         <div className={styles.bodyContainer}>
 
-            <div className={styles.imgCarrousel}>
-                <img src="https://images.unsplash.com/photo-1559133082-d15e8502d064?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="" />
-            </div>
+
+            <Carousel className={styles.imgCarrousel} autoPlay={true} infiniteLoop={true} showIndicators={false} showThumbs={false} showStatus={false}>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1559133082-d15e8502d064?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="" />
+                    <p className="legend">Legend 1</p>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1475243907012-e01b4e4b0a1b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="" />
+                    <p className="legend">Legend 2</p>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1618351468077-56adb973bab6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="" />
+                    <p className="legend">Legend 3</p>
+                </div>
+            </Carousel>
 
             <div className={styles.content}>
 
+                
                 <div className={styles.bodyDistributed}>
-                    <p className={styles.title}>Los mas populares</p>
+                    <p className={styles.title}>Fantasía</p>
                     <div className={styles.books}>
                         {
-                            books.map(book => {
+                            fantasyBooks.map(book => {
                                 return (
-                                    <Link className={styles.book} to='/book' state={{ nBook: book.id }} >
+                                    <div key={book.id} className={styles.book}  >
                                         <Card
-                                            key={book.id}
+                                            id={book.id}
                                             image={book.cover}
                                             titulo={book.name}
                                             texto={book.description}
                                             precio={book.price} />
-                                    </Link>
+                                    </div>
                                 )
                             })
                         }
@@ -52,26 +81,27 @@ function Body(params) {
 
                 </div>
 
-
                 <div className={styles.bodyDistributed}>
-                    <p className={styles.title}>Lo nuevo</p>
+                    <p className={styles.title}>Horror</p>
                     <div className={styles.books}>
                         {
-                            books.map(book => {
+                            horrorBooks.map(book => {
                                 return (
-                                    <Link className={styles.book} to='/book' state={{ nBook: book.id }} >
+                                    <div key={book.id} className={styles.book}  >
                                         <Card
-                                            key={book.id}
+                                            id={book.id}
                                             image={book.cover}
                                             titulo={book.name}
                                             texto={book.description}
                                             precio={book.price} />
-                                    </Link>
+                                    </div>
                                 )
                             })
                         }
                     </div>
+
                 </div>
+
 
             </div>
         </div>

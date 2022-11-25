@@ -14,12 +14,41 @@ function VistaLibro() {
     const { nBook } = location.state;
 
 
+    const [ user, setUser ] = useState(JSON.parse(localStorage.getItem("user-info")));
+
+
     useEffect(() => {
         fetch('http://localhost:8080/book/' + nBook)
             .then(response => response.json())
             .then(data => setBooks(data.data));
 
     }, [])
+
+
+
+    const Car = (e) => {
+        e.preventDefault();
+
+        fetch('http://localhost:8080/order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'bookId': nBook,
+                'userId': user.id,
+                'quantity':3,
+                'status':'SHOPPING'
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+            console.log(data)
+            })
+            .catch(err => console.error(err))
+
+    }
+
 
     return (
         <div className={styles.contenedorCuadro}>
@@ -40,7 +69,8 @@ function VistaLibro() {
                             <p className={styles.price}>$ {books.price}</p>
                             <div className={styles.actions}>
                                 <button className={styles.buy}>Comprar</button>
-                                <button className={styles.addCart}><AiOutlineShoppingCart /></button>
+                                <button onClick={Car} className={styles.addCart}><AiOutlineShoppingCart /></button>
+        
 
                             </div>
 

@@ -1,9 +1,8 @@
 import '../css/App.css'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { UserContext } from '../context/UserContext';
 import React, { useState } from 'react'
 
-
+import Cart from '../pages/Cart';
 import Login from '../pages/Login';
 import Home from '../pages/Home';
 import Book from '../pages/Book';
@@ -19,7 +18,7 @@ import OrderUser from '../pages/OrderUser';
 
 function App() {
 
-  const [user, setUser] = useState();
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")));
 
   return (
 
@@ -27,31 +26,31 @@ function App() {
 
     <div className="App">
       <BrowserRouter >
-        <UserContext.Provider value={{ user, setUser }} >
 
-          <Routes>
-            <Route path='/' element={<Navigate to="/home" replace={true} />} />
-            <Route path='/home' element={<Home />} />
+        <Routes>
+
+          <Route path='/' element={<Navigate to="/home" replace={true} />} />
+          <Route path='/home' element={<Home />} />
             <Route path='/order' element={<Order/>} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/book' element={<Book />} />
-            <Route path='/addbook' element={<AddBook />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/bestseller' element={<BestSeller />} />
-            <Route path='/search' element={<Searcher />} />
-            <Route path='/orderuser' element={<OrderUser/>}/>
+          <Route path='/login' element={<Login />} />
+          <Route path='/book' element={<Book />} />
+          <Route path='/addbook' element={<AddBook />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/cart' element={<Cart/>}/>
+          <Route path='/bestseller' element={<BestSeller />} />
+          <Route path='/search' element={<Searcher />} />
+          <Route path='/orderuser' element={<OrderUser />} />
 
-            <Route path='/logout' element={<ProtectedRoute isAllowed={!!user} />}>
-              <Route path='/logout' element={<Logout />} />
-            </Route>
+          <Route path='/logout' element={<ProtectedRoute isAllowed={user} />}>
+            <Route path='/logout' element={<Logout />} />
+          </Route>
 
-            <Route path='/admin' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
-              <Route path='/admin' element={<Admin />} />
-            </Route>
+          <Route path='/admin' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
+            <Route path='/admin' element={<Admin />} />
+          </Route>
 
-          </Routes>
+        </Routes>
 
-        </UserContext.Provider>
       </BrowserRouter>
     </div>
   )
