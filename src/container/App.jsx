@@ -38,7 +38,7 @@ function App() {
           <Route path='/search' element={<Searcher />} />
           <Route path='/orderuser' element={<OrderUser />} />
 
-          <Route path='/logout' element={<ProtectedRoute isAllowed={!!user} />}>
+          <Route path='/logout' element={<ProtectedRoute isAllowed={user} />}>
             <Route path='/logout' element={<Logout />} />
           </Route>
 
