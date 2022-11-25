@@ -1,19 +1,24 @@
+.shopContainer {
+  min-height: 65vh;
 
-.DeleteIcon{
+}
+
+.DeleteIcon {
 
   font-size: 40px;
   color: rgb(197, 30, 27);
 
 }
-.DeleteIcon:hover{
-  
+
+.DeleteIcon:hover {
+
   font-size: 35px;
   cursor: pointer;
 }
 
 
 
-.ContainerBookDeleteCont{
+.ContainerBookDeleteCont {
   width: 25%;
   border-bottom: rgb(237, 237, 237) 2px solid;
   border-right: rgb(237, 237, 237) 1px solid;
@@ -23,7 +28,7 @@
 }
 
 
-.ContainerBookSubCont{
+.ContainerBookSubCont {
   width: 25%;
   border-bottom: rgb(237, 237, 237) 2px solid;
   border-right: rgb(237, 237, 237) 1px solid;
@@ -35,7 +40,7 @@
 
 
 
-.ContainerBookPriceCont{
+.ContainerBookPriceCont {
   width: 25%;
   border-bottom: rgb(237, 237, 237) 2px solid;
   border-right: rgb(237, 237, 237) 1px solid;
@@ -53,10 +58,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px   5px;
+  padding: 20px 5px;
   border-bottom: rgb(237, 237, 237) 2px solid;
   border-right: rgb(237, 237, 237) 1px solid;
- 
+
 }
 
 
@@ -201,14 +206,14 @@
   font: bold 16px sans-serif;
   background-color: #562155;
   color: white;
- 
+
 
 }
 
 
 
 .ContainerTitle {
-  border-bottom:rgb(237, 237, 237) 2px solid ;
+  border-bottom: rgb(237, 237, 237) 2px solid;
   margin: 10px auto;
   width: 20%;
   text-align: center;
@@ -217,15 +222,16 @@
 }
 
 .ContainerForm {
+  
   margin: 20px auto;
-  height: 55vh;
   width: 80%;
   display: flex;
+  
 }
 
 .ContainerSell {
   width: 30%;
-  min-height: 400px;
+  height: 500px;
   background-color: #fff;
   box-shadow: 0 3px 13px 1px rgb(0 0 0 / 20%);
   margin: 20px auto;
@@ -234,9 +240,10 @@
 }
 
 .ContainerBook {
- 
+
   width: 60%;
-  min-height: 400px;
+  height: 400px;
+  overflow-y: scroll;
   background-color: #fff;
   box-shadow: 0 3px 13px 1px rgb(0 0 0 / 20%);
   margin: 20px auto;

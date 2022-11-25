@@ -8,6 +8,9 @@ import { AiFillDelete } from "react-icons/ai"
 function Shop() {
    return (
 
+
+
+
       <div className={styles.shopContainer}>
          <div className={styles.ContainerTitle}>
             <strong><p>Mi bolsa</p></strong>
@@ -28,6 +31,7 @@ function Shop() {
                      <h3>Eliminar</h3>
                   </div>
                </div>
+
                <div className={styles.ContainerBookContent}>
                   <div className={styles.ContainerImgCont}>
                      <img className={styles.ContentImg} src={img} />
@@ -45,6 +49,9 @@ function Shop() {
                      <AiFillDelete className={styles.DeleteIcon} />
                   </div>
                </div>
+
+
+
             </div>
             <div className={styles.ContainerSell}>
                <div className={styles.ContainerSummary}>
