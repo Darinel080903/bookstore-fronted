@@ -15,10 +15,13 @@ import Admin from '../pages/Admin';
 import Logout from '../pages/Logout';
 import ProtectedRoute from '../components/ProtectedRoute'
 import OrderUser from '../pages/OrderUser';
+import Buying from '../components/Buying';
+import NotFound from '../pages/NotFound';
+
 
 function App() {
 
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")));
 
   return (
 
@@ -36,18 +39,25 @@ function App() {
           <Route path='/book' element={<Book />} />
           <Route path='/addbook' element={<AddBook />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/cart' element={<Cart/>}/>
+          <Route path='/cart' element={<Cart />} />
           <Route path='/bestseller' element={<BestSeller />} />
           <Route path='/search' element={<Searcher />} />
           <Route path='/orderuser' element={<OrderUser />} />
 
-          <Route path='/logout' element={<ProtectedRoute isAllowed={user} />}>
+          <Route path='/buying' element={<ProtectedRoute isAllowed={!!user} />}>
+            <Route path='/buying' element={<Buying />} />
+          </Route>
+
+
+          <Route path='/logout' element={<ProtectedRoute isAllowed={!!user} />}>
             <Route path='/logout' element={<Logout />} />
           </Route>
 
           <Route path='/admin' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
             <Route path='/admin' element={<Admin />} />
           </Route>
+
+          <Route path='/*' element={<NotFound/>} />
 
         </Routes>
 
