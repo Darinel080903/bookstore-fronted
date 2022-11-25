@@ -5,6 +5,8 @@ import { AiOutlineSearch } from "react-icons/ai"
 import { AiOutlinePoweroff } from "react-icons/ai"
 
 
+
+
 import Menu from '../components/Menu';
 import Imagen1 from '../assets/images/bookStoreLogo.png'
 

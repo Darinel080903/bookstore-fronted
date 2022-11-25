@@ -5,21 +5,16 @@ import { useState, useEffect } from 'react'
 import { Outlet, Link, Navigate, useLocation } from 'react-router-dom'
 
 function FormOrderUser() {
+
     const [ user, setUser ] = useState(JSON.parse(localStorage.getItem("user-info")));
 
 
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/order/user/'+ user.id,{
-            method:  'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
+        fetch('http://localhost:8080/order/user/'+ user.id)
             .then(response => response.json())
             .then(data => setOrders(data.data));
-
     }, [])
 
 
@@ -31,7 +26,7 @@ function FormOrderUser() {
                     {
                         orders.map(order => {
                             return (
-                                <Link className={styles.order} to='/orderuser' state={{ nOrder: order.id }} >
+                                <Link className={styles.order}  to='/orderuser' state={{ nOrder: order.id }} >
                                     <Card
                                         key={order.id}
                                         user={order.userId}

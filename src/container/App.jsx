@@ -2,7 +2,7 @@ import '../css/App.css'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import React, { useState } from 'react'
 
-
+import Cart from '../pages/Cart';
 import Login from '../pages/Login';
 import Home from '../pages/Home';
 import Book from '../pages/Book';
@@ -34,6 +34,7 @@ function App() {
           <Route path='/book' element={<Book />} />
           <Route path='/addbook' element={<AddBook />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/cart' element={<Cart/>}/>
           <Route path='/bestseller' element={<BestSeller />} />
           <Route path='/search' element={<Searcher />} />
           <Route path='/orderuser' element={<OrderUser />} />
