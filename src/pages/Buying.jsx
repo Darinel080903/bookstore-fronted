@@ -1,15 +1,14 @@
 import React from 'react'
-import Navbar from '../components/NavbarForm'
+import Navbar from '../components/Navbar'
 import Advice from '../components/Advice'
-import Buying from '../components/Buying'
+import BuyingBody from '../components/BuyingBody'
 import Footer from '../components/Footer'
 
 function Buying() {
   return (
     <div>
         <Navbar/>
-        <Advice/>
-        <Buying/>
+        <BuyingBody/>
         <Footer/>
     </div>
   )
