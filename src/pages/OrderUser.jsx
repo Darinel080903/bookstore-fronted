@@ -6,6 +6,8 @@ function OrderUser() {
     return(
         <div className="OrderUser">
             <Navbar/>
+            <br/>
+            <br/>
             <FormOrderUser/>
             <Footer/>
         </div>
