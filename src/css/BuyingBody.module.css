@@ -1,0 +1,114 @@
+.buyingContainer{
+    min-height: 80vh;
+    display: flex;
+}
+
+.contents{
+    width: 70%;
+    border: solid 1px rgb(195, 195, 195);
+    padding: 30px;
+
+}
+
+.aside{
+    width: 30%;
+}
+
+.ContainerSell {
+    height: 500px;
+    background-color: #fff;
+    width: 40       0px;
+    border: solid 1px rgb(195, 195, 195);
+    margin: 40px;
+  
+}
+
+.ContainerPolicy {
+
+    text-align: justify;
+    margin: 10px 40px;
+  }
+  
+  .ButtonForm {
+  
+    margin: 5px 40%;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #562155;
+    border-radius: 3px;
+    border: 2px solid white;
+    font: bold 16px sans-serif;
+    cursor: pointer;
+  }
+  
+  .ButtonForm:hover {
+    color: #191716;
+    border: #562155 2px solid;
+    background-color: #ffffff;
+  }
+  
+  
+  .ContainerButton {
+  
+    justify-content: center;
+    border-top: rgb(237, 237, 237) 1px solid;
+  
+  
+  }
+  
+  .ContainerTotal {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 40px;
+  
+  
+  
+  }
+  
+  .ContainerSent {
+  
+    display: flex;
+    width: 100%;
+    border-top: rgb(237, 237, 237) 1px solid;
+    border-bottom: rgb(237, 237, 237) 1px solid;
+  
+  }
+  
+  .ContainerTextSent {
+  
+    text-align: center;
+    width: 60%;
+    margin: 10px 5px;
+    padding: 5px 5px;
+  }
+  
+  .ContainerPriceSent {
+  
+    width: 40%;
+    display: flex;
+    flex-direction: row-reverse;
+    margin: auto 40px;
+  }
+
+  .ContainerSubtotal {
+
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 40px;
+  
+  }
+  
+  
+  .ContainerSummary {
+  
+    border: rgb(237, 237, 237) 2px solid;
+    text-align: center;
+    font: bold 16px sans-serif;
+    background-color: #562155;
+    color: white;
+  
+  
+  }
