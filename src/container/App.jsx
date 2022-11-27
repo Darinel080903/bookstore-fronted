@@ -60,12 +60,17 @@ function App() {
           <Route path='/buying' element={<ProtectedRoute isAllowed={!!user} />}>
             <Route path='/buying' element={<Buying />} />
           </Route>
+
           <Route path='/logout' element={<ProtectedRoute isAllowed={!!user} />}>
             <Route path='/logout' element={<Logout />} />
           </Route>
 
           <Route path='/admin' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
             <Route path='/admin' element={<Admin />} />
+          </Route>
+
+          <Route path='/addbook' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
+            <Route path='/addbook' element={<AddBook />} />
           </Route>
 
           <Route path='/*' element={<NotFound />} />

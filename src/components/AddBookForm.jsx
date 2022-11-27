@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from "../css/AddBook.module.css"
 import { useState, useRef, useContext, useEffect } from "react"
+import Swal from 'sweetalert2'
 
 function AddBookForm() {
 
@@ -96,6 +97,7 @@ function AddBookForm() {
         setEditorial(value);
     }
 
+
     const [bookName, setBookName] = useState("");
     const [cover, setCover] = useState("");
     const [description, setDescription] = useState("");
@@ -105,6 +107,7 @@ function AddBookForm() {
     const [editorial, setEditorial] = useState("");
 
     return (
+
         <div className={styles.addBookContainer}>
             <div className={styles.addBookForm}>
                 <h2 className={styles.h2}>Add book</h2>
