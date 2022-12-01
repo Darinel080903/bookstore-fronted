@@ -12,7 +12,7 @@ function Menu() {
             <li className={styles.li}> <Link to="/">Home</Link> </li>
             <li className={styles.li}> <Link to="/bestseller">Best Sellers</Link> </li>
             <li className={styles.li}> <Link to="/register">Registrar</Link> </li>
-            <li className={styles.li}> <Link to="/acount">Account </Link> </li>
+            <li className={styles.li}> <Link to="/account">Account </Link> </li>
 
         </ul>
         </div>
