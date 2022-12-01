@@ -110,10 +110,10 @@ function AddBookForm() {
 
         <div className={styles.addBookContainer}>
             <div className={styles.addBookForm}>
-                <h2 className={styles.h2}>Add book</h2>
+                <h2 className={styles.h2}>Agregar Libro</h2>
                 <form className={styles.form} method='' id='' onSubmit={handleSubmit} ref={form} >
                     <label className={styles.label}>
-                        <span>Book name</span>
+                        <span>Nombre del Libro</span>
                         <input
                             onChange={handleChangeName}
                             type="text"
@@ -123,7 +123,7 @@ function AddBookForm() {
                         />
                     </label>
                     <label className={styles.label}>
-                        <span>Description</span>
+                        <span>Descripcion</span>
                         <input
                             onChange={handleChangeDescription}
                             type="text"
@@ -133,7 +133,7 @@ function AddBookForm() {
                         />
                     </label>
                     <label className={styles.label}>
-                        <span>Price</span>
+                        <span>Precio</span>
                         <input
                             onChange={handleChangePrice}
                             type="number"
@@ -143,9 +143,9 @@ function AddBookForm() {
                         />
                     </label>
                     <label className={styles.label}>
-                        <span>Author</span>
+                        <span>Autor</span>
                         <select onChange={handleChangeAuthor}>
-                            <option selected>Select an author</option>
+                            <option selected>Selecciona un Autor</option>
                             {
                                 authors.map(author => {
                                     return (
@@ -153,14 +153,14 @@ function AddBookForm() {
                                     );
                                 })
                             }
-                            <option value="2">New author</option>
+                            <option value="2">Nuevo Autor</option>
                             
                         </select>
                     </label>
                     <label className={styles.label}>
                         <span>Editorial</span>
                         <select onChange={handleChangeEditorial}>
-                            <option selected>Select an editorial</option>
+                            <option selected>Selecciona una editorial</option>
                             {
                                 editorials.map(editorial => {
                                     return (
@@ -171,11 +171,11 @@ function AddBookForm() {
                                     );
                                 })
                             }
-                            <option>New editorial</option>
+                            <option>Nueva editorial</option>
                         </select>
                     </label>
                     <label className={styles.label}>
-                        <span>Year of publication</span>
+                        <span>Año de publicacion</span>
                         <input
                             onChange={handleChangeYear}
                             type="date"
@@ -184,7 +184,7 @@ function AddBookForm() {
                         />
                     </label>
                     <label className={styles.label}>
-                        <span>Image link</span>
+                        <span>Link de la Imagen</span>
                         <input
                             onChange={handleChangeCover}
                             type="text"
