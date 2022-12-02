@@ -37,7 +37,6 @@ function App() {
             <Route path='/order' element={<Order/>} />
           <Route path='/login' element={<Login />} />
           <Route path='/book' element={<Book />} />
-          <Route path='/addbook' element={<AddBook />} />
           <Route path='/register' element={<Register />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/bestseller' element={<BestSeller />} />
@@ -55,6 +54,10 @@ function App() {
 
           <Route path='/admin' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
             <Route path='/admin' element={<Admin />} />
+          </Route>
+
+          <Route path='/addbook' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
+            <Route path='/addbook' element={<AddBook />} />
           </Route>
 
           <Route path='/*' element={<NotFound/>} />
