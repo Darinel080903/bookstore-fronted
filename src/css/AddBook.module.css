@@ -93,3 +93,24 @@ label span, label input, label select{
     color: rgb(255, 94, 94);
     font-size: 14px;
 }
+
+.addAuthorEditorial{
+    margin-top: 20px;
+    padding: 15px;
+    margin: 20px;
+    background: #191919;
+    width: 55%;
+    height: 20%;
+    border-radius: 10px;
+    box-shadow: rgba(188, 188, 188, 0.2) 0px 2px 8px 0px;
+}
+
+.formAuthorEditorial{
+
+}
+
+.addForm{
+    margin: auto 10px;
+    padding: 10px;
+    width: 40%;
+}
