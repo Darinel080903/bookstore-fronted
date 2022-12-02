@@ -1,4 +1,4 @@
-import Navbar from "../components/NavbarForm";
+import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Orders from "../components/Orders";
 import React from 'react'
