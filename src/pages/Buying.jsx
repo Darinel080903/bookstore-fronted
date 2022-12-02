@@ -1,17 +1,17 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import Advice from '../components/Advice'
+import BuyingBody from '../components/BuyingBody'
 import Footer from '../components/Footer'
-import VistaLibro from '../components/VistaLibro'
 
-
-function Book() {
+function Buying() {
   return (
-    <div className='book'>
+    <div>
         <Navbar/>
-        <VistaLibro/>
+        <BuyingBody/>
         <Footer/>
     </div>
   )
 }
 
-export default Book
+export default Buying

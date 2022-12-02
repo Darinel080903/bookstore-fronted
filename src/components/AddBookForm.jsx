@@ -1,11 +1,27 @@
 import React from 'react'
 import styles from "../css/AddBook.module.css"
-import { useState, useRef } from "react"
-import { Outlet, Link, Navigate } from 'react-router-dom'
+import { useState, useRef, useContext, useEffect } from "react"
+import Swal from 'sweetalert2'
 
 function AddBookForm() {
 
-    const [ user, setUser ] = useState(localStorage.getItem("user-info"));
+    const [authors, setAuthors] = useState([]);
+    const [editorials, setEditorials] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:8080/author')
+            .then(response => response.json())
+            .then(data => setAuthors(data.data));
+
+    }, [])
+
+    useEffect(() => {
+        fetch('http://localhost:8080/editorial')
+            .then(response => response.json())
+            .then(data => setEditorials(data.data));
+
+    }, [])
+
 
     const form = useRef(null);
 
@@ -24,15 +40,32 @@ function AddBookForm() {
                 cover: formData.get('cover'),
                 description: formData.get('description'),
                 price: formData.get('price'),
-                author: formData.get('author'),
-                editorial: formData.get('editorial'),
+                authorId: formData.get('author'),
+                editorialId: formData.get('editorial'),
                 year: formData.get('year'),
             })
         })
             .then(res => res.json())
-            .then(data => setUser(data))
             .catch(err => console.error(err))
 
+    }
+
+    function createAuthor(e) {
+        e.preventDefault();
+
+        const formData = new formData(form.current);
+
+        fetch('http://localhost:8080/author', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: formData.get('name')
+            })
+        })
+            .then(res => res.json())
+            .catch(err => console.error(err))
     }
 
     function handleChangeName(e) {
@@ -64,6 +97,7 @@ function AddBookForm() {
         setEditorial(value);
     }
 
+
     const [bookName, setBookName] = useState("");
     const [cover, setCover] = useState("");
     const [description, setDescription] = useState("");
@@ -73,8 +107,10 @@ function AddBookForm() {
     const [editorial, setEditorial] = useState("");
 
     return (
+
         <div className={styles.addBookContainer}>
             <div className={styles.addBookForm}>
+                <h2 className={styles.h2}>Add book</h2>
                 <form className={styles.form} method='' id='' onSubmit={handleSubmit} ref={form} >
                     <label className={styles.label}>
                         <span>Book name</span>
@@ -83,16 +119,6 @@ function AddBookForm() {
                             type="text"
                             name='bookName'
                             id='bookName'
-
-                        />
-                    </label>
-                    <label className={styles.label}>
-                        <span>Cover</span>
-                        <input
-                            onChange={handleChangeCover}
-                            type="text"
-                            name='cover'
-                            id='cover'
 
                         />
                     </label>
@@ -118,22 +144,35 @@ function AddBookForm() {
                     </label>
                     <label className={styles.label}>
                         <span>Author</span>
-                        <input
-                            onChange={handleChangeAuthor}
-                            type="text"
-                            name='author'
-                            id='author'
-
-                        />
+                        <select onChange={handleChangeAuthor}>
+                            <option selected>Select an author</option>
+                            {
+                                authors.map(author => {
+                                    return (
+                                        <option value={author.id} name="author" id='author'>{author.name}</option>
+                                    );
+                                })
+                            }
+                            <option value="2">New author</option>
+                            
+                        </select>
                     </label>
                     <label className={styles.label}>
                         <span>Editorial</span>
-                        <input
-                            onChange={handleChangeEditorial}
-                            type="text"
-                            name='editorial'
-                            id='editorial'
-                        />
+                        <select onChange={handleChangeEditorial}>
+                            <option selected>Select an editorial</option>
+                            {
+                                editorials.map(editorial => {
+                                    return (
+                                        <>
+                                            <option value={editorial.id} name='editorial' id='editorial'>{editorial.name}</option>
+                                        </>
+
+                                    );
+                                })
+                            }
+                            <option>New editorial</option>
+                        </select>
                     </label>
                     <label className={styles.label}>
                         <span>Year of publication</span>
@@ -147,10 +186,10 @@ function AddBookForm() {
                     <label className={styles.label}>
                         <span>Image link</span>
                         <input
-                            onChange={handleChangeYear}
+                            onChange={handleChangeCover}
                             type="text"
-                            name='link'
-                            id='link'
+                            name='cover'
+                            id='cover'
                         />
                     </label>
                     <label>

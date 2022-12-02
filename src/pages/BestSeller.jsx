@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import FormBestSeller from '../components/FormBestSeller'
 
 
+
 function BestSeller() {
   return (
     <div className='login'>

@@ -12,11 +12,6 @@ import { AiFillDelete } from "react-icons/ai"
 
 function Shop() {
    return (
-      
-
-      
-
-
 
       <div className={styles.shopContainer}>
          <div className={styles.ContainerTitle}>

@@ -1,8 +1,6 @@
 import styles from '../css/OrderUser.module.css'
-import Card from "../components/Card"
 
 import { useState, useEffect } from 'react'
-import { Outlet, Link, Navigate, useLocation } from 'react-router-dom'
 
 function FormOrderUser() {
 
@@ -11,35 +9,44 @@ function FormOrderUser() {
 
     const [orders, setOrders] = useState([]);
 
+    const [books, setBooks] = useState([]);
+
     useEffect(() => {
         fetch('http://localhost:8080/order/user/'+ user.id)
             .then(response => response.json())
             .then(data => setOrders(data.data));
     }, [])
 
+        function coverImagen (){
+            fetch('http://localhost:8080/book/')
+                .then(response => response.json())
+                .then(data => setBooks(data.data));
+        }
 
     return(
-        <div className={styles.bodyContainer}>
-            <div className={styles.bodyDistributed}>
-                <p className={styles.title}>Pedidos entrantes</p>
-                <div className={styles.orders}>
-                    {
-                        orders.map(order => {
-                            return (
-                                <Link className={styles.order}  to='/orderuser' state={{ nOrder: order.id }} >
-                                    <Card
-                                        key={order.id}
-                                        user={order.userId}
-                                        cantidad={order.quantity}
-                                        fecha={order.orderDate}
-                                        entrega={order.deliveryDate}
-                                        estatus={order.status} 
-                                    />
-                                </Link>
-                            )
-                        })
-                    }
+        <div className={styles.container}>
+            <div className={styles.contenedorCuadro}>
+                <div className={styles.containerLetter}>
+                    <h2 className={styles.title}>Ordernes entrantes</h2>
                 </div>
+
+                {
+                    orders.map(order => {
+                        return (
+                            <div className={styles.cuadro}>
+                                <div className={styles.upPart}>
+                                    <h2 className={styles.letterTop}>Id: {order.id}</h2>
+                                    <h2 className={styles.letterTop}>Cantidad: {order.quantity}</h2>
+                                    <h2 className={styles.letterTop}>Precio total: {order.price}</h2>
+                                    <img src={books.cover} className={styles.imagen} />
+                                    {
+                                        coverImagen(order.bookId)
+                                    }
+                                </div>
+                            </div>
+                        );
+                    })
+                }
             </div>
         </div>
     );
