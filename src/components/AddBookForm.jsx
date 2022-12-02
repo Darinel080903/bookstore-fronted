@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from "../css/AddBook.module.css"
 import { useState, useRef, useContext, useEffect } from "react"
+import Swal from 'sweetalert2'
 
 function AddBookForm() {
 
@@ -136,6 +137,7 @@ function AddBookForm() {
         return value
     }
 
+
     const [bookName, setBookName] = useState("");
     const [cover, setCover] = useState("");
     const [description, setDescription] = useState("");
@@ -147,12 +149,13 @@ function AddBookForm() {
     const [editorialName, setEditorialName] = useState("")
 
     return (
+
         <div className={styles.addBookContainer}>
             <div className={styles.addBookForm}>
-                <h2 className={styles.h2}>Add book</h2>
+                <h2 className={styles.h2}>Agregar Libro</h2>
                 <form className={styles.form} method='' id='' onSubmit={handleSubmit} ref={form} >
                     <label className={styles.label}>
-                        <span>Book name</span>
+                        <span>Nombre del Libro</span>
                         <input
                             onChange={handleChangeName}
                             type="text"
@@ -164,7 +167,7 @@ function AddBookForm() {
                     <label className={styles.label}>
                         <span>Author</span>
                         <select onChange={handleChangeAuthor}>
-                            <option selected>Select an author</option>
+                            <option selected>Selecciona un Autor</option>
                             {
                                 authors.map(author => {
                                     return (
@@ -179,7 +182,7 @@ function AddBookForm() {
                     <label className={styles.label}>
                         <span>Editorial</span>
                         <select onChange={handleChangeEditorial}>
-                            <option selected>Select an editorial</option>
+                            <option selected>Selecciona una editorial</option>
                             {
                                 editorials.map(editorial => {
                                     return (                                     
@@ -191,41 +194,12 @@ function AddBookForm() {
                         </select>
                     </label>
                     <label className={styles.label}>
-                        <span>Description</span>
-                        <input
-                            onChange={handleChangeDescription}
-                            type="text"
-                            name='description'
-                            id='description'
-
-                        />
-                    </label>
-                    <label className={styles.label}>
-                        <span>Price</span>
-                        <input
-                            onChange={handleChangePrice}
-                            type="number"
-                            name='price'
-                            id='price'
-
-                        />
-                    </label>
-                    <label className={styles.label}>
                         <span>Year of publication</span>
                         <input
                             onChange={handleChangeYear}
                             type="date"
                             name='year'
                             id='year'
-                        />
-                    </label>
-                    <label className={styles.label}>
-                        <span>Year of adition</span>
-                        <input
-                            onChange={handleChangeYear}
-                            type="datetime"
-                            name='yearAdded'
-                            id='yearAdded'
                         />
                     </label>
                     <label className={styles.label}>

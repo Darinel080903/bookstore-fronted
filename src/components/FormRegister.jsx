@@ -55,10 +55,10 @@ function Register() {
             }
 
             <div className={styles.register}>
-                <h2 className={styles.registerTitle}>Register</h2>
+                <h2 className={styles.registerTitle}>Registro</h2>
                 <form  className={styles.registerForm} method="" id="form" onSubmit={handleSubmit} ref={form}>
                     <label className={styles.label}>
-                        <span>Name</span>
+                        <span>Nombre</span>
                         <input className={styles.input}
                             type="text"
                             id='name'
@@ -67,7 +67,7 @@ function Register() {
                         />
                     </label>
                     <label className={styles.label}>
-                        <span>Last Name</span>
+                        <span>Apellido</span>
                         <input className={styles.input}
                             type="text"
                             name='lastname'
@@ -103,7 +103,7 @@ function Register() {
                         />
                     </label>
                     <label className={styles.label}>
-                        <span>Phone number</span>
+                        <span>Numero de telefono</span>
                         <input className={styles.input}
                             type="text"
                             name='phone'
@@ -111,7 +111,7 @@ function Register() {
                         />
                     </label>
                     <label className={styles.label}>
-                        <span>Adress</span>
+                        <span>Direccion</span>
                         <input className={styles.input}
                             type="text"
                             name='address'
@@ -120,7 +120,7 @@ function Register() {
                         />
                     </label>
                     <label className={styles.label}>
-                        <span>B-day</span>
+                        <span>Año de nacimiento</span>
                         <input className={styles.input}
                             type="date"
                             name='birthday'

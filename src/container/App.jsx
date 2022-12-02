@@ -15,8 +15,9 @@ import Admin from '../pages/Admin';
 import Logout from '../pages/Logout';
 import ProtectedRoute from '../components/ProtectedRoute'
 import OrderUser from '../pages/OrderUser';
-import Buying from '../components/Buying';
 import NotFound from '../pages/NotFound';
+import Buying from '../pages/Buying';
+import Account from '../pages/Account';
 
 
 function App() {
@@ -32,21 +33,35 @@ function App() {
 
         <Routes>
 
+          <Route path='/register' element={<ProtectedRoute isAllowed={!user && true} />}>
+            <Route path='/register' element={<Register />} />
+          </Route>
+
+          <Route path='/login' element={<ProtectedRoute isAllowed={!user && true} />}>
+            <Route path='/login' element={<Login />} />
+          </Route>
+
           <Route path='/' element={<Navigate to="/home" replace={true} />} />
           <Route path='/home' element={<Home />} />
-            <Route path='/order' element={<Order/>} />
-          <Route path='/login' element={<Login />} />
           <Route path='/book' element={<Book />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/cart' element={<Cart />} />
+          <Route path='/addbook' element={<AddBook />} />
           <Route path='/bestseller' element={<BestSeller />} />
           <Route path='/search' element={<Searcher />} />
           <Route path='/orderuser' element={<OrderUser />} />
+          <Route path='/account' element={<Account/>} />
+
+
+          <Route path='/order' element={<ProtectedRoute isAllowed={!!user} />}>
+            <Route path='/order' element={<Order />} />
+          </Route>
+
+          <Route path='/cart' element={<ProtectedRoute isAllowed={!!user} />}>
+            <Route path='/cart' element={<Cart />} />
+          </Route>
 
           <Route path='/buying' element={<ProtectedRoute isAllowed={!!user} />}>
             <Route path='/buying' element={<Buying />} />
           </Route>
-
 
           <Route path='/logout' element={<ProtectedRoute isAllowed={!!user} />}>
             <Route path='/logout' element={<Logout />} />
@@ -60,7 +75,7 @@ function App() {
             <Route path='/addbook' element={<AddBook />} />
           </Route>
 
-          <Route path='/*' element={<NotFound/>} />
+          <Route path='/*' element={<NotFound />} />
 
         </Routes>
 
