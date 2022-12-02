@@ -6,7 +6,8 @@ import { Outlet, Link, Navigate, useLocation } from 'react-router-dom'
 function Logout() {
 
     const clear = () => {
-        {localStorage.clear()}
+        localStorage.clear()
+        alert("dasd")
     }
 
     return (
