@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import styles from '../css/Shop.module.css'
 import img from '../assets/images/imagen-01.png'
 import { AiFillDelete } from "react-icons/ai"
@@ -11,17 +11,65 @@ import { AiFillDelete } from "react-icons/ai"
 
 
 function Shop() {
+   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")));
+
+   const [books, setBooks] = useState([])
+
+   const [orders, setOrders] = useState([]);
+
+   
+
+   
+
+
+   useEffect(() => {
+      fetch('http://localhost:8080/order/user/' + user.id + '/status/SHOPPING')
+         .then(response => response.json())
+         .then(data => setOrders(data.data));
+
+   }, [])
+
+
+   const suppress = () => {
+      window.alert("Hello world!");
+  
+      fetch('http://localhost:8080/order/13', { method: 'DELETE' })
+      .then(() => window.alert("fue eliminado"));
+  
+    }
+
+   function getData(id) {
+      fetch('http://localhost:8080/book')
+         .then(response => response.json())
+         .then(data => setBooks(data.data))
+
+      return (
+
+         <>
+            {
+               books.map(book => {
+                  return (
+                    
+                     book.id == id
+                     ?
+                     <>
+                        <img className={styles.ContentImg} src={book.cover} />
+                        <h3 className={styles.ContentTitle}>{book.name}</h3>
+                     </>
+                     :
+                     <>
+                     </>
+                     
+                  )
+               })
+            }
+
+         </>
+
+      )
+   }
+
    return (
-
-
-      
-
-
-
-
-
-
-
 
 
       <div className={styles.shopContainer}>
@@ -45,23 +93,44 @@ function Shop() {
                   </div>
                </div>
 
-               <div className={styles.ContainerBookContent}>
-                  <div className={styles.ContainerImgCont}>
-                     <img className={styles.ContentImg} src={img} />
-                     <h3>Tu libro</h3>
-                     <p>Cantidad</p>
-                     <strong><p>{'(' + '5' + ')'}</p></strong>
-                  </div>
-                  <div className={styles.ContainerBookPriceCont}>
-                     <p>{'$' + '----'}</p>
-                  </div>
-                  <div className={styles.ContainerBookSubCont}>
-                     <p>{'$' + '----'}</p>
-                  </div>
-                  <div className={styles.ContainerBookDeleteCont}>
-                     <AiFillDelete className={styles.DeleteIcon} />
-                  </div>
-               </div>
+               {
+                  orders.map(order => {
+                     return (
+
+                        
+                        <div className={styles.ContainerBookContent}>
+                           <div className={styles.ContainerImgCont}>
+                              {
+                                 getData(order.bookId)
+                                 
+
+                              }
+                              <p className={styles.ContentQuantity}>{"Cantidad"}</p>
+                              <p><strong>{"("}</strong>{order.quantity}<strong>{")"}</strong></p>
+                           </div>
+                           <div className={styles.ContainerBookPriceCont}>
+                              <p>{'$' + order.price}</p>
+
+                           </div>
+                           <div className={styles.ContainerBookSubCont}>
+                              <p>{'$' + order.total}</p>
+
+                              
+                           </div>
+                           <div className={styles.ContainerBookDeleteCont}>
+                              <AiFillDelete onClick={suppress}  className={styles.DeleteIcon} />
+                              <p>{order.id}</p>
+                           </div>
+                        </div>
+                        
+
+
+                        
+
+                     )
+                  })
+               }
+
 
 
 

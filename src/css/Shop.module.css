@@ -1,3 +1,15 @@
+.ContentTitle{
+text-align: center;
+width: 100%;
+font-size: 17px;
+margin-top: 2px;
+}
+
+.ContentQuantity{
+
+  font-size: 15px;
+
+}
 .shopContainer {
   min-height: 65vh;
 
@@ -58,7 +70,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 5px;
+  padding: 20px 20px;
   border-bottom: rgb(237, 237, 237) 2px solid;
   border-right: rgb(237, 237, 237) 1px solid;
 
@@ -68,9 +80,9 @@
 
 .ContentImg {
   height: 70%;
-  border-radius: 3px;
+  border-radius: 5px;
   box-shadow: 0 3px 13px 1px rgb(0 0 0 / 20%);
-  margin: 10px 0;
+  margin: 2px 3;
 }
 
 
