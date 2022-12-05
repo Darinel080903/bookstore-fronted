@@ -50,8 +50,6 @@ function Shop() {
                   </div>
                </div>
 
-
-
             </div>
             <div className={styles.ContainerSell}>
                <div className={styles.ContainerSummary}>

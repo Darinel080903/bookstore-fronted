@@ -23,20 +23,20 @@ function App() {
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")));
 
+
   return (
 
 
 
     <div className="App">
       <BrowserRouter >
-
         <Routes>
 
-          <Route path='/register' element={<ProtectedRoute isAllowed={!user && true} />}>
+          <Route path='/register' element={<ProtectedRoute isAllowed={user == null && true} />}>
             <Route path='/register' element={<Register />} />
           </Route>
 
-          <Route path='/login' element={<ProtectedRoute isAllowed={!user && true} />}>
+          <Route path='/login' element={<ProtectedRoute isAllowed={user == null && true} />}>
             <Route path='/login' element={<Login />} />
           </Route>
 
@@ -49,22 +49,22 @@ function App() {
           <Route path='/orderuser' element={<OrderUser />} />
 
 
-          <Route path='/order' element={<ProtectedRoute isAllowed={!!user} />}>
+          <Route path='/order' element={<ProtectedRoute isAllowed={user != null && true} />}>
             <Route path='/order' element={<Order />} />
           </Route>
 
-          <Route path='/cart' element={<ProtectedRoute isAllowed={!!user} />}>
+          <Route path='/cart' element={<ProtectedRoute isAllowed={user != null && true} />}>
             <Route path='/cart' element={<Cart />} />
           </Route>
 
-          <Route path='/buying' element={<ProtectedRoute isAllowed={!!user} />}>
+          <Route path='/buying' element={<ProtectedRoute isAllowed={user != null && true} />}>
             <Route path='/buying' element={<Buying />} />
           </Route>
-          <Route path='/logout' element={<ProtectedRoute isAllowed={!!user} />}>
+          <Route path='/logout' element={<ProtectedRoute isAllowed={user != null && true} />}>
             <Route path='/logout' element={<Logout />} />
           </Route>
 
-          <Route path='/admin' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
+          <Route path='/admin' element={<ProtectedRoute isAllowed={user != null && user.admin == true && true} />}>
             <Route path='/admin' element={<Admin />} />
           </Route>
 
