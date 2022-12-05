@@ -13,26 +13,28 @@ function FormLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [ user, setUser ] = useState();
+  const [user, setUser] = useState();
   const [success, setSuccess] = useState();
 
   const login = (e) => {
     e.preventDefault();
 
-    let item = {email, password}
-
     fetch('http://localhost:8080/user/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-             body: JSON.stringify(item)
-        })
-            .then(res => console.log(res.json()))
-            .then(data => setUser(data))
-            .catch(err => console.error(err))
-
-    
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        'email': email,
+        'password': password
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        setUser(data.data)
+        setSuccess(data.success)
+      })
+      .catch(err => console.error(err))
 
   }
 
@@ -44,6 +46,7 @@ function FormLogin() {
   }
 
   const UserIncorrect = () => {
+    console.log(user)
     Swal.fire({
       position: 'bottom',
       title: 'Usuario incorrecto',
@@ -57,9 +60,20 @@ function FormLogin() {
   }
 
   return (
-    <div className={styles.loginContainer}>      
+    <div className={styles.loginContainer}>
 
+      {
+        success == true && (
+          UserCorrect()
+        )
+      }
 
+      {
+        success == false && (
+          UserIncorrect()
+        )
+
+      }
 
       <div className={styles.login}>
 
