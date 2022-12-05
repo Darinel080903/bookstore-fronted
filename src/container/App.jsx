@@ -63,7 +63,6 @@ function App() {
             <Route path='/buying' element={<Buying />} />
           </Route>
           <Route path='/logout' element={<ProtectedRoute isAllowed={user != null && true} />}>
-
             <Route path='/logout' element={<Logout />} />
           </Route>
 
