@@ -21,6 +21,8 @@ function Shop() {
 
    
 
+   
+
 
    useEffect(() => {
       fetch('http://localhost:8080/order/user/' + user.id + '/status/SHOPPING')
@@ -68,7 +70,7 @@ function Shop() {
 
       )
    }
-
+   
    return (
 
 
@@ -97,6 +99,11 @@ function Shop() {
                   orders.map(order => {
                      return (
 
+
+                             
+
+                        
+                           
                         
                         <div className={styles.ContainerBookContent}>
                            <div className={styles.ContainerImgCont}>
@@ -114,12 +121,15 @@ function Shop() {
                            </div>
                            <div className={styles.ContainerBookSubCont}>
                               <p>{'$' + order.total}</p>
-
-                              
+                              <p>{'---'+order.total+order.total}</p>
+                          
+                             
+               
                            </div>
                            <div className={styles.ContainerBookDeleteCont}>
                               <AiFillDelete onClick={suppress}  className={styles.DeleteIcon} />
                               <p>{order.id}</p>
+                              
                            </div>
                         </div>
                         
