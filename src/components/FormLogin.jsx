@@ -82,7 +82,7 @@ function FormLogin() {
           </label>
 
           <Link to="/register" className={styles.register}>
-            I don't have a account:<span>register</span>
+            No tengo una cuenta:<span>registrar</span>
           </Link>
 
         </form>
