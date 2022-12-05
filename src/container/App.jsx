@@ -1,6 +1,7 @@
 import '../css/App.css'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import React, { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 import Cart from '../pages/Cart';
 import Login from '../pages/Login';
@@ -20,6 +21,7 @@ import Buying from '../pages/Buying';
 import Account from '../pages/Account';
 
 
+
 function App() {
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")));
@@ -28,16 +30,14 @@ function App() {
   return (
 
 
-
     <div className="App">
       <BrowserRouter >
         <Routes>
-
-          <Route path='/register' element={<ProtectedRoute isAllowed={user == null && true} />}>
+          <Route path='/register' element={<ProtectedRoute isAllowed={user == null ? true : false} />}>
             <Route path='/register' element={<Register />} />
           </Route>
 
-          <Route path='/login' element={<ProtectedRoute isAllowed={user == null && true} />}>
+          <Route path='/login' element={<ProtectedRoute isAllowed={user == null ? true : false} />}>
             <Route path='/login' element={<Login />} />
           </Route>
 
@@ -48,36 +48,38 @@ function App() {
           <Route path='/bestseller' element={<BestSeller />} />
           <Route path='/search' element={<Searcher />} />
           <Route path='/orderuser' element={<OrderUser />} />
-          <Route path='/account' element={<Account/>} />
+          <Route path='/account' element={<Account />} />
 
 
-          <Route path='/order' element={<ProtectedRoute isAllowed={user != null && true} />}>
+          <Route path='/order' element={<ProtectedRoute isAllowed={user != null ? true : false} />}>
             <Route path='/order' element={<Order />} />
           </Route>
 
-          <Route path='/cart' element={<ProtectedRoute isAllowed={user != null && true} />}>
+          <Route path='/cart' element={<ProtectedRoute isAllowed={user != null ? true : false} />}>
             <Route path='/cart' element={<Cart />} />
           </Route>
 
-          <Route path='/buying' element={<ProtectedRoute isAllowed={user != null && true} />}>
+          <Route path='/buying' element={<ProtectedRoute redirectTo='/login' isAllowed={user != null ? true : false} />} >
             <Route path='/buying' element={<Buying />} />
           </Route>
-          <Route path='/logout' element={<ProtectedRoute isAllowed={user != null && true} />}>
+
+
+
+          <Route path='/logout' element={<ProtectedRoute isAllowed={user != null ? true : false} />}>
             <Route path='/logout' element={<Logout />} />
           </Route>
 
-          <Route path='/admin' element={<ProtectedRoute isAllowed={user != null && user.admin == true && true} />}>
+          <Route path='/admin' element={<ProtectedRoute isAllowed={user && user.admin == true ? true : false} />}>
             <Route path='/admin' element={<Admin />} />
           </Route>
 
-          <Route path='/addbook' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
+          <Route path='/addbook' element={<ProtectedRoute isAllowed={user && user.admin == true ? true : false} />}>
             <Route path='/addbook' element={<AddBook />} />
           </Route>
 
           <Route path='/*' element={<NotFound />} />
 
         </Routes>
-
       </BrowserRouter>
     </div>
   )
