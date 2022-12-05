@@ -7,7 +7,7 @@ function Logout() {
 
     const clear = () => {
         localStorage.clear()
-        alert("dasd")
+        alert("Sesion cerrada")
     }
 
     return (
