@@ -10,9 +10,23 @@ function FormAdmin() {
             <div className={styles.content}>
                 <div className={styles.bodyDistributed}>
                     <p className={styles.title}>Panel de Administrador</p>
-                    <Link to={"/orderuser"}   >
-                        <button>ordenes</button>
-                    </Link>
+           
+                    <div className={styles.ContainerButton}>
+                        <div>
+                            <Link to={"/orderuser"}   >
+                                <button type='submit' className={styles.ButtonForm}>Ordenes</button>
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className={styles.ContainerButton}>
+                        <div>
+                            <Link to={"/addbook"}   >
+                                <button type='submit' className={styles.ButtonForm}>Agregar libro</button>
+                            </Link>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

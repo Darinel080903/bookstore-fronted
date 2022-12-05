@@ -17,6 +17,7 @@ import ProtectedRoute from '../components/ProtectedRoute'
 import OrderUser from '../pages/OrderUser';
 import NotFound from '../pages/NotFound';
 import Buying from '../pages/Buying';
+import Account from '../pages/Account';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
           <Route path='/bestseller' element={<BestSeller />} />
           <Route path='/search' element={<Searcher />} />
           <Route path='/orderuser' element={<OrderUser />} />
+          <Route path='/account' element={<Account/>} />
 
 
           <Route path='/order' element={<ProtectedRoute isAllowed={user != null && true} />}>
@@ -61,11 +63,16 @@ function App() {
             <Route path='/buying' element={<Buying />} />
           </Route>
           <Route path='/logout' element={<ProtectedRoute isAllowed={user != null && true} />}>
+
             <Route path='/logout' element={<Logout />} />
           </Route>
 
           <Route path='/admin' element={<ProtectedRoute isAllowed={user != null && user.admin == true && true} />}>
             <Route path='/admin' element={<Admin />} />
+          </Route>
+
+          <Route path='/addbook' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
+            <Route path='/addbook' element={<AddBook />} />
           </Route>
 
           <Route path='/*' element={<NotFound />} />

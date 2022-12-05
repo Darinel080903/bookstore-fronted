@@ -11,8 +11,8 @@ function Menu() {
         <ul   className={styles.menu}>
             <li className={styles.li}> <Link to="/">Home</Link> </li>
             <li className={styles.li}> <Link to="/bestseller">Best Sellers</Link> </li>
-            <li className={styles.li}> <Link to="/register">Register</Link> </li>
-            <li className={styles.li}> <Link to="/Acount">Account </Link> </li>
+            <li className={styles.li}> <Link to="/register">Registrar</Link> </li>
+            <li className={styles.li}> <Link to="/account">Mi Cuenta </Link> </li>
 
         </ul>
         </div>

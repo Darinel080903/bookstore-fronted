@@ -29,6 +29,13 @@
     padding: 5px;
 }
 
+.title{
+    padding: 10px;
+    font-size: 40px;
+    font: bold sans-serif;
+    text-align: center;
+}
+
 .loginForm{
     display: flex;
     flex-direction: column;
@@ -97,4 +104,28 @@ label span, label input{
 .register span{
     padding: 0 5px;
     color:rgb(0, 238, 255)
+}
+
+.ButtonForm {
+    margin: 5px 40%;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #562155;
+    border-radius: 3px;
+    border: 2px solid white;
+    font: bold 16px sans-serif;
+    cursor: pointer;
+}
+  
+.ButtonForm:hover {
+    color: #191716;
+    border: #562155 2px solid;
+    background-color: #ffffff;
+}
+
+.ContainerButton {
+    border-top: rgb(237, 237, 237) 1px solid;
 }
