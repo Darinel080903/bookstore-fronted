@@ -18,7 +18,6 @@ function Navbar(params) {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")))
 
     const [bookSearched, setBookSearched] = useState()
-    console.log(user)
 
 
     function handleSearch(e) {

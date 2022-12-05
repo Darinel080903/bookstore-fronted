@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Component } from 'react'
 import styles from '../css/Shop.module.css'
 import img from '../assets/images/imagen-01.png'
 import { AiFillDelete } from "react-icons/ai"
@@ -17,6 +17,8 @@ function Shop() {
 
    const [orders, setOrders] = useState([]);
 
+   const [orderId,setOrderId] = useState([]);
+
    
 
    
@@ -32,10 +34,33 @@ function Shop() {
    }, [])
 
 
+
+   const Suppress = (e) => {
+      e.preventDefault();
+      window.alert("Entraste a la funcion")
+      fetch('http://localhost:8080/order/15', {
+          method: 'PUT',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              'status':'DELETE'
+          })
+      })
+          .then(res => res.json())
+          .then(data => {
+          })
+          .catch(err => console.error(err))
+
+  }
+
+
    const suppress = () => {
-      window.alert("Hello world!");
+
+
+      window.alert(orderId);
   
-      fetch('http://localhost:8080/order/13', { method: 'DELETE' })
+      fetch('http://localhost:8080/order/'+orderId, { method: 'DELETE' })
       .then(() => window.alert("fue eliminado"));
   
     }
@@ -99,12 +124,6 @@ function Shop() {
                   orders.map(order => {
                      return (
 
-
-                             
-
-                        
-                           
-                        
                         <div className={styles.ContainerBookContent}>
                            <div className={styles.ContainerImgCont}>
                               {
@@ -121,13 +140,13 @@ function Shop() {
                            </div>
                            <div className={styles.ContainerBookSubCont}>
                               <p>{'$' + order.total}</p>
-                              <p>{'---'+order.total+order.total}</p>
+                              <p>{'---'+order.total}</p>
                           
                              
                
                            </div>
                            <div className={styles.ContainerBookDeleteCont}>
-                              <AiFillDelete onClick={suppress}  className={styles.DeleteIcon} />
+                              <AiFillDelete onClick={Suppress}  className={styles.DeleteIcon} />
                               <p>{order.id}</p>
                               
                            </div>
@@ -140,8 +159,6 @@ function Shop() {
                      )
                   })
                }
-
-
 
 
             </div>

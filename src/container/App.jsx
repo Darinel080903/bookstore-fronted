@@ -24,18 +24,22 @@ function App() {
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")));
 
+
   return (
 
 
 
     <div className="App">
       <BrowserRouter >
-
         <Routes>
 
-          <Route path='/register' element={<Register />} />
+          <Route path='/register' element={<ProtectedRoute isAllowed={user == null && true} />}>
+            <Route path='/register' element={<Register />} />
+          </Route>
 
-          <Route path='/login' element={<Login />} />
+          <Route path='/login' element={<ProtectedRoute isAllowed={user == null && true} />}>
+            <Route path='/login' element={<Login />} />
+          </Route>
 
           <Route path='/' element={<Navigate to="/home" replace={true} />} />
           <Route path='/home' element={<Home />} />
@@ -49,24 +53,25 @@ function App() {
           <Route path='/order' element={<Order />} />
 
 
+          <Route path='/order' element={<ProtectedRoute isAllowed={user != null && true} />}>
+            <Route path='/order' element={<Order />} />
+          </Route>
 
-          <Route path='/cart' element={<Cart />} />
+          <Route path='/cart' element={<ProtectedRoute isAllowed={user != null && true} />}>
+            <Route path='/cart' element={<Cart />} />
+          </Route>
 
+          <Route path='/buying' element={<ProtectedRoute isAllowed={user != null && true} />}>
+            <Route path='/buying' element={<Buying />} />
+          </Route>
+          <Route path='/logout' element={<ProtectedRoute isAllowed={user != null && true} />}>
 
+            <Route path='/logout' element={<Logout />} />
+          </Route>
 
-          <Route path='/buying' element={<Buying />} />
-
-
-
-          <Route path='/logout' element={<Logout />} />
-
-
-
-          <Route path='/admin' element={<Admin />} />
-
-
-
-          <Route path='/addbook' element={<AddBook />} />
+          <Route path='/admin' element={<ProtectedRoute isAllowed={user != null && user.admin == true && true} />}>
+            <Route path='/admin' element={<Admin />} />
+          </Route>
 
 
           <Route path='/*' element={<NotFound />} />

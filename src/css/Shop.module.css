@@ -242,11 +242,10 @@ margin-top: 2px;
 }
 
 .ContainerSell {
-  width: 30%;
+  width: 400px;
   height: 500px;
   background-color: #fff;
   box-shadow: 0 3px 13px 1px rgb(0 0 0 / 20%);
-  margin: 20px auto;
   border-radius: 5px;
 
 }
