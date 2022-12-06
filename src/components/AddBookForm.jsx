@@ -48,7 +48,7 @@ function AddBookForm() {
                 authorId: author,
                 editorialId: editorial,
                 year: formData.get('year'),
-                dateAdded: formData.get('yearAdded')
+                dateAdded: dateAdded
             })
         })
             .then(res => res.json())
@@ -73,6 +73,7 @@ function AddBookForm() {
     }
 
     function createEditorial(e) {
+
         e.preventDefault();
 
         fetch('http://localhost:8080/editorial', {
@@ -120,6 +121,10 @@ function AddBookForm() {
         const value = e.target.value;
         setPrice(value);
     }
+    function handleChangeDate(e){
+        const value = e.target.value;
+        setDateAdded(value);
+    }
     function handleChangeAuthor(e) {
         const value = e.target.value;
         {
@@ -141,6 +146,7 @@ function AddBookForm() {
     const [bookName, setBookName] = useState("");
     const [cover, setCover] = useState("");
     const [description, setDescription] = useState("");
+    const [dateAdded, setDateAdded] = useState("")
     const [year, setYear] = useState("");
     const [price, setPrice] = useState("");
     const [author, setAuthor] = useState();
@@ -167,7 +173,7 @@ function AddBookForm() {
                     <label className={styles.label}>
                         <span>Precio</span>
                         <input
-                            onChange={handleChangeName}
+                            onChange={handleChangePrice}
                             type="number"
                             name='price'
                             id='price'
@@ -204,7 +210,7 @@ function AddBookForm() {
                     <label className={styles.label}>
                         <span>Año de publicacion</span>
                         <input
-                            onChange={handleChangeYear}
+                            onChange={handleChangeDate}
                             type="date"
                             name='year'
                             id='year'
@@ -217,6 +223,24 @@ function AddBookForm() {
                             type="text"
                             name='cover'
                             id='cover'
+                        />
+                    </label>
+                    <label className={styles.label}>
+                        <span>Descripcion</span>
+                        <input
+                            onChange={handleChangeDescription}
+                            type="text"
+                            name='description'
+                            id='description'
+                        />
+                    </label>
+                    <label className={styles.label}>
+                        <span>Fecha de adicion</span>
+                        <input
+                            onChange={handleChangeYear}
+                            type="datetime"
+                            name='dateAdded'
+                            id='dateAdded'
                         />
                     </label>
                     <label>

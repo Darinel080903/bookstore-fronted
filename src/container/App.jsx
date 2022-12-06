@@ -49,7 +49,7 @@ function App() {
           <Route path='/bestseller' element={<BestSeller />} />
           <Route path='/search' element={<Searcher />} />
 
-          
+
           <Route path='/account' element={<ProtectedRoute isAllowed={!!user} />}>
             <Route path='/account' element={<Account />} />
           </Route>
@@ -76,8 +76,11 @@ function App() {
 
           <Route path='/admin' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
             <Route path='/admin' element={<Admin />} />
-          </Route>
 
+          </Route>
+          <Route path='/addbook' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />} >
+            <Route path='/addbook' element={<AddBook />} />
+          </Route>
 
           <Route path='/*' element={<NotFound />} />
 
