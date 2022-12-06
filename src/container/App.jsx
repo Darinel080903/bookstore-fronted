@@ -33,11 +33,11 @@ function App() {
 
         <Routes>
 
-          <Route path='/register' element={<ProtectedRoute isAllowed={!user && true} />}>
+          <Route path='/register' element={<ProtectedRoute isAllowed={user && false} />}>
             <Route path='/register' element={<Register />} />
           </Route>
 
-          <Route path='/login' element={<ProtectedRoute isAllowed={!user && true} />}>
+          <Route path='/login' element={<ProtectedRoute isAllowed={user && false} />}>
             <Route path='/login' element={<Login />} />
           </Route>
 
@@ -51,27 +51,27 @@ function App() {
           <Route path='/account' element={<Account/>} />
 
 
-          <Route path='/order' element={<ProtectedRoute isAllowed={!!user} />}>
+          <Route path='/order' element={<ProtectedRoute isAllowed={user && true} />}>
             <Route path='/order' element={<Order />} />
           </Route>
 
-          <Route path='/cart' element={<ProtectedRoute isAllowed={!!user} />}>
+          <Route path='/cart' element={<ProtectedRoute isAllowed={user && true} />}>
             <Route path='/cart' element={<Cart />} />
           </Route>
 
-          <Route path='/buying' element={<ProtectedRoute isAllowed={!!user} />}>
+          <Route path='/buying' element={<ProtectedRoute isAllowed={user && true} />}>
             <Route path='/buying' element={<Buying />} />
           </Route>
 
-          <Route path='/logout' element={<ProtectedRoute isAllowed={!!user} />}>
+          <Route path='/logout' element={<ProtectedRoute isAllowed={user && true} />}>
             <Route path='/logout' element={<Logout />} />
           </Route>
 
-          <Route path='/admin' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
+          <Route path='/admin' element={<ProtectedRoute isAllowed={user && user.admin == true} />}>
             <Route path='/admin' element={<Admin />} />
           </Route>
 
-          <Route path='/addbook' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
+          <Route path='/addbook' element={<ProtectedRoute isAllowed={user && user.admin == true} />}>
             <Route path='/addbook' element={<AddBook />} />
           </Route>
 
