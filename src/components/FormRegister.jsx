@@ -76,7 +76,7 @@ function Register() {
                         />
                     </label>
                     <label className={styles.label}>
-                        <span>E-mail</span>
+                        <span>Correo</span>
                         <input className={styles.input}
                             type="email"
                             name='email'
@@ -85,7 +85,7 @@ function Register() {
                         />
                     </label>
                     <label className={styles.label}>
-                        <span>Username</span>
+                        <span>Usuario</span>
                         <input className={styles.input}
                             type="text"
                             name='username'
@@ -94,7 +94,7 @@ function Register() {
                         />
                     </label>
                     <label className={styles.label}>
-                        <span>Password</span>
+                        <span>Contraseña</span>
                         <input className={styles.input}
                             type="password"
                             name='password'
@@ -128,7 +128,7 @@ function Register() {
                         />
                     </label>
                     <label className={styles.labelButton}>
-                        <button type='submit' className={styles.btnRegister}>Register</button>
+                        <button type='submit' className={styles.btnRegister}>Registrar</button>
                     </label>
                 </form>
             </div>

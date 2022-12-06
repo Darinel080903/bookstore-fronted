@@ -165,7 +165,17 @@ function AddBookForm() {
                         />
                     </label>
                     <label className={styles.label}>
-                        <span>Author</span>
+                        <span>Precio</span>
+                        <input
+                            onChange={handleChangeName}
+                            type="number"
+                            name='price'
+                            id='price'
+
+                        />
+                    </label>
+                    <label className={styles.label}>
+                        <span>Autor</span>
                         <select onChange={handleChangeAuthor}>
                             <option selected>Selecciona un Autor</option>
                             {
@@ -176,7 +186,6 @@ function AddBookForm() {
                                     );
                                 })
                             }
-                            <option value="new">New author</option>
                         </select>
                     </label>
                     <label className={styles.label}>
@@ -190,11 +199,10 @@ function AddBookForm() {
                                     );
                                 })
                             }
-                            <option value='new'>New editorial</option>
                         </select>
                     </label>
                     <label className={styles.label}>
-                        <span>Year of publication</span>
+                        <span>Año de publicacion</span>
                         <input
                             onChange={handleChangeYear}
                             type="date"
@@ -203,7 +211,7 @@ function AddBookForm() {
                         />
                     </label>
                     <label className={styles.label}>
-                        <span>Image link</span>
+                        <span>Link de la imagen</span>
                         <input
                             onChange={handleChangeCover}
                             type="text"
@@ -220,7 +228,7 @@ function AddBookForm() {
                 <div className={styles.addAuthorEditorial}>
                     <form className={styles.formAuthorEditorial} method='' id='' onSubmit={createAuthor} ref={formA}>
                         <label className={styles.label}>
-                            <span>Or create an author</span>
+                            <span>Ingresar nuevo autor</span>
                             <input
                                 onChange={handleChangeNameAuthor}
                                 type="text"
@@ -236,7 +244,7 @@ function AddBookForm() {
                 <div className={styles.addAuthorEditorial}>
                     <form className={styles.formAuthorEditorial} method='' id='' onSubmit={createEditorial} ref={formE}>
                     <label className={styles.label}>
-                            <span>Or create an editorial</span>
+                            <span>Ingresar nueva editorial</span>
                             <input
                                 onChange={handleChangeNameEditorial}
                                 type="text"

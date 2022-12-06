@@ -77,17 +77,17 @@ function FormLogin() {
 
       <div className={styles.login}>
 
-        <h2 className={styles.titleLogin}>Login</h2>
+        <h2 className={styles.titleLogin}>Inicio de sesion</h2>
 
         <form className={styles.loginForm} onSubmit={login} >
 
           <label className={styles.label}>
-            <span >E-mail</span>
+            <span >Correo</span>
             <input className={styles.input} type="email" onChange={(e) => setEmail(e.target.value)} required />
           </label>
 
           <label className={styles.label}>
-            <span>Password</span>
+            <span>Contraseña</span>
             <input className={styles.input} type="password" onChange={(e) => setPassword(e.target.value)} required />
           </label>
 
