@@ -7,7 +7,8 @@ function Logout() {
 
     const clear = () => {
         localStorage.clear()
-        alert("Sesion cerrada")
+
+        window.location.reload(true);
     }
 
     return (

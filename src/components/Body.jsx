@@ -1,5 +1,4 @@
 import styles from "../css/Body.module.css"
-import Card from "../components/Card"
 import { Link } from 'react-router-dom'
 
 
@@ -8,6 +7,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
 import { useState, useEffect } from 'react'
+
+import CarrouselBook from "./CarrouselBook";
 
 
 function Body(params) {
@@ -18,24 +19,10 @@ function Body(params) {
     const [recentBooks, setRecentBooks] = useState([]);
     const [fantasyBooks, setFantasyBooks] = useState([]);
     const [horrorBooks, setHorrorBooks] = useState([]);
-
-    useEffect(() => {
-
-        fetch('http://localhost:8080/book') //recien agregados (todos los libros)
-            .then(response => response.json())
-            .then(data => setRecentBooks(data.data));
-
-        fetch('http://localhost:8080/books_genders/books/gender/2') //libros de fantasía
-            .then(response => response.json())
-            .then(data => setFantasyBooks(data));
+    const [Sciencefiction, setSciencefiction] = useState([]);
 
 
-        fetch('http://localhost:8080/books_genders/books/gender/1') //libros de horror
-            .then(response => response.json())
-            .then(data => setHorrorBooks(data));
 
-
-    }, [])
 
 
     return (
@@ -59,33 +46,27 @@ function Body(params) {
 
             <div className={styles.content}>
 
-                
-                <div className={styles.bodyDistributed}>
-                    <p className={styles.title}>Fantasía</p>
-                    <div className={styles.books}>
-                        {
-                            fantasyBooks.map(book => {
-                                return (
-                                    <div key={book.id} className={styles.book}  >
-                                        <Card
-                                            id={book.id}
-                                            image={book.cover}
-                                            titulo={book.name}
-                                            texto={book.description}
-                                            precio={book.price} />
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
 
-                </div>
+                <CarrouselBook
+                    title={'Agregados recientemente'}
+                    endpoint={'http://localhost:8080/book/new'}
+                />
+
+                <CarrouselBook
+                    title={'Fantasía'}
+                    endpoint={'http://localhost:8080/books_genders/books/gender/2'}
+                />
+
+                <CarrouselBook
+                    title={'Horror'}
+                    endpoint={'http://localhost:8080/books_genders/books/gender/1'}
+                />
 
                 <div className={styles.bodyDistributed}>
-                    <p className={styles.title}>Horror</p>
+                    <p className={styles.title}>Ciencia Ficcion</p>
                     <div className={styles.books}>
                         {
-                            horrorBooks.map(book => {
+                            Sciencefiction.map(book => {
                                 return (
                                     <div key={book.id} className={styles.book}  >
                                         <Card
