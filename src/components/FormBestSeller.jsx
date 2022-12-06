@@ -6,11 +6,18 @@ function FormBestSeller() {
 
     const [horrorBooks, setHorrorBooks] = useState([]);
 
+    const [Sciencefiction, setSciencefiction] = useState([]);
+
     useEffect(() => {
         fetch('http://localhost:8080/books_genders/books/gender/1') //libros de horror
             .then(response => response.json())
             .then(data => setHorrorBooks(data));
+
+        fetch('http://localhost:8080/books_genders/books/gender/3') //libros de ciencia ficcion
+            .then(response => response.json())
+            .then(data => setSciencefiction(data));
     }, [])
+
 
     return(
         <>
@@ -35,6 +42,27 @@ function FormBestSeller() {
                                 })
                             }
                         </div>
+                    </div>
+
+                    <div className={styles.bodyDistributed}>
+                        <div className={styles.books}>
+                            {
+                                Sciencefiction.map(book => {
+                                    return (
+                                        <div key={book.id} className={styles.book}  >
+                                            <Card
+                                                id={book.id}
+                                                image={book.cover}
+                                                titulo={book.name}
+                                                texto={book.description}
+                                                precio={book.price} 
+                                            />
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+
                     </div>
                 </div>
             </div>
