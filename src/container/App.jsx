@@ -34,11 +34,12 @@ function App() {
       <BrowserRouter >
         <Routes>
 
-          <Route path='/register' element={<ProtectedRoute isAllowed={!user && true} />}>
+          <Route path='/register' element={<ProtectedRoute isAllowed={user == null} />}>
             <Route path='/register' element={<Register />} />
           </Route>
 
-          <Route path='/login' element={<ProtectedRoute isAllowed={!user && true} />}>
+          <Route path='/login' element={<ProtectedRoute isAllowed={user == null} />}>
+
             <Route path='/login' element={<Login />} />
           </Route>
 
@@ -47,6 +48,7 @@ function App() {
           <Route path='/book' element={<Book />} />
           <Route path='/bestseller' element={<BestSeller />} />
           <Route path='/search' element={<Searcher />} />
+
           
           <Route path='/account' element={<ProtectedRoute isAllowed={!!user} />}>
             <Route path='/account' element={<Account />} />
@@ -76,9 +78,6 @@ function App() {
             <Route path='/admin' element={<Admin />} />
           </Route>
 
-          <Route path='/addbook' element={<ProtectedRoute isAllowed={!!user && user.admin == true} />}>
-            <Route path='/addbook' element={<AddBook />} />
-          </Route>
 
           <Route path='/*' element={<NotFound />} />
 
