@@ -13,7 +13,7 @@ function FormLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [ user, setUser ] = useState();
+  const [user, setUser] = useState();
   const [success, setSuccess] = useState();
 
   const login = (e) => {
@@ -40,6 +40,7 @@ function FormLogin() {
 
   const UserCorrect = () => {
     localStorage.setItem("user-info", JSON.stringify(user))
+    window.location.reload(true);
     return (
       < Navigate to="/" replace={true} />
     )
@@ -74,8 +75,6 @@ function FormLogin() {
         )
 
       }
-
-
 
       <div className={styles.login}>
 

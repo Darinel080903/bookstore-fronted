@@ -22,16 +22,6 @@ function FormAccount() {
             {
                 users.map (user =>{
                     return(
-                        <>
-                            <div key={user.id}>
-                                <Card
-                                    id={user.id}
-                                    lastName={user.lastName}
-                                    birth={book.birth}
-                                    phoneNumber={book.phoneNumber}
-                                    email={book.email} 
-                                />
-                            </div>
 
                             <div className={styles.content}>
                                 <div className={styles.bodyDistributed}>
@@ -54,7 +44,7 @@ function FormAccount() {
                                     </div>
                                 </div>
                             </div>
-                        </> 
+                     
                     )
                 })
             }

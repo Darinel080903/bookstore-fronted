@@ -1,31 +1,56 @@
 import React from 'react'
 import styles from "../css/BuyingBody.module.css"
+import { Link, useLocation } from 'react-router-dom'
+
 
 
 function BuyingBody() {
 
+  const location = useLocation();
 
-  const Adresses = () => {
+  const { book } = location.state;
+
+  const Payment = () => {
     return (
       <>
-        <p>Selecciona tu dirección</p>
+        <p className={styles.title}>Ingresar datos</p>
+
+        <div className={styles.cardData}>
+          <label >
+            <p>Número de tarjeta</p>
+            <input className={styles.cardNumberInput} type="text" placeholder='1234 1234 1234 1234' maxLength={16} />
+          </label>
+          <div className={styles.twice}>
+            <label >
+              <p>Fecha de expiración</p>
+              <input className={styles.expirationInput} type="text" placeholder='MM/YY' maxLength={5} />
+            </label>
+            <label >
+              <p>CVC</p>
+              <input className={styles.codeInput} type="text" placeholder='CVC' maxLength={3} />
+            </label>
+          </div>
+          <label >
+            <p>Nombre</p>
+            <input className={styles.countryInput} type="text" />
+          </label>
+
+          <div className={styles.ContainerButton}>
+            <button type='submit' className={styles.ButtonForm}>Comprar</button>
+          </div>
+        </div>
       </>
     )
 
   }
 
-  const Payment = () => {
 
-  }
-
-  const Confirmation = () => {
-
-  }
 
   return (
     <div className={styles.buyingContainer}>
+      {console.log(book)}
       <div className={styles.contents}>
-        <Adresses />
+        <Payment />
 
       </div>
       <div className={styles.aside}>
@@ -33,9 +58,15 @@ function BuyingBody() {
           <div className={styles.ContainerSummary}>
             <h2>Resumen del pedido</h2>
           </div>
+          <div className={styles.articlesContainer}>
+            <h4>Artículos</h4>
+            <div className={styles.articles}>
+              <img src={book.cover} alt="" />
+            </div>
+          </div>
           <div className={styles.ContainerSubtotal}>
             <strong><p>Subtotal</p></strong>
-            <p>{'$' + '----'}</p>
+            <p>{'$' + book.price}</p>
           </div>
           <div className={styles.ContainerSent}>
             <div className={styles.ContainerTextSent}>
@@ -51,11 +82,7 @@ function BuyingBody() {
             <strong><p>Total</p></strong>
             <p>{'$' + '----'}</p>
           </div>
-          <div className={styles.ContainerButton}>
-            <div>
-              <button type='submit' className={styles.ButtonForm}>Comprar</button>
-            </div>
-          </div>
+
           <div className={styles.ContainerPolicy}>
             <h3>Envio y entrega</h3>
             <p>Los pedidos son enviados diariamente con entregas de lunes a domingo (hasta las 10 pm).</p>
