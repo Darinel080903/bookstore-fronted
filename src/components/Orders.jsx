@@ -31,11 +31,11 @@ function Orders() {
                         return (
                             book.id == id
                                 ?
-                                <>  
+                                <>
                                     <Link to='/book' state={{ nBook: book.id }} >
                                         <img src={book.cover} className={styles.imagen} />
                                     </Link>
-                                    
+
                                     <div className={styles.details}>
                                         <h2 className={styles.letter}>{book.name}</h2>
                                         <p className={styles.description}>{book.description}</p>
@@ -61,24 +61,31 @@ function Orders() {
                 </div>
 
                 {
-                    orders.map(order => {
-                        return (
-                            <div className={styles.cuadro}>
-                                <div className={styles.upPart}>
-                                    <h2 className={styles.letterTop}>Estado: {order.status}</h2>
-                                    <h2 className={styles.letterTop}>Cantidad: {order.quantity}</h2>
-                                    <h2 className={styles.letterTop}>Precio total: {order.price}</h2>
+                    orders && (
+
+                        orders.length != 0 ?
+
+                        orders.map(order => {
+                            return (
+                                <div className={styles.cuadro}>
+                                    <div className={styles.upPart}>
+                                        <h2 className={styles.letterTop}>Estado: {order.status}</h2>
+                                        <h2 className={styles.letterTop}>Cantidad: {order.quantity}</h2>
+                                        <h2 className={styles.letterTop}>Precio total: {order.price}</h2>
+                                    </div>
+                                    <>
+                                        {
+
+                                            getData(order.bookId)
+                                        }
+                                    </>
                                 </div>
-                                <>
-                                    {
 
-                                        getData(order.bookId)
-                                    }
-                                </>
-                            </div>
-
-                        );
-                    })
+                            );
+                        })
+                        :
+                        <div className={styles.notOrders}>No tienes ordenes</div>
+                    )
 
                 }
             </div>

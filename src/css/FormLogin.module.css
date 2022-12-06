@@ -61,6 +61,11 @@
 
 .label input[type=submit]{
     background-color: red;
+    cursor: pointer;
+}
+
+.label input[type=submit]:active{
+    filter: brightness(.8);
 }
 
 label span, label input{

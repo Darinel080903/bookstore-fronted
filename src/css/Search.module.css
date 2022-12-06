@@ -8,16 +8,28 @@
     border: solid 1px rgba(188, 188, 188, 0.616);
     width: 25%;
     height: 800px;
+    overflow: hidden;
 }
 
 .notResults{
     width: 75%;
     padding-top: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.notResults p{
-    text-align: center;
-    font-size: 32px;
+.notResults *{
+    margin-bottom: 10px;
+}
+
+.notTitle{
+    font-size: 24px;
+}
+
+.iconFrown{
+    font-size: 48px;
+    color: rgb(234, 55, 0);
 }
 
 .resultsContainer{

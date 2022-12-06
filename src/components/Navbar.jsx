@@ -1,5 +1,5 @@
 import styles from '../css/Navbar.module.css'
-import { Link, Navigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { AiOutlineSearch } from "react-icons/ai"
 import { AiOutlinePoweroff } from "react-icons/ai"
@@ -17,14 +17,14 @@ function Navbar(params) {
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")))
 
-    const [bookSearched, setBookSearched] = useState()
 
+    const navigate = useNavigate();
 
     function handleSearch(e) {
 
         e.preventDefault();
 
-        setBookSearched(e.target[0].value);
+        navigate('/search', {state:{bookSearched: e.target[0].value}})
 
     }
 
@@ -40,11 +40,6 @@ function Navbar(params) {
     return (
         <div className={styles.navbarContainer}>
             <nav className={styles.navbarDistributed}>
-
-                {
-                    bookSearched &&
-                    <Navigate to="/search" state={{ bookSearched: bookSearched }} replace={true} />
-                }
 
                 <div className={styles.menu}>
                     <Menu />
@@ -83,7 +78,7 @@ function Navbar(params) {
                                 </>
                                 :
                                 <>
-                                    <ActionButton redirectTo={"/compras"} text="Compras" />
+                                    <ActionButton redirectTo={"/order"} text="Compras" />
                                     <ActionButton redirectTo={"/cart"} text="Carrito" />
                                     <Link to={"/logout"} className={`${styles.actionButton} ${styles.actionButtonLogout}`} >
                                         <AiOutlinePoweroff />
