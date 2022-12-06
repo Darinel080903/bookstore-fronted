@@ -1,9 +1,14 @@
 import React from 'react'
 import styles from "../css/BuyingBody.module.css"
+import { Link, useLocation } from 'react-router-dom'
+
 
 
 function BuyingBody() {
 
+  const location = useLocation();
+
+  const { book } = location.state;
 
   const Payment = () => {
     return (
@@ -43,6 +48,7 @@ function BuyingBody() {
 
   return (
     <div className={styles.buyingContainer}>
+      {console.log(book)}
       <div className={styles.contents}>
         <Payment />
 
@@ -52,9 +58,15 @@ function BuyingBody() {
           <div className={styles.ContainerSummary}>
             <h2>Resumen del pedido</h2>
           </div>
+          <div className={styles.articlesContainer}>
+            <h4>Artículos</h4>
+            <div className={styles.articles}>
+              <img src={book.cover} alt="" />
+            </div>
+          </div>
           <div className={styles.ContainerSubtotal}>
             <strong><p>Subtotal</p></strong>
-            <p>{'$' + '----'}</p>
+            <p>{'$' + book.price}</p>
           </div>
           <div className={styles.ContainerSent}>
             <div className={styles.ContainerTextSent}>

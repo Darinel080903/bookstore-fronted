@@ -7,7 +7,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai"
 
 function VistaLibro() {
 
-    const [books, setBooks] = useState([]);
+    const [book, setBook] = useState([]);
 
     const location = useLocation();
 
@@ -20,7 +20,7 @@ function VistaLibro() {
     useEffect(() => {
         fetch('http://localhost:8080/book/' + nBook)
             .then(response => response.json())
-            .then(data => setBooks(data.data));
+            .then(data => setBook(data.data));
 
     }, [])
 
@@ -48,26 +48,50 @@ function VistaLibro() {
 
     }
 
+    const Shop = (e) => {
+        e.preventDefault();
+
+        fetch('http://localhost:8080/order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'bookId': nBook,
+                'userId': user.id,
+                'quantity':1,
+                'status':'IN PROCESS'
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+            })
+            .catch(err => console.error(err))
+
+    }
 
     return (
         <div className={styles.contenedorCuadro}>
             {
-                books ?
+                book ?
 
                     <div className={styles.cuadro}>
 
                         <img className={styles.imagen}
-                            src={books.cover} />
+                            src={book.cover} />
 
                         <div className={styles.contenedorTexto}>
                             <div className={styles.fullName}>
-                                <p className={styles.name}>{books.name}</p>
-                                <p className={styles.author}>{books.authorName}</p>
+                                <p className={styles.name}>{book.name}</p>
+                                <p className={styles.author}>{book.authorName}</p>
                             </div>
-                            <p className={styles.textoContenedor}>{books.description}</p>
-                            <p className={styles.price}>$ {books.price}</p>
+                            <p className={styles.textoContenedor}>{book.description}</p>
+                            <p className={styles.price}>$ {book.price}</p>
                             <div className={styles.actions}>
-                                <button className={styles.buy}>Comprar</button>
+
+                                <Link to={'/buying'} state={{book: book}} >
+                                    <button className={styles.buy}>Comprar</button>
+                                </Link>
                                 <button onClick={Car} className={styles.addCart}><AiOutlineShoppingCart /></button>
         
 
