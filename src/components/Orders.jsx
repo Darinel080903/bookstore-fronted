@@ -57,7 +57,7 @@ function Orders() {
         <div className={styles.container}>
             <div className={styles.contenedorCuadro}>
                 <div className={styles.containerLetter}>
-                    <h2 className={styles.title}>My orders</h2>
+                    <h2 className={styles.title}>Mis compras</h2>
                 </div>
 
                 {

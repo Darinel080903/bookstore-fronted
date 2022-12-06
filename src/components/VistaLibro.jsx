@@ -81,6 +81,27 @@ function VistaLibro() {
         }
     }
 
+    const Shop = (e) => {
+        e.preventDefault();
+
+        fetch('http://localhost:8080/order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'bookId': nBook,
+                'userId': user.id,
+                'quantity':1,
+                'status':'IN PROCESS'
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+            })
+            .catch(err => console.error(err))
+
+    }
 
     return (
         <div className={styles.contenedorCuadro}>
@@ -112,6 +133,7 @@ function VistaLibro() {
                                     <button onClick={addQuantity}>+</button>
                                 </div>
                                 <Link to={'/buying'} state={{ book: book }} >
+
                                     <button className={styles.buy}>Comprar</button>
                                 </Link>
                                 <button onClick={Car} className={styles.addCart}><AiOutlineShoppingCart /></button>
