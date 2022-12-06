@@ -57,7 +57,7 @@ function Orders() {
         <div className={styles.container}>
             <div className={styles.contenedorCuadro}>
                 <div className={styles.containerLetter}>
-                    <h2 className={styles.title}>My orders</h2>
+                    <h2 className={styles.title}>Mis compras</h2>
                 </div>
 
                 {
@@ -68,6 +68,7 @@ function Orders() {
                                     <h2 className={styles.letterTop}>Estado: {order.status}</h2>
                                     <h2 className={styles.letterTop}>Cantidad: {order.quantity}</h2>
                                     <h2 className={styles.letterTop}>Precio total: {order.price}</h2>
+                                    <h2 className={styles.letterTop}> Fecha de entrega: {order.deliveryDate}</h2>
                                 </div>
                                 <>
                                     {

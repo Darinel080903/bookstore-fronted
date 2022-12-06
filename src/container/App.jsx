@@ -34,11 +34,12 @@ function App() {
       <BrowserRouter >
         <Routes>
 
-          <Route path='/register' element={<ProtectedRoute isAllowed={!user && true} />}>
+          <Route path='/register' element={<ProtectedRoute isAllowed={user == null} />}>
             <Route path='/register' element={<Register />} />
           </Route>
 
-          <Route path='/login' element={<ProtectedRoute isAllowed={!user && true} />}>
+          <Route path='/login' element={<ProtectedRoute isAllowed={user == null} />}>
+
             <Route path='/login' element={<Login />} />
           </Route>
 

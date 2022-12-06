@@ -7,6 +7,7 @@ function Logout() {
 
     const clear = () => {
         localStorage.clear()
+
         window.location.reload(true);
     }
 
