@@ -33,7 +33,7 @@ function FormAdmin() {
            
                     <div className={styles.ContainerButton}>
                         <div>
-                            <Link to={"/orderuser"}   >
+                            <Link to={"/order"}   >
                                 <button type='submit' className={styles.ButtonForm}>Ordenes clientes</button>
                             </Link>
                         </div>

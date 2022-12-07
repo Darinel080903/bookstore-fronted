@@ -2,13 +2,7 @@ import { useState, useEffect, Component } from 'react'
 import styles from '../css/Shop.module.css'
 import img from '../assets/images/imagen-01.png'
 import { AiFillDelete } from "react-icons/ai"
-
-
-
-
-
-
-
+import { useRef } from 'react';
 
 function Shop() {
    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")));
@@ -17,53 +11,39 @@ function Shop() {
 
    const [orders, setOrders] = useState([]);
 
-   const [orderId,setOrderId] = useState([]);
-
-   
-
-   
-
-   
-
+   const [orderId, setOrderId] = useState([]);
 
    useEffect(() => {
       fetch('http://localhost:8080/order/user/' + user.id + '/status/SHOPPING')
          .then(response => response.json())
          .then(data => setOrders(data.data));
+   }, [orders])
 
-   }, [])
+   function handleChangeStatus(e) {
+      const value = e.target.value
+      setOrderId(value)
+      console.log(value)
+   }
 
+   const form = useRef(null)
 
-
-   const Suppress = (e) => {
+   function deleteOrder(e) {
       e.preventDefault();
-      window.alert("Entraste a la funcion")
-      fetch('http://localhost:8080/order/15', {
-          method: 'PUT',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-              'status':'DELETE'
-          })
+      const formData = new FormData(form.current)
+      console.log('Entro a la funcion')
+      console.log(formData.get('status'))
+      fetch('http://localhost:8080/order/' + formData.get('status'), {
+         method: 'DELETE',
+         headers: {
+            'Content-type': 'application/json'
+         },
+         body: JSON.stringify({
+            'status': 'DELETE'
+         })
       })
-          .then(res => res.json())
-          .then(data => {
-          })
-          .catch(err => console.error(err))
-
-  }
-
-
-   const suppress = () => {
-
-
-      window.alert(orderId);
-  
-      fetch('http://localhost:8080/order/'+orderId, { method: 'DELETE' })
-      .then(() => window.alert("fue eliminado"));
-  
-    }
+         .then(res => res.json())
+         .catch(err => console.error(err))
+   }
 
    function getData(id) {
       fetch('http://localhost:8080/book')
@@ -76,17 +56,17 @@ function Shop() {
             {
                books.map(book => {
                   return (
-                    
+
                      book.id == id
-                     ?
-                     <>
-                        <img className={styles.ContentImg} src={book.cover} />
-                        <h3 className={styles.ContentTitle}>{book.name}</h3>
-                     </>
-                     :
-                     <>
-                     </>
-                     
+                        ?
+                        <>
+                           <img className={styles.ContentImg} src={book.cover} />
+                           <h3 className={styles.ContentTitle}>{book.name}</h3>
+                        </>
+                        :
+                        <>
+                        </>
+
                   )
                })
             }
@@ -95,7 +75,7 @@ function Shop() {
 
       )
    }
-   
+
    return (
 
 
@@ -128,7 +108,7 @@ function Shop() {
                            <div className={styles.ContainerImgCont}>
                               {
                                  getData(order.bookId)
-                                 
+
 
                               }
                               <p className={styles.ContentQuantity}>{"Cantidad"}</p>
@@ -140,21 +120,20 @@ function Shop() {
                            </div>
                            <div className={styles.ContainerBookSubCont}>
                               <p>{'$' + order.total}</p>
-                              <p>{'---'+order.total}</p>
-                          
-                             
-               
+                              <p>{'---' + order.total}</p>
                            </div>
                            <div className={styles.ContainerBookDeleteCont}>
-                              <AiFillDelete onClick={Suppress}  className={styles.DeleteIcon} />
-                              <p>{order.id}</p>
-                              
+                              <form method='' id='' onSubmit={deleteOrder} ref={form} >
+                                 <input onChange={handleChangeStatus} type='hidden' value={order.id} name='status' id='status' />
+                                 <button type='submit' className={styles.deleteButton}><AiFillDelete className={styles.DeleteIcon} /></button>
+                                 
+                              </form>
                            </div>
                         </div>
-                        
 
 
-                        
+
+
 
                      )
                   })
