@@ -69,11 +69,11 @@ function App() {
             <Route path='/logout' element={<Logout />} />
           </Route>
 
-          <Route path='/admin' element={<ProtectedRoute isAllowed={user && user.admin == true ? true : false} />}>
+          <Route path='/admin' element={<ProtectedRoute isAllowed={user != null && user.admin == true ? true : false} />}>
             <Route path='/admin' element={<Admin />} />
           </Route>
 
-          <Route path='/addbook' element={<ProtectedRoute isAllowed={user && user.admin == true ? true : false} />}>
+          <Route path='/addbook' element={<ProtectedRoute isAllowed={user != null && user.admin == true ? true : false} />}>
             <Route path='/addbook' element={<AddBook />} />
           </Route>
 
