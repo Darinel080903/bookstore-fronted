@@ -13,6 +13,7 @@ function FormLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [user, setUser] = useState();
   const [data, setData] = useState();
 
   const login = (e) => {
@@ -37,18 +38,18 @@ function FormLogin() {
   }
 
 
-
-
-  const UserCorrect = () => {
-
-
+  const GetUser = () => {
     fetch(`http://localhost:8080/user/username/${data.userName}`)
       .then(res => res.json())
       .then(data => {
-        localStorage.setItem("user-info", JSON.stringify(data.data))
+        setUser(data.data)
       })
+  }
 
+  const UserCorrect = () => {
 
+    localStorage.setItem("user-info", JSON.stringify(user))
+    window.location.reload(true);
 
     return (
       < Navigate to="/" replace={true} />
@@ -72,7 +73,9 @@ function FormLogin() {
     <div className={styles.loginContainer}>
 
       {data &&
-        UserCorrect()}
+        GetUser()}
+
+        {user && UserCorrect()}
 
       <div className={styles.login}>
 

@@ -35,9 +35,12 @@ function VistaLibro() {
     }
 
     useEffect(() => {
+        
         fetch('http://localhost:8080/book/' + nBook)
             .then(response => response.json())
             .then(data => setBook(data.data));
+            window.scrollTo(0,0)
+            setQuantity(1)
 
     }, [nBook])
 

@@ -42,6 +42,7 @@ function Shop() {
          })
       })
          .then(res => res.json())
+         .then(data => console.log(data))
          .catch(err => console.error(err))
    }
 
@@ -120,7 +121,6 @@ function Shop() {
                            </div>
                            <div className={styles.ContainerBookSubCont}>
                               <p>{'$' + order.total}</p>
-                              <p>{'---' + order.total}</p>
                            </div>
                            <div className={styles.ContainerBookDeleteCont}>
                               <form method='' id='' onSubmit={deleteOrder} ref={form} >
