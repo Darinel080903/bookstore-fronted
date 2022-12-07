@@ -3,13 +3,6 @@ import styles from '../css/Shop.module.css'
 import img from '../assets/images/imagen-01.png'
 import { AiFillDelete } from "react-icons/ai"
 
-
-
-
-
-
-
-
 function Shop() {
    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")));
 
@@ -18,13 +11,6 @@ function Shop() {
    const [orders, setOrders] = useState([]);
 
    const [orderId, setOrderId] = useState([]);
-
-
-
-
-
-
-
 
    useEffect(() => {
       fetch('http://localhost:8080/order/user/' + user.id + '/status/SHOPPING')
