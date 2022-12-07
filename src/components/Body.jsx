@@ -62,26 +62,12 @@ function Body(params) {
                     endpoint={'http://localhost:8080/books_genders/books/gender/1'}
                 />
 
-                <div className={styles.bodyDistributed}>
-                    <p className={styles.title}>Ciencia Ficcion</p>
-                    <div className={styles.books}>
-                        {
-                            Sciencefiction.map(book => {
-                                return (
-                                    <div key={book.id} className={styles.book}  >
-                                        <Card
-                                            id={book.id}
-                                            image={book.cover}
-                                            titulo={book.name}
-                                            texto={book.description}
-                                            precio={book.price} />
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
+                <CarrouselBook
+                    title={'Ciencia Ficcion'}
+                    endpoint={'http://localhost:8080/books_genders/books/gender/3'}
+                />
 
-                </div>
+               
 
 
             </div>
