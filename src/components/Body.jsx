@@ -62,13 +62,13 @@ function Body(params) {
                     endpoint={'http://localhost:8080/books_genders/books/gender/1'}
                 />
 
+
                 <CarrouselBook
                     title={'Ciencia Ficcion'}
                     endpoint={'http://localhost:8080/books_genders/books/gender/3'}
                 />
 
                
-
 
             </div>
         </div>

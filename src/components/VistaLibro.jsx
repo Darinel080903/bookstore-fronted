@@ -106,7 +106,8 @@ function VistaLibro() {
     return (
         <div className={styles.contenedorCuadro}>
             {
-                nBook ==null && <Navigate to="/home" replace={true} />
+                nBook == null && <Navigate to="/home" replace={true} />
+
             }
             {
 
