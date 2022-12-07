@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from "../css/BuyingBody.module.css"
 import { Link, useLocation } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 
 
@@ -9,6 +10,18 @@ function BuyingBody() {
   const location = useLocation();
 
   const { book } = location.state;
+
+  function alert() {
+    Swal.fire({
+       position: 'center-end',
+       title: 'Gracias por comprar!',
+       color: '#fff',
+       width: '400px',
+       background: '#008AD4',
+       showConfirmButton: false,
+       timer: 1500
+   })
+ }
 
   const Payment = () => {
     return (
@@ -36,7 +49,7 @@ function BuyingBody() {
           </label>
 
           <div className={styles.ContainerButton}>
-            <button type='submit' className={styles.ButtonForm}>Comprar</button>
+            <button type='submit'  onClick={alert}  className={styles.ButtonForm}>Comprar</button>
           </div>
         </div>
       </>
