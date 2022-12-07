@@ -107,6 +107,10 @@ function VistaLibro() {
         <div className={styles.contenedorCuadro}>
             {
                 nBook == null && <Navigate to="/home" replace={true} />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1bf3001abd526ae5d9e4ef77dc90434fa03542af
             }
             {
 
