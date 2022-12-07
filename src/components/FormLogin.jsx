@@ -14,7 +14,7 @@ function FormLogin() {
   const [password, setPassword] = useState("");
 
   const [user, setUser] = useState();
-  const [success, setSuccess] = useState();
+  const [data, setData] = useState();
 
   const login = (e) => {
     e.preventDefault();
@@ -25,29 +25,39 @@ function FormLogin() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        'email': email,
+        'userName': email,
         'password': password
       })
     })
       .then(res => res.json())
       .then(data => {
-        setUser(data.data)
-        setSuccess(data.success)
+        setData(data)
       })
-      .catch(err => console.error(err))
+      .catch(err => { UserIncorrect() })
 
+  }
+
+
+  const GetUser = () => {
+    fetch(`http://localhost:8080/user/username/${data.userName}`)
+      .then(res => res.json())
+      .then(data => {
+        setUser(data.data)
+      })
   }
 
   const UserCorrect = () => {
+
     localStorage.setItem("user-info", JSON.stringify(user))
     window.location.reload(true);
+
     return (
       < Navigate to="/" replace={true} />
     )
+
   }
 
   const UserIncorrect = () => {
-    console.log(user)
     Swal.fire({
       position: 'bottom',
       title: 'Usuario incorrecto',
@@ -57,24 +67,15 @@ function FormLogin() {
       showConfirmButton: false,
       timer: 1500
     })
-    setSuccess()
   }
 
   return (
     <div className={styles.loginContainer}>
 
-      {
-        success == true && (
-          UserCorrect()
-        )
-      }
+      {data &&
+        GetUser()}
 
-      {
-        success == false && (
-          UserIncorrect()
-        )
-
-      }
+        {user && UserCorrect()}
 
       <div className={styles.login}>
 
@@ -83,7 +84,7 @@ function FormLogin() {
         <form className={styles.loginForm} onSubmit={login} >
 
           <label className={styles.label}>
-            <span >Correo</span>
+            <span >E-mail</span>
             <input className={styles.input} type="email" onChange={(e) => setEmail(e.target.value)} required />
           </label>
 

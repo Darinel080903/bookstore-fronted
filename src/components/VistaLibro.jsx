@@ -35,11 +35,14 @@ function VistaLibro() {
     }
 
     useEffect(() => {
+        
         fetch('http://localhost:8080/book/' + nBook)
             .then(response => response.json())
             .then(data => setBook(data.data));
+            window.scrollTo(0,0)
+            setQuantity(1)
 
-    }, [])
+    }, [nBook])
 
 
 
@@ -92,8 +95,8 @@ function VistaLibro() {
             body: JSON.stringify({
                 'bookId': nBook,
                 'userId': user.id,
-                'quantity':1,
-                'status':'IN PROCESS'
+                'quantity': 1,
+                'status': 'IN PROCESS'
             })
         })
             .then(res => res.json())
@@ -106,7 +109,7 @@ function VistaLibro() {
     return (
         <div className={styles.contenedorCuadro}>
             {
-                nBook ==null && <Navigate to="/home" replace={true} />
+                nBook == null && <Navigate to="/home" replace={true} />
             }
             {
 
@@ -154,11 +157,14 @@ function VistaLibro() {
 
             }
 
+            {
+                nBook &&
+                <CarrouselBook
+                    title={'Otros que te podrían interesar'}
+                    endpoint={'http://localhost:8080/book/random'}
+                />
 
-            <CarrouselBook
-                title={'Otros que te podrían interesar'}
-                endpoint={'http://localhost:8080/book/random'}
-            />
+            }
         </div>
     );
 }
