@@ -3,16 +3,19 @@ import styles from "../css/FormRegister.module.css"
 import { useState, useRef, useContext } from "react"
 import { Outlet, Link, Navigate } from 'react-router-dom'
 
-
-
+import Swal from 'sweetalert2'
 
 function Register() {
 
-    
 
-    const [ user, setUser ] = useState(localStorage.getItem("user-info"));
+
+    const [user, setUser] = useState(localStorage.getItem("user-info"));
 
     const form = useRef(null);
+
+    const [success, setSuccess] = useState();
+
+    const [password, setPassword] = useState("")
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -26,14 +29,9 @@ function Register() {
             },
             body: JSON.stringify({
                 name: formData.get('name'),
-                lastName: formData.get('lastname'),
                 userName: formData.get('username'),
                 email: formData.get('email'),
-                password: formData.get('password'),
-                address: formData.get('address'),
-                phoneNumber: formData.get('phone'),
-                birth: formData.get('birthday')
-
+                password: formData.get('password')
             })
         })
             .then(res => res.json())
@@ -42,21 +40,52 @@ function Register() {
 
     }
 
-    
+    function handelChangePassword(e){
+        const value = e.target.value
+        setPassword(value)
+    }
 
+    const UserIncorrect = () => {
+        console.log(user)
+        Swal.fire({
+            position: 'bottom',
+            title: 'Usuario incorrecto',
+            color: '#fff',
+            width: '800px',
+            background: '#D0342C',
+            showConfirmButton: false,
+            timer: 1500
+        })
+        setSuccess()
+    }
 
+    const UserCorrect = () => {
+        localStorage.setItem("user-info", JSON.stringify(user))
+        window.location.reload(true);
+        return (
+            < Navigate to="/" replace={true} />
+        )
+    }
 
     return (
         <div className={styles.registerContainer}>
+            {
+                
+                success == true && (
+                    UserCorrect()
+                )
+            }
 
             {
-                user &&
-                <Navigate to="/" replace={true} />
+                success == false && (
+                    UserIncorrect()
+                )
+
             }
 
             <div className={styles.register}>
                 <h2 className={styles.registerTitle}>Registro</h2>
-                <form  className={styles.registerForm} method="" id="form" onSubmit={handleSubmit} ref={form}>
+                <form className={styles.registerForm} method="" id="form" onSubmit={handleSubmit} ref={form}>
                     <label className={styles.label}>
                         <span>Nombre</span>
                         <input className={styles.input}
@@ -96,6 +125,7 @@ function Register() {
                     <label className={styles.label}>
                         <span>Contraseña</span>
                         <input className={styles.input}
+                        onChange={handelChangePassword}
                             type="password"
                             name='password'
                             id='password'

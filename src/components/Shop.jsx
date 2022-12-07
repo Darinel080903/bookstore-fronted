@@ -13,6 +13,8 @@ function Shop() {
 
    const [orderId, setOrderId] = useState([]);
 
+   const [getTotal, setGetTotal] = useState([])
+
    useEffect(() => {
       fetch('http://localhost:8080/order/user/' + user.id + '/status/SHOPPING')
          .then(response => response.json())
@@ -43,6 +45,24 @@ function Shop() {
       })
          .then(res => res.json())
          .catch(err => console.error(err))
+   }
+
+   function getOrderTotal(){
+      console.log('entro')
+      return(
+         orders.map(order=>{
+            return(
+               <>
+                  {setGetTotal(getTotal + order.total)}
+                  {console.log(getTotal)}
+                  <>
+                  <p>{getTotal}</p>
+                  </>
+                  
+               </>
+            )
+         })
+      )
    }
 
    function getData(id) {
@@ -116,11 +136,10 @@ function Shop() {
                            </div>
                            <div className={styles.ContainerBookPriceCont}>
                               <p>{'$' + order.price}</p>
-
+                              {getOrderTotal}
                            </div>
                            <div className={styles.ContainerBookSubCont}>
                               <p>{'$' + order.total}</p>
-                              <p>{'---' + order.total}</p>
                            </div>
                            <div className={styles.ContainerBookDeleteCont}>
                               <form method='' id='' onSubmit={deleteOrder} ref={form} >
@@ -130,11 +149,6 @@ function Shop() {
                               </form>
                            </div>
                         </div>
-
-
-
-
-
                      )
                   })
                }
@@ -147,7 +161,7 @@ function Shop() {
                </div>
                <div className={styles.ContainerSubtotal}>
                   <strong><p>Subtotal</p></strong>
-                  <p>{'$' + '----'}</p>
+                  <p>{'$'}{getOrderTotal}</p>
                </div>
                <div className={styles.ContainerSent}>
                   <div className={styles.ContainerTextSent}>
@@ -156,7 +170,7 @@ function Shop() {
                      <strong><p> (Recíbelo de 1 a 3 días hábiles.) </p></strong>
                   </div>
                   <div className={styles.ContainerPriceSent}>
-                     <p>{'$' + '----'}</p>
+                     <p>{'$' + '100'}</p>
                   </div>
                </div>
                <div className={styles.ContainerTotal}>
