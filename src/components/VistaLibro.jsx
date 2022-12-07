@@ -39,7 +39,7 @@ function VistaLibro() {
             .then(response => response.json())
             .then(data => setBook(data.data));
 
-    }, [])
+    }, [nBook])
 
 
 
@@ -92,8 +92,8 @@ function VistaLibro() {
             body: JSON.stringify({
                 'bookId': nBook,
                 'userId': user.id,
-                'quantity':1,
-                'status':'IN PROCESS'
+                'quantity': 1,
+                'status': 'IN PROCESS'
             })
         })
             .then(res => res.json())
@@ -154,11 +154,14 @@ function VistaLibro() {
 
             }
 
+            {
+                nBook &&
+                <CarrouselBook
+                    title={'Otros que te podrían interesar'}
+                    endpoint={'http://localhost:8080/book/random'}
+                />
 
-            <CarrouselBook
-                title={'Otros que te podrían interesar'}
-                endpoint={'http://localhost:8080/book/random'}
-            />
+            }
         </div>
     );
 }
