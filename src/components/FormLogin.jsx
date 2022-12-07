@@ -13,8 +13,7 @@ function FormLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [user, setUser] = useState();
-  const [success, setSuccess] = useState();
+  const [data, setData] = useState();
 
   const login = (e) => {
     e.preventDefault();
@@ -25,29 +24,39 @@ function FormLogin() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        'email': email,
+        'userName': email,
         'password': password
       })
     })
       .then(res => res.json())
       .then(data => {
-        setUser(data.data)
-        setSuccess(data.success)
+        setData(data)
       })
-      .catch(err => console.error(err))
+      .catch(err => { UserIncorrect() })
 
   }
 
+
+
+
   const UserCorrect = () => {
-    localStorage.setItem("user-info", JSON.stringify(user))
-    window.location.reload(true);
+
+
+    fetch(`http://localhost:8080/user/username/${data.userName}`)
+      .then(res => res.json())
+      .then(data => {
+        localStorage.setItem("user-info", JSON.stringify(data.data))
+      })
+
+
+
     return (
       < Navigate to="/" replace={true} />
     )
+
   }
 
   const UserIncorrect = () => {
-    console.log(user)
     Swal.fire({
       position: 'bottom',
       title: 'Usuario incorrecto',
@@ -57,24 +66,13 @@ function FormLogin() {
       showConfirmButton: false,
       timer: 1500
     })
-    setSuccess()
   }
 
   return (
     <div className={styles.loginContainer}>
 
-      {
-        success == true && (
-          UserCorrect()
-        )
-      }
-
-      {
-        success == false && (
-          UserIncorrect()
-        )
-
-      }
+      {data &&
+        UserCorrect()}
 
       <div className={styles.login}>
 
@@ -84,7 +82,7 @@ function FormLogin() {
 
           <label className={styles.label}>
             <span >E-mail</span>
-            <input className={styles.input} type="email" onChange={(e) => setEmail(e.target.value)} required />
+            <input className={styles.input} type="userName" onChange={(e) => setEmail(e.target.value)} required />
           </label>
 
           <label className={styles.label}>

@@ -10,7 +10,7 @@ function Advice() {
 
   return (
     <div className={styles.adviceContainer}>
-      <p>¡Envios gratis a partir de $399 pesos!<AiOutlineShoppingCart /></p>
+      <p>¡Envios a todo Latino America!<AiOutlineShoppingCart /></p>
       
     </div>
   )
