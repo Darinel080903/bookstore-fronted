@@ -1,7 +1,7 @@
 .ContentTitle{
 text-align: center;
 width: 100%;
-font-size: 17px;
+font-size: 15px;
 margin-top: 2px;
 }
 
@@ -20,6 +20,11 @@ margin-top: 2px;
   font-size: 40px;
   color: rgb(197, 30, 27);
 
+}
+
+.deleteButton{
+  background-color: transparent;
+  border: transparent;
 }
 
 .DeleteIcon:hover {

@@ -2,13 +2,7 @@ import { useState, useEffect, Component } from 'react'
 import styles from '../css/Shop.module.css'
 import img from '../assets/images/imagen-01.png'
 import { AiFillDelete } from "react-icons/ai"
-
-
-
-
-
-
-
+import { useRef } from 'react';
 
 function Shop() {
    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")));
@@ -19,22 +13,26 @@ function Shop() {
 
    const [orderId, setOrderId] = useState([]);
 
-
-
-
-
-
-
-
    useEffect(() => {
       fetch('http://localhost:8080/order/user/' + user.id + '/status/SHOPPING')
          .then(response => response.json())
          .then(data => setOrders(data.data));
+   }, [orders])
 
-   }, [])
+   function handleChangeStatus(e) {
+      const value = e.target.value
+      setOrderId(value)
+      console.log(value)
+   }
 
-   function deleteOrder (orderId){
-      fetch('http://localhost:8080/order/' + orderId, {
+   const form = useRef(null)
+
+   function deleteOrder(e) {
+      e.preventDefault();
+      const formData = new FormData(form.current)
+      console.log('Entro a la funcion')
+      console.log(formData.get('status'))
+      fetch('http://localhost:8080/order/' + formData.get('status'), {
          method: 'DELETE',
          headers: {
             'Content-type': 'application/json'
@@ -43,8 +41,8 @@ function Shop() {
             'status': 'DELETE'
          })
       })
-      .then(res=> res.json())
-      .catch(err => console.error(err))
+         .then(res => res.json())
+         .catch(err => console.error(err))
    }
 
    function getData(id) {
@@ -123,15 +121,13 @@ function Shop() {
                            <div className={styles.ContainerBookSubCont}>
                               <p>{'$' + order.total}</p>
                               <p>{'---' + order.total}</p>
-
-
-
                            </div>
                            <div className={styles.ContainerBookDeleteCont}>
-                              <AiFillDelete onClick={deleteOrder(orders.id)} className={styles.DeleteIcon} />
-                              <p>{order.id}</p>
-
-
+                              <form method='' id='' onSubmit={deleteOrder} ref={form} >
+                                 <input onChange={handleChangeStatus} type='hidden' value={order.id} name='status' id='status' />
+                                 <button type='submit' className={styles.deleteButton}><AiFillDelete className={styles.DeleteIcon} /></button>
+                                 
+                              </form>
                            </div>
                         </div>
 
