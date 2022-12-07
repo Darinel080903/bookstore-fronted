@@ -35,7 +35,7 @@ function Register() {
             })
         })
             .then(res => res.json())
-            .then(data => setUser(data))
+            .then(data => setSuccess(formData.get('password')))
             .catch(err => console.error(err))
 
     }
@@ -49,7 +49,7 @@ function Register() {
         console.log(user)
         Swal.fire({
             position: 'bottom',
-            title: 'Usuario incorrecto',
+            title: 'Ingrese datos correctos',
             color: '#fff',
             width: '800px',
             background: '#D0342C',
@@ -59,21 +59,11 @@ function Register() {
         setSuccess()
     }
 
-    const UserCorrect = () => {
-        localStorage.setItem("user-info", JSON.stringify(user))
-        window.location.reload(true);
-        return (
-            < Navigate to="/" replace={true} />
-        )
-    }
-
     return (
         <div className={styles.registerContainer}>
             {
-                
-                success == true && (
-                    UserCorrect()
-                )
+                user &&
+                <Navigate to="/" replace={true} />
             }
 
             {
