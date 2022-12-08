@@ -15,6 +15,7 @@ import Imagen1 from '../assets/images/bookStoreLogo.png'
 
 function Navbar(params) {
 
+    const [authorities, setAuthorities] = useState(JSON.parse(localStorage.getItem("user-authorities")));
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")))
 
 
@@ -67,7 +68,7 @@ function Navbar(params) {
 
                         user
                             ?
-                            user.admin
+                            authorities.length > 1
                                 ?
                                 <>
                                     <ActionButton redirectTo={"/admin"} text="Admin" />
