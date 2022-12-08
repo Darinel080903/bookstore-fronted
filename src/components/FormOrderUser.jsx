@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 function FormOrderUser() {
 
     const [ user, setUser ] = useState(JSON.parse(localStorage.getItem("user-info")));
+    const [bearerToken, setBearerToken] = useState(JSON.parse(localStorage.getItem("user-token")));
 
 
     const [orders, setOrders] = useState([]);
@@ -12,7 +13,12 @@ function FormOrderUser() {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/order/user/'+ user.id)
+        fetch('http://localhost:8080/order/user/'+ user.id,{
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': 'Bearer ' + bearerToken,
+             }
+        })
             .then(response => response.json())
             .then(data => setOrders(data.data));
     }, [])

@@ -8,16 +8,28 @@ function AddBookForm() {
     const [authors, setAuthors] = useState([]);
     const [editorials, setEditorials] = useState([])
     const [typeOp, setTypeOp] = useState()
+    const [bearerToken, setBearerToken] = useState(JSON.parse(localStorage.getItem("user-token")));
+
 
     useEffect(() => {
-        fetch('http://localhost:8080/author')
+        fetch('http://localhost:8080/author', {
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': 'Bearer ' + bearerToken,
+            },
+        })
             .then(response => response.json())
             .then(data => setAuthors(data.data));
 
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:8080/editorial')
+        fetch('http://localhost:8080/editorial', {
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': 'Bearer ' + bearerToken,
+            },
+        })
             .then(response => response.json())
             .then(data => setEditorials(data.data));
 
@@ -38,7 +50,8 @@ function AddBookForm() {
         fetch('http://localhost:8080/book', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'authorization': 'Bearer ' + bearerToken, 
             },
             body: JSON.stringify({
                 name: formData.get('bookName'),
@@ -61,8 +74,9 @@ function AddBookForm() {
 
         fetch('http://localhost:8080/author', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
+            hheaders: {
+                'Content-Type': 'application/json',
+                'authorization': 'Bearer ' + bearerToken, 
             },
             body: JSON.stringify({
                 name: authorName
@@ -78,7 +92,8 @@ function AddBookForm() {
         fetch('http://localhost:8080/editorial', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'authorization': 'Bearer ' + bearerToken, 
             },
             body: JSON.stringify({
                 name: editorialName
@@ -88,7 +103,7 @@ function AddBookForm() {
             .catch(err => console.error(err))
     }
 
-    
+
 
     function handleChangeName(e) {
         const value = e.target.value;
@@ -185,8 +200,8 @@ function AddBookForm() {
                             <option selected>Selecciona una editorial</option>
                             {
                                 editorials.map(editorial => {
-                                    return (                                     
-                                            <option value={parseInt(editorial.id) } name='editorial' id='editorial'>{editorial.name}</option>
+                                    return (
+                                        <option value={parseInt(editorial.id)} name='editorial' id='editorial'>{editorial.name}</option>
                                     );
                                 })
                             }
@@ -235,7 +250,7 @@ function AddBookForm() {
                 </div>
                 <div className={styles.addAuthorEditorial}>
                     <form className={styles.formAuthorEditorial} method='' id='' onSubmit={createEditorial} ref={formE}>
-                    <label className={styles.label}>
+                        <label className={styles.label}>
                             <span>Or create an editorial</span>
                             <input
                                 onChange={handleChangeNameEditorial}

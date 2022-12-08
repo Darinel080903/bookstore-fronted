@@ -19,6 +19,8 @@ function VistaLibro() {
     const navigate = useNavigate();
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")));
+    const [bearerToken, setBearerToken] = useState(JSON.parse(localStorage.getItem("user-token")));
+
 
     const [quantity, setQuantity] = useState(1);
 
@@ -57,7 +59,8 @@ function VistaLibro() {
             fetch('http://localhost:8080/order', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'authorization': 'Bearer ' + bearerToken, 
                 },
                 body: JSON.stringify({
                     'bookId': nBook,
@@ -90,7 +93,8 @@ function VistaLibro() {
         fetch('http://localhost:8080/order', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'authorization': 'Bearer ' + bearerToken, 
             },
             body: JSON.stringify({
                 'bookId': nBook,
