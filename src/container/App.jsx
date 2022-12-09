@@ -25,6 +25,9 @@ import Account from '../pages/Account';
 function App() {
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")));
+  const [authorities, setAuthorities] = useState(JSON.parse(localStorage.getItem("user-authorities")));
+
+  
 
 
   return (
@@ -69,7 +72,7 @@ function App() {
             <Route path='/logout' element={<Logout />} />
           </Route>
 
-          <Route path='/admin' element={<ProtectedRoute isAllowed={user != null && user.admin == true ? true : false} />}>
+          <Route path='/admin' element={<ProtectedRoute isAllowed={user != null && authorities.length > 1 ? true : false} />}>
             <Route path='/admin' element={<Admin />} />
 
           </Route>
@@ -77,7 +80,7 @@ function App() {
             <Route path='/addbook' element={<AddBook />} />
           </Route>
 
-          <Route path='/addbook' element={<ProtectedRoute isAllowed={user != null && user.admin == true ? true : false} />}>
+          <Route path='/addbook' element={<ProtectedRoute isAllowed={user != null && authorities.length > 1 ? true : false} />}>
             <Route path='/addbook' element={<AddBook />} />
           </Route>
 

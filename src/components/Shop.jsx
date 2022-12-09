@@ -3,9 +3,12 @@ import styles from '../css/Shop.module.css'
 import img from '../assets/images/imagen-01.png'
 import { AiFillDelete } from "react-icons/ai"
 import { useRef } from 'react';
+import Swal from 'sweetalert2'
+
 
 function Shop() {
    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")));
+   const [bearerToken, setBearerToken] = useState(JSON.parse(localStorage.getItem("user-token")));
 
    const [books, setBooks] = useState([])
 
@@ -16,7 +19,13 @@ function Shop() {
    const [getTotal, setGetTotal] = useState([])
 
    useEffect(() => {
-      fetch('http://localhost:8080/order/user/' + user.id + '/status/SHOPPING')
+      fetch('http://localhost:8080/order/user/' + user.id + '/status/SHOPPING', {
+         headers: {
+            'Content-Type': 'application/json',
+            'authorization': 'Bearer ' + bearerToken,
+         }
+      }
+      )
          .then(response => response.json())
          .then(data => setOrders(data.data));
    }, [orders])
@@ -29,6 +38,20 @@ function Shop() {
 
    const form = useRef(null)
 
+   function buyAll() {
+      Swal.fire({
+         position: 'center-end',
+         title: 'Compras realizadas',
+         color: '#fff',
+         width: '400px',
+         background: '#008AD4',
+         showConfirmButton: false,
+         timer: 1500
+      })
+
+      setOrders([])
+   }
+
    function deleteOrder(e) {
       e.preventDefault();
       const formData = new FormData(form.current)
@@ -37,7 +60,8 @@ function Shop() {
       fetch('http://localhost:8080/order/' + formData.get('status'), {
          method: 'DELETE',
          headers: {
-            'Content-type': 'application/json'
+            'Content-Type': 'application/json',
+            'authorization': 'Bearer ' + bearerToken,
          },
          body: JSON.stringify({
             'status': 'DELETE'
@@ -101,6 +125,7 @@ function Shop() {
 
 
       <div className={styles.shopContainer}>
+
          <div className={styles.ContainerTitle}>
             <strong><p>Mi bolsa</p></strong>
          </div>
@@ -146,7 +171,7 @@ function Shop() {
                               <form method='' id='' onSubmit={deleteOrder} ref={form} >
                                  <input onChange={handleChangeStatus} type='hidden' value={order.id} name='status' id='status' />
                                  <button type='submit' className={styles.deleteButton}><AiFillDelete className={styles.DeleteIcon} /></button>
-                                 
+
                               </form>
                            </div>
                         </div>
@@ -180,7 +205,10 @@ function Shop() {
                </div>
                <div className={styles.ContainerButton}>
                   <div>
-                     <button type='submit' className={styles.ButtonForm}>Comprar</button>
+                     {
+                        orders.length != 0 &&
+                        <button onClick={buyAll} className={styles.ButtonForm}  >Comprar</button>
+                     }
                   </div>
                </div>
                <div className={styles.ContainerPolicy}>

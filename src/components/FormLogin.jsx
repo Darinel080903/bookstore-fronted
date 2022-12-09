@@ -13,7 +13,12 @@ function FormLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+
+  const [bearerToken, setBearerToken] = useState()
   const [user, setUser] = useState();
+  const [authorities, setAuthorities] = useState();
+
+
   const [data, setData] = useState();
 
   const login = (e) => {
@@ -31,6 +36,8 @@ function FormLogin() {
     })
       .then(res => res.json())
       .then(data => {
+        setBearerToken(data.token)
+        setAuthorities(data.authorities)
         setData(data)
       })
       .catch(err => { UserIncorrect() })
@@ -47,8 +54,11 @@ function FormLogin() {
   }
 
   const UserCorrect = () => {
-
+    
+    localStorage.setItem("user-token", JSON.stringify(bearerToken))
     localStorage.setItem("user-info", JSON.stringify(user))
+    localStorage.setItem("user-authorities", JSON.stringify(authorities))
+
     window.location.reload(true);
 
     return (

@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 function Orders() {
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user-info")));
+    const [bearerToken, setBearerToken] = useState(JSON.parse(localStorage.getItem("user-token")));
+
 
     const [books, setBooks] = useState([])
 
@@ -12,7 +14,12 @@ function Orders() {
 
 
     useEffect(() => {
-        fetch('http://localhost:8080/order/user/' + user.id + '/AllOrders')
+        fetch('http://localhost:8080/order/user/' + user.id + '/AllOrders',{
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': 'Bearer ' + bearerToken,
+             }
+        })
             .then(response => response.json())
             .then(data => setOrders(data.data));
 
